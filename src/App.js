@@ -4,14 +4,21 @@
  * Dependencies
  */
 
-import React from 'react'
+const React = require('react')
 const react_router_dom = require('react-router-dom')
+const routes = require('./routes/index')
+
+/**
+ * Constants
+ */
+
+const BrowserRouter = react_router_dom.BrowserRouter
 
 /**
  * Importing global styles
  */
 
-import './App.css'
+require('./App.css')
 
 /**
  * Define component
@@ -19,11 +26,10 @@ import './App.css'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Modern Day Researcher</h1>
-      </header>
-    </div>
+    <BrowserRouter>
+      <routes.RootRouter mount="/" />
+      <routes.UsersRouter mount="/users" />
+    </BrowserRouter>
   )
 }
 
