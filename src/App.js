@@ -1,7 +1,21 @@
 'use strict'
 
+/**
+ * Dependencies
+ */
+
 import React from 'react'
+const react_router_dom = require('react-router-dom')
+
+/**
+ * Importing global styles
+ */
+
 import './App.css'
+
+/**
+ * Define component
+ */
 
 function App() {
   return (
@@ -13,4 +27,8 @@ function App() {
   )
 }
 
-export default App
+/**
+ * Export component
+ */
+
+module.exports = App
