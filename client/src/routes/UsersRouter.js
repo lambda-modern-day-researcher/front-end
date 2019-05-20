@@ -22,9 +22,10 @@ const Redirect = react_router_dom.Redirect
 function UsersRouter({ mount }) {
   return (
     <>
-      <Route path={`${mount}/signin`} render={() => <views.SignInUp />} />
-      <Route path={`${mount}/login`} component={() => <Redirect to="/users/signin" />} />
-      <Route path={`${mount}/register`} component={() => <Redirect to="/users/signup" />} />
+      <Route path={`${mount}/signin`} render={() => <views.SignInUp in_or_up='in' />} />
+      <Route path={`${mount}/signup`} render={() => <views.SignInUp in_or_up='up' />} />
+      <Route path={`${mount}/login`} render={() => <Redirect to="/users/signin" />} />
+      <Route path={`${mount}/register`} render={() => <Redirect to="/users/signup" />} />
     </>
   )
 }
