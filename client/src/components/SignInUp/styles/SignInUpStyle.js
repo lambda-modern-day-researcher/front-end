@@ -17,6 +17,7 @@ const styled = styled_components.default
  */
 
 let SignInUpStyle = styled.div(() => `
+  height: 100vh;
   background-color: #F8F9FC !important;
 
   button {

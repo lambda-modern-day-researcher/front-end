@@ -44,12 +44,12 @@ class SignInUp extends Component {
               <form className="mb-10">
                 <div className="form-group">
                   <label for="input_email" className="text-primary">Email <span className="text-danger">*</span></label>
-                  <input id="input_email" type="text" name="email" className="form-control" autofocus="true" value={this.state.email} onChange={this.handleOnChange}></input>
+                  <input id="input_email" type="email" name="email" className="form-control" autofocus="true" value={this.state.email} onChange={this.handleOnChange} required></input>
                 </div>
 
                 <div className="form-group">
-                  <label for="input_email" className="text-primary">Password <span className="text-danger">*</span></label>
-                  <input id="input_password" type="password" name="password" className="form-control" value={this.state.password} onChange={this.handleOnChange}></input>
+                  <label for="input_password" className="text-primary">Password <span className="text-danger">*</span></label>
+                  <input id="input_password" type="password" name="password" className="form-control" value={this.state.password} onChange={this.handleOnChange} required></input>
                 </div>
 
                 <button type="submit" className="btn btn-block btn-primary">Get started</button>
