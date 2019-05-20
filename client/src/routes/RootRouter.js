@@ -22,8 +22,12 @@ const Redirect = react_router_dom.Redirect
 function RootRouter() {
   return (
     <>
-      <Route exact path="/" render={() => <Redirect to="/users/login" />} />
+      <Route exact path="/" render={() => <Redirect to="/users/signin" />} />
       <Route path="/home" component={views.Home} />
+      <Route path="/login" render={() => <Redirect to="/users/signin" />} />
+      <Route path="/signin" render={() => <Redirect to="/users/signin" />} />
+      <Route path="/signup" render={() => <Redirect to="/users/signup" />} />
+      <Route path="/register" render={() => <Redirect to="/users/signup" />} />
     </>
   )
 }

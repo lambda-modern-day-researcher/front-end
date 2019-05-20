@@ -1,3 +1,6 @@
+[Settings]
+  ID="63754294-deec-4e57-821e-6a1676917198"
+
 [build]
   base = "client/"
   publish = "client/build/"

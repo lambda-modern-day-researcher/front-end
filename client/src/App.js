@@ -18,7 +18,7 @@ const BrowserRouter = react_router_dom.BrowserRouter
  * Importing global styles
  */
 
-require('./App.css')
+require('./App.scss')
 
 /**
  * Define component
