@@ -5,14 +5,15 @@
  */
 
 const React = require('react')
+const components = require('../components/SignInUp/index')
 
 /**
  * Define component
  */
 
-function SignInUp() {
+function SignInUp(props) {
   return (
-    <h1>SignInUp</h1>
+    <components.SignInUp />
   )
 }
 
