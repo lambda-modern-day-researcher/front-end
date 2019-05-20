@@ -22,7 +22,7 @@ const Redirect = react_router_dom.Redirect
 function RootRouter() {
   return (
     <>
-      <Route exact path="/" render={() => <Redirect to="/users/login" />} />
+      <Route exact path="/" render={() => <Redirect to="/users/signin" />} />
       <Route path="/home" component={views.Home} />
     </>
   )

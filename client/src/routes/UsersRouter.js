@@ -23,6 +23,7 @@ function UsersRouter({ mount }) {
   return (
     <>
       <Route path={`${mount}/signin`} render={() => <views.SignInUp />} />
+      <Route path={`${mount}/login`} component={() => <Redirect to="/users/signin" />} />
       <Route path={`${mount}/register`} component={() => <Redirect to="/users/signup" />} />
     </>
   )
