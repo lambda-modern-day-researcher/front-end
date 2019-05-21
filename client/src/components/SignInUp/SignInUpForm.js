@@ -5,34 +5,75 @@
  */
 
 const React = require('react')
+const react_redux = require('react-redux')
 const styles = require('./styles/index')
+const actions = require('../../store/actions/index')
+
+/**
+ * Constants
+ */
+
+const Component = React.Component
+const connect = react_redux.connect
+const signin = actions.signin
 
 /**
  * Define component
  */
 
-function SignInUpForm() {
-  return (
-    <styles.SignInUpFormStyle>
-      <form className="mb-10" action="/home" method="get">
-        <div className="form-group">
-          <label for="input_email" className="text-primary">Email <span className="text-danger">*</span></label>
-          <input id="input_email" type="email" name="email" className="form-control" autofocus="true" required={true}></input>
-        </div>
+class SignInUpForm extends Component {
+  constructor() {
+    super()
+    this.state = {
+      email: this.email,
+      password: this.password,
+    }
+  }
 
-        <div className="form-group">
-          <label for="input_password" className="text-primary">Password <span className="text-danger">*</span></label>
-          <input id="input_password" type="password" name="password" className="form-control" required={true}></input>
-        </div>
+  handleOnSubmit = (event) => {
+    event.preventDefault()
+    console.log(`handleOnSubmit ${this.state}`)
+    this.props.signin(this.state)
+      .then(() => {
+        this.props.history.push('/home')
+      })
+  }
 
-        <button type="submit" className="btn btn-block btn-primary">Get started</button>
-      </form>
-    </styles.SignInUpFormStyle>
-  )
+  handleOnChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  render() {
+    return (
+      <styles.SignInUpFormStyle>
+        <form className="mb-10" onSubmit={this.handleOnSubmit}>
+          <div className="form-group">
+            <label htmlFor="input_email" className="text-primary">Email <span className="text-danger">*</span></label>
+            <input id="input_email" type="email" name="email" value={this.state.email} onChange={this.handleOnChange} className="form-control" autoFocus={true} required={true}></input>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="input_password" className="text-primary">Password <span className="text-danger">*</span></label>
+            <input id="input_password" type="password" name="password" value={this.state.password} onChange={this.handleOnChange} className="form-control" required={true}></input>
+          </div>
+
+          <button type="submit" className="btn btn-block btn-primary">Get started</button>
+        </form>
+      </styles.SignInUpFormStyle>
+    )
+  }
+}
+
+/**
+ * Define mapStateToProps
+ */
+
+const mapStateToProps = (state) => {
+  return state
 }
 
 /**
  * Export component
  */
 
-module.exports = SignInUpForm
+module.exports = connect(mapStateToProps, { signin })(SignInUpForm)
