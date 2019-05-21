@@ -25,14 +25,13 @@ class SignInUpForm extends Component {
   constructor() {
     super()
     this.state = {
-      email: this.email,
-      password: this.password,
+      username: '',
+      password: '',
     }
   }
 
   handleOnSubmit = (event) => {
     event.preventDefault()
-    console.log(`handleOnSubmit ${this.state}`)
     this.props.signin(this.state)
       .then(() => {
         this.props.history.push('/home')
@@ -48,8 +47,8 @@ class SignInUpForm extends Component {
       <styles.SignInUpFormStyle>
         <form className="mb-10" onSubmit={this.handleOnSubmit}>
           <div className="form-group">
-            <label htmlFor="input_email" className="text-primary">Email <span className="text-danger">*</span></label>
-            <input id="input_email" type="email" name="email" value={this.state.email} onChange={this.handleOnChange} className="form-control" autoFocus={true} required={true}></input>
+            <label htmlFor="input_email" className="text-primary">Username <span className="text-danger">*</span></label>
+            <input id="input_email" type="text" name="username" value={this.state.username} onChange={this.handleOnChange} className="form-control" autoFocus={true} required={true}></input>
           </div>
 
           <div className="form-group">

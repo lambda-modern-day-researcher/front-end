@@ -39,13 +39,13 @@ const signin = creds => dispatch => {
   dispatch({ type: SIGNIN_START })
 
   return axios
-    .post('https://modern-day-researcher-mdr.herokuapp.com/api/auth/register', creds)
+    .post('https://modern-day-researcher-mdr.herokuapp.com/api/auth/login', creds)
     .then(res => {
       localStorage.setItem('token', res.data.token)
       dispatch({ type: SIGNIN_SUCCESS, payload: res.data })
     })
     .catch(err => {
-      dispatch({ type: SIGNIN_ERROR, payload: err.response.message })
+      dispatch({ type: SIGNIN_ERROR, payload: err.response.data.message })
     })
 }
 
