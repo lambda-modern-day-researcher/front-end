@@ -13,6 +13,8 @@ const Link = require('./Link')
  */
 
 function PriorityLinkList() {
+  // TODO query backend for prioritized links
+
   return (
     <styles.PriorityLinkListStyle>
       <h4>Priority</h4>

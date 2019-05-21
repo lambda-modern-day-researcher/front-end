@@ -13,6 +13,8 @@ const Link = require('./Link')
  */
 
 function MainLinkList() {
+  // TODO query backend for non-prioritized links
+
   return (
     <styles.MainLinkListStyle>
       <h4>All</h4>
