@@ -17,6 +17,7 @@ const styled = styled_components.default
  */
 
 let MainLinkListStyle = styled.div(() => `
+  margin-top: 15px;
 `)
 
 /**

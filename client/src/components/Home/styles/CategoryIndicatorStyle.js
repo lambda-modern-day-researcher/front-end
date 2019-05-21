@@ -16,12 +16,18 @@ const styled = styled_components.default
  * Define style
  */
 
-let PriorityLinkListStyle = styled.div(() => `
-  margin-top: 15px;
+let CategoryStyle = styled.li(() => `
+  .glyph__circle {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+  }
 `)
 
 /**
  * Export style
  */
 
-module.exports = PriorityLinkListStyle
+module.exports = CategoryStyle

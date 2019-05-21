@@ -17,7 +17,7 @@ const styled = styled_components.default
  */
 
 let CategoryFormStyle = styled.div(() => `
-  margin-top: 5px;
+  padding-top: 5px;
 `)
 
 /**

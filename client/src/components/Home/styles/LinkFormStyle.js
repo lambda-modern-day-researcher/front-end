@@ -17,6 +17,7 @@ const styled = styled_components.default
  */
 
 let LinkFormStyle = styled.div(() => `
+  padding-top: 5px;
 `)
 
 /**

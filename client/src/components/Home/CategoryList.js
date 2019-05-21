@@ -16,9 +16,9 @@ function CategoryList() {
   return (
     <styles.CategoryListStyle>
       <ul>
+        <Category name="News" color="#d14a3b" />
         <Category name="Data Science" color="#2884c3" />
         <Category name="GitHub" color="#5c5c5c" />
-        <Category name="News" color="#d14a3b" />
       </ul>
     </styles.CategoryListStyle>
   )
