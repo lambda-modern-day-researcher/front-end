@@ -13,7 +13,6 @@ const CategoryIndicator = require('./CategoryIndicator')
  */
 
 function Link({ title, url, isPriority, categories }) {
-  console.log("categories", categories)
   return (
     <styles.LinkStyle>
       <div className="row">
@@ -34,7 +33,7 @@ function Link({ title, url, isPriority, categories }) {
           </p>
           <span className="text__link">{url}</span>
           <ul className="list__categories">
-            {categories && categories.map(category => <CategoryIndicator name={category.name} color={category.color} />)}
+            {categories && categories.map((category, i) => <CategoryIndicator key={i} name={category.name} color={category.color} />)}
           </ul>
         </div>
       </div>

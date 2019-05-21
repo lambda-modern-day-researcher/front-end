@@ -22,6 +22,10 @@ let HomeStyle = styled.div(() => `
   .mx-auto {
     margin-right: auto !important;
   }
+
+  .border-right {
+    border-right: 1px solid #333;
+  }
 `)
 
 /**

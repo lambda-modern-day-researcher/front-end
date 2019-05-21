@@ -15,11 +15,15 @@ const Category = require('./Category')
 function CategoryList() {
   return (
     <styles.CategoryListStyle>
-      <ul>
-        <Category name="News" color="#d14a3b" />
-        <Category name="Data Science" color="#2884c3" />
-        <Category name="GitHub" color="#5c5c5c" />
-      </ul>
+      <div className="row">
+        <div className="col-12">
+          <ul>
+            <Category name="News" color="#d14a3b" />
+            <Category name="Data Science" color="#2884c3" />
+            <Category name="GitHub" color="#5c5c5c" />
+          </ul>
+        </div>
+      </div>
     </styles.CategoryListStyle>
   )
 }
