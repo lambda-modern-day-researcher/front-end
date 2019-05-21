@@ -12,14 +12,14 @@ const styles = require('./styles/index')
  * Define component
  */
 
-function SignInUp() {
+function SignIn() {
   return (
     <styles.SignInUpStyle>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-10 col-md-8 col-lg-5">
             <components.SignInUpTitle />
-            <components.SignInUpForm />
+            <components.SignInUpForm in_or_up='in' />
           </div>
         </div>
       </div>
@@ -31,4 +31,4 @@ function SignInUp() {
  * Export component
  */
 
-module.exports = SignInUp
+module.exports = SignIn

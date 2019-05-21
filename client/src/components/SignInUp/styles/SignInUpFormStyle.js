@@ -17,6 +17,8 @@ const styled = styled_components.default
  */
 
 let SignInUpFormStyle = styled.div(() => `
+  margin-bottom: 5rem !important;
+
   button {
     font-size: 1.5rem !important;
   }
@@ -124,6 +126,20 @@ let SignInUpFormStyle = styled.div(() => `
 
   .mb-10 {
     margin-bottom: 5rem !important;
+  }
+
+  .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+  }
+
+  .alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
   }
 `)
 

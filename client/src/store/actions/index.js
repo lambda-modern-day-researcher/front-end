@@ -11,6 +11,9 @@ const helpers = require('./helpers/index')
  * Constants
  */
 
+const SIGNUP_START = 'SIGNUP_START'
+const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
+const SIGNUP_ERROR = 'SIGNUP_ERROR'
 const SIGNIN_START = 'SIGNIN_START'
 const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS'
 const SIGNIN_ERROR = 'SIGNIN_ERROR'
@@ -35,7 +38,20 @@ const axiosWithAuth = helpers.axiosWithAuth
  * Define actions
  */
 
-const signin = creds => dispatch => {
+const signUp = creds => dispatch => {
+  dispatch({ type: SIGNUP_START })
+
+  return axios
+    .post('https://modern-day-researcher-mdr.herokuapp.com/api/auth/register', creds)
+    .then(res => {
+      dispatch({ type: SIGNUP_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: SIGNUP_ERROR, payload: err.response.data })
+    })
+}
+
+const signIn = creds => dispatch => {
   dispatch({ type: SIGNIN_START })
 
   return axios
@@ -54,8 +70,12 @@ const signin = creds => dispatch => {
  */
 
 module.exports = {
+  SIGNUP_START,
+  SIGNUP_SUCCESS,
+  SIGNUP_ERROR,
+  signUp: signUp,
   SIGNIN_START,
   SIGNIN_SUCCESS,
   SIGNIN_ERROR,
-  signin: signin,
+  signIn: signIn,
 }

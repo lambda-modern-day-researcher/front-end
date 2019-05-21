@@ -12,6 +12,12 @@ const actions = require('../actions/index')
 
 const initialState = {
   isSigningIn: false,
+  isSigningUp: false,
+  current_user_id: null,
+  current_user_email: null,
+  current_user_username: null,
+  current_user_is_private: null,
+  current_user_token: (localStorage.getItem('token') || null),
   error: null
 }
 
@@ -21,14 +27,37 @@ const initialState = {
 
 function usersReducer(state = initialState, action) {
   switch (action.type) {
+    case actions.SIGNUP_START:
+      return Object.assign({}, state, {
+        isSigningUp: true,
+        error: ''
+      })
+    case actions.SIGNUP_SUCCESS:
+      localStorage.setItem('token', action.payload.token)
+      return Object.assign({}, state, {
+        isSigningUp: false,
+        current_user_id: action.payload.id,
+        current_user_email: action.payload.email,
+        current_user_username: action.payload.username,
+        current_user_is_private: action.payload.is_private,
+        current_user_token: action.payload.current_user_token,
+        error: ''
+      })
+    case actions.SIGNUP_ERROR:
+      return Object.assign({}, state, {
+        isSigningUp: false,
+        error: action.payload
+      })
     case actions.SIGNIN_START:
       return Object.assign({}, state, {
         isSigningIn: true,
         error: ''
       })
     case actions.SIGNIN_SUCCESS:
+      localStorage.setItem('token', action.payload.data.token)
       return Object.assign({}, state, {
         isSigningIn: false,
+        current_user_token: action.payload.data.token,
         error: ''
       })
     case actions.SIGNIN_ERROR:

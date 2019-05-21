@@ -7,5 +7,6 @@
 module.exports = {
   Friends: require('./Friends'),
   Home: require('./Home'),
-  SignInUp: require('./SignInUp'),
+  SignIn: require('./SignIn'),
+  SignUp: require('./SignUp'),
 }
