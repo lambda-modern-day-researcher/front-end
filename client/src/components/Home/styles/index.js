@@ -7,6 +7,7 @@
 module.exports = {
   CategoryFormStyle: require('./CategoryFormStyle'),
   CategoryListStyle: require('./CategoryListStyle'),
+  CategoryStyle: require('./CategoryStyle'),
   LeftNavStyle: require('./LeftNavStyle'),
   LinkFormStyle: require('./LinkFormStyle'),
   MainContainerStyle: require('./MainContainerStyle'),

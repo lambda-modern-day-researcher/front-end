@@ -6,6 +6,7 @@
 
 const React = require('react')
 const styles = require('./styles/index')
+const Category = require('./Category')
 
 /**
  * Define component
@@ -14,7 +15,11 @@ const styles = require('./styles/index')
 function CategoryList() {
   return (
     <styles.CategoryListStyle>
-      <h2>CategoryList</h2>
+      <ul>
+        <Category name="Data Science" color="#2884c3" />
+        <Category name="GitHub" color="#5c5c5c" />
+        <Category name="News" color="#d14a3b" />
+      </ul>
     </styles.CategoryListStyle>
   )
 }

@@ -14,7 +14,11 @@ const styles = require('./styles/index')
 function CategoryForm() {
   return (
     <styles.CategoryFormStyle>
-      <h2>CategoryForm</h2>
+      <form>
+        <input type="color" name="color"></input>
+        <input type="text" name="name" placeholder="Category"></input>
+        <button type="submit">Add</button>
+      </form>
     </styles.CategoryFormStyle>
   )
 }
