@@ -6,6 +6,8 @@
 
 const React = require('react')
 const styles = require('./styles/index')
+const CategoryForm = require('./CategoryForm')
+const CategoryList = require('./CategoryList')
 
 /**
  * Define component
@@ -14,7 +16,12 @@ const styles = require('./styles/index')
 function LeftNav() {
   return (
     <styles.LeftNavStyle>
-      <h2>LeftNav</h2>
+      <div className="row justify-content-center">
+        <div className="col-12">
+          <CategoryForm />
+          <CategoryList />
+        </div>
+      </div>
     </styles.LeftNavStyle>
   )
 }

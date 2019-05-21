@@ -22,11 +22,11 @@ function Home() {
       </div>
 
       <div className="row">
-        <div className="col-3">
+        <div className="col-4 col-md-4 col-lg-3 col-xl-2">
           <components.LeftNav />
         </div>
 
-        <div className="col-9">
+        <div className="col-8">
           <components.MainContainer />
         </div>
       </div>
