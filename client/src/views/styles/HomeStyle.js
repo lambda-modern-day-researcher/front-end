@@ -18,7 +18,10 @@ const styled = styled_components.default
 
 let HomeStyle = styled.div(() => `
   height: 100vh;
-  background-color: #F8F9FC !important;
+
+  .mx-auto {
+    margin-right: auto !important;
+  }
 `)
 
 /**

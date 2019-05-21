@@ -15,18 +15,13 @@ const styles = require('./styles/index')
 function Home() {
   return (
     <styles.HomeStyle>
-      <div className="row justify-content-center">
-        <div className="col-12">
-          <components.Navbar />
-        </div>
-      </div>
+      <components.Navbar />
 
-      <div className="row">
-        <div className="col-4 col-md-4 col-lg-3 col-xl-2">
+      <div className="row mx-auto">
+        <div className="col-4 col-lg-3 col-xl-2">
           <components.LeftNav />
         </div>
-
-        <div className="col-8">
+        <div className="col-8 col-lg-9 col-xl-10">
           <components.MainContainer />
         </div>
       </div>

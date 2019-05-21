@@ -6,6 +6,9 @@
 
 const React = require('react')
 const styles = require('./styles/index')
+const LinkForm = require('./LinkForm')
+const PriorityLinkList = require('./PriorityLinkList')
+const MainLinkList = require('./MainLinkList')
 
 /**
  * Define component
@@ -14,7 +17,18 @@ const styles = require('./styles/index')
 function MainContainer() {
   return (
     <styles.MainContainerStyle>
-      <h2>MainContainer</h2>
+      <section>
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <h2>MainContainer</h2>
+              <LinkForm />
+              <PriorityLinkList />
+              <MainLinkList />
+            </div>
+          </div>
+        </div>
+      </section>
     </styles.MainContainerStyle>
   )
 }

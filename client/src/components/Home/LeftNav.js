@@ -16,12 +16,10 @@ const CategoryList = require('./CategoryList')
 function LeftNav() {
   return (
     <styles.LeftNavStyle>
-      <div className="row justify-content-center">
-        <div className="col-12">
-          <CategoryForm />
-          <CategoryList />
-        </div>
-      </div>
+      <section>
+        <CategoryForm />
+        <CategoryList />
+      </section>
     </styles.LeftNavStyle>
   )
 }
