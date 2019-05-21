@@ -5,5 +5,6 @@
  */
 
 module.exports = {
-  SignInUp: require('./SignInUp'),
+  SignInUpForm: require('./SignInUpForm'),
+  SignInUpTitle: require('./SignInUpTitle'),
 }

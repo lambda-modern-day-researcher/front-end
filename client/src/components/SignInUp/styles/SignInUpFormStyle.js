@@ -16,10 +16,7 @@ const styled = styled_components.default
  * Define style
  */
 
-let SignInUpStyle = styled.div(() => `
-  height: 100vh;
-  background-color: #F8F9FC !important;
-
+let SignInUpFormStyle = styled.div(() => `
   button {
     font-size: 1.5rem !important;
   }
@@ -134,4 +131,4 @@ let SignInUpStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = SignInUpStyle
+module.exports = SignInUpFormStyle

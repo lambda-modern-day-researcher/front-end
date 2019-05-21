@@ -5,5 +5,6 @@
  */
 
 module.exports = {
-  SignInUpStyle: require('./SignInUpStyle'),
+  SignInUpFormStyle: require('./SignInUpFormStyle'),
+  SignInUpTitleStyle: require('./SignInUpTitleStyle'),
 }
