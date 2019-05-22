@@ -25,12 +25,13 @@ const FETCH_PRIORITY_LINKS_ERROR = 'FETCH_PRIORITY_LINKS_ERROR'
 const FETCH_MAIN_LINKS_START = 'FETCH_MAIN_LINKS_START'
 const FETCH_MAIN_LINKS_SUCCESS = 'FETCH_MAIN_LINKS_SUCCESS'
 const FETCH_MAIN_LINKS_ERROR = 'FETCH_MAIN_LINKS_ERROR'
-const TOGGLE_LINK_PRIORITY_START = 'TOGGLE_LINK_PRIORITY_START'
-const TOGGLE_LINK_PRIORITY_SUCCESS = 'TOGGLE_LINK_PRIORITY_SUCCESS'
-const TOGGLE_LINK_PRIORITY_ERROR = 'TOGGLE_LINK_PRIORITY_ERROR'
 const FETCH_CATEGORIES_START = 'FETCH_CATEGORIES_START'
 const FETCH_CATEGORIES_SUCCESS = 'FETCH_CATEGORIES_SUCCESS'
 const FETCH_CATEGORIES_ERROR = 'FETCH_CATEGORIES_ERROR'
+
+const TOGGLE_LINK_PRIORITY_START = 'TOGGLE_LINK_PRIORITY_START'
+const TOGGLE_LINK_PRIORITY_SUCCESS = 'TOGGLE_LINK_PRIORITY_SUCCESS'
+const TOGGLE_LINK_PRIORITY_ERROR = 'TOGGLE_LINK_PRIORITY_ERROR'
 const CREATE_CATEGORY_START = 'CREATE_CATEGORY_START'
 const CREATE_CATEGORY_SUCCESS = 'CREATE_CATEGORY_SUCCESS'
 const CREATE_CATEGORY_ERROR = 'CREATE_CATEGORY_ERROR'
@@ -182,11 +183,11 @@ const deleteCategory = (user_id, id) => dispatch => {
     })
 }
 
-const shareLink = (user_id, link) => dispatch => {
+const shareLink = (link) => dispatch => {
   dispatch({ type: SHARE_LINK_START })
 
   return axiosWithAuth()
-    .post(`${backend_url}/api/auth/users/${user_id}/links`, link)
+    .post(`${backend_url}/api/auth/users/${link.created_by}/links`, link)
     .then(res => {
       dispatch({ type: SHARE_LINK_SUCCESS, payload: res.data })
     })

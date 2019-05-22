@@ -41,7 +41,6 @@ class CategoryForm extends Component {
   }
 
   render() {
-    console.log('this.props', this.props)
     return (
       <styles.CategoryFormStyle>
         <form className="form-inline" onSubmit={this.handleOnSubmit}>
