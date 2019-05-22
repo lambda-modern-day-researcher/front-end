@@ -5,31 +5,56 @@
  */
 
 const React = require('react')
+const react_redux = require('react-redux')
 const styles = require('./styles/index')
 const Link = require('./Link')
+const actions = require('../../store/actions/index')
+
+/**
+ * Constants
+ */
+
+const Component = React.Component
+const connect = react_redux.connect
+const getPriorityLinks = actions.getPriorityLinks
 
 /**
  * Define component
  */
 
-function PriorityLinkList() {
-  // TODO query backend for prioritized links
+class PriorityLinkList extends Component {
+  componentDidMount() {
+    this.props.getPriorityLinks()
+  }
 
-  return (
-    <styles.PriorityLinkListStyle>
-      <h4>Priority</h4>
+  render() {
+    return (
+      <styles.PriorityLinkListStyle>
+        <h4>Priority</h4>
 
-      <hr/>
+        <hr/>
 
-      <ul>
-        <Link isPriority="true" title="Lambda School Blog" url="https://lambdaschool.com/blog/" categories={[{ name: 'News', color: '#d14a3b' }]} />
-      </ul>
-    </styles.PriorityLinkListStyle>
-  )
+        <ul>
+          {this.props.priority_links.map(link => <Link {...link} />)}
+        </ul>
+      </styles.PriorityLinkListStyle>
+    )
+  }
+}
+
+/**
+ * Define mapStateToProps
+ */
+
+const mapStateToProps = (state) => {
+  console.log('PriorityLinkList.mapStateToProps.state', state)
+  return {
+    priority_links: state.usersReducer.priority_links
+  }
 }
 
 /**
  * Export component
  */
 
-module.exports = PriorityLinkList
+module.exports = connect(mapStateToProps, { getPriorityLinks })(PriorityLinkList)

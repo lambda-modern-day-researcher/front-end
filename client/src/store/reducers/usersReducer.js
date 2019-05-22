@@ -18,6 +18,31 @@ const initialState = {
   current_user_username: null,
   current_user_is_private: null,
   current_user_token: (localStorage.getItem('token') || null),
+  priority_links: [
+    {
+      isPriority: "true",
+      title: "Lambda School Blog",
+      url: "https://lambdaschool.com/blog/",
+      categories: [{ name: 'News', color: '#d14a3b' }]
+    }
+  ],
+  main_links: [
+    {
+      title: "Modern Day Researcher GitHub Organization",
+      url: "https://github.com/lambda-modern-day-researcher",
+      categories: [{ name: 'GitHub', color: '#5c5c5c' }]
+    },
+    {
+      title: "No degree. No debt",
+      url: "https://twitter.com/Austen/status/1120371071243309057",
+      categories: [{ name: 'News', color: '#d14a3b' }]
+    },
+    {
+      title: "AI Transformation Playbook",
+      url: "https://landing.ai/ai-transformation-playbook/",
+      categories: [{ name: 'News', color: '#d14a3b' }, { name: 'Data Science', color: '#2884c3' }]
+    }
+  ],
   error: null
 }
 
