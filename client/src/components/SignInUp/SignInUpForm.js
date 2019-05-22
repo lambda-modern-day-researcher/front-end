@@ -45,7 +45,7 @@ class SignInUpForm extends Component {
             this.setState({ email: '', username: '', password: '' })
             document.activeElement.blur()
           } else {
-            return <Redirect to="/home" />
+            this.props.history.push('/home')
           }
         })
     } else {
@@ -55,13 +55,14 @@ class SignInUpForm extends Component {
             this.setState({ email: '', username: '', password: '' })
             document.activeElement.blur()
           } else {
-            return <Redirect to="/home" />
+            this.props.history.push('/home')
           }
         })
     }
   }
 
   handleOnChange = (event) => {
+    // NOTE lookup how store and prefill or suggest email (autocomplete via tab).
     this.setState({ [event.target.name]: event.target.value })
   }
 

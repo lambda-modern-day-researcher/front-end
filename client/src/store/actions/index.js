@@ -57,13 +57,28 @@ const signIn = creds => dispatch => {
   return axios
     .post('https://modern-day-researcher-mdr.herokuapp.com/api/auth/login', creds)
     .then(res => {
-      localStorage.setItem('token', res.data.token)
+      console.log("SIGNIN_SUCCESS.res", JSON.stringify(res.data, null, 2))
       dispatch({ type: SIGNIN_SUCCESS, payload: res.data })
     })
     .catch(err => {
-      dispatch({ type: SIGNIN_ERROR, payload: err.response.data.message })
+      console.log('SIGNIN_ERROR.err', err)
+      dispatch({ type: SIGNIN_ERROR, payload: err.data.message })
     })
 }
+
+// const signIn = creds => dispatch => {
+//   dispatch({ type: SIGNIN_START })
+//
+//   return axios
+//     .post('https://modern-day-researcher-mdr.herokuapp.com/api/auth/login', creds)
+//     .then(res => {
+//       localStorage.setItem('token', res.data.token)
+//       dispatch({ type: SIGNIN_SUCCESS, payload: res.data })
+//     })
+//     .catch(err => {
+//       dispatch({ type: SIGNIN_ERROR, payload: err.response.data.message })
+//     })
+// }
 
 /**
  * Export actions
