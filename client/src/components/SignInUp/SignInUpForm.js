@@ -77,18 +77,18 @@ class SignInUpForm extends Component {
 
           {(this.props.in_or_up === 'up') ?
           <div className="form-group">
-            <label htmlFor="input_email" className="text-primary">Email <span className="text-danger">*</span></label>
-            <input id="input_email" type="email" name="email" value={this.state.email} onChange={this.handleOnChange} className="form-control" autoFocus={true} required={true}></input>
+            <label htmlFor="input_email" className="text-primary"> <span className="text-danger"></span></label>
+            <input id="input_email" type="email" placeholder="email" name="email" value={this.state.email} onChange={this.handleOnChange} className="form-control" autoFocus={true} required={true}></input>
           </div> : ''}
 
           <div className="form-group">
-            <label htmlFor="input_username" className="text-primary">Username <span className="text-danger">*</span></label>
-            <input id="input_username" type="text" name="username" value={this.state.username} onChange={this.handleOnChange} className="form-control" required={true}></input>
+            <label htmlFor="input_username" className="text-primary"> <span className="text-danger"></span></label>
+            <input id="input_username" type="text" placeholder="username" name="username" value={this.state.username} onChange={this.handleOnChange} className="form-control" required={true}></input>
           </div>
 
           <div className="form-group">
-            <label htmlFor="input_password" className="text-primary">Password <span className="text-danger">*</span></label>
-            <input id="input_password" type="password" name="password" value={this.state.password} onChange={this.handleOnChange} className="form-control" required={true}></input>
+            <label htmlFor="input_password" className="text-primary"> <span className="text-danger"></span></label>
+            <input id="input_password" type="password" placeholder="password" name="password" value={this.state.password} onChange={this.handleOnChange} className="form-control" required={true}></input>
           </div>
 
           <button type="submit" className="btn btn-block btn-primary">
