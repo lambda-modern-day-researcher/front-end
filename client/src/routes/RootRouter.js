@@ -22,10 +22,12 @@ const PrivateRoute = helpers.PrivateRoute
  */
 
 function RootRouter() {
+  // <PrivateRoute exact path="/" component={views.Home} />
+  // <PrivateRoute path="/home" component={views.Home} />
   return (
     <>
-      <PrivateRoute exact path="/" component={views.Home} />
-      <PrivateRoute path="/home" component={views.Home} />
+      <Route exact path="/" component={views.Home} />
+      <Route path="/home" component={views.Home} />
       <PrivateRoute path="/friends" component={views.Friends} />
       <Route path="/login" render={() => <Redirect to="/users/signin" />} />
       <Route path="/signin" render={() => <Redirect to="/users/signin" />} />

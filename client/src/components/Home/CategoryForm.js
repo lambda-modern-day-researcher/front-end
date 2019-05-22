@@ -5,26 +5,65 @@
  */
 
 const React = require('react')
+const react_redux = require('react-redux')
 const styles = require('./styles/index')
+const actions = require('../../store/actions/index')
+
+/**
+ * Constants
+ */
+
+const Component = React.Component
+const connect = react_redux.connect
+const createCategory = actions.createCategory
 
 /**
  * Define component
  */
 
-function CategoryForm() {
-  return (
-    <styles.CategoryFormStyle>
-      <form className="form-inline">
-        <input type="color" name="color" className="form-control form-control-sm input__color" required={true}></input>
-        <input type="text" name="name" placeholder="Category" className="form-control form-control-sm input__category" required={true}></input>
-        <button type="submit" className="btn btn-sm btn-block btn-light btn__submit">Add</button>
-      </form>
-    </styles.CategoryFormStyle>
-  )
+class CategoryForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      color: '#333333',
+      title: '',
+      created_by: 1 // props.usersReducer.current_user_id
+    }
+  }
+
+  handleOnSubmit = (event) => {
+    event.preventDefault()
+    this.props.createCategory(this.state)
+  }
+
+  handleOnChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  render() {
+    console.log('this.props', this.props)
+    return (
+      <styles.CategoryFormStyle>
+        <form className="form-inline" onSubmit={this.handleOnSubmit}>
+          <input type="color" name="color" value={this.state.color} onChange={this.handleOnChange} className="form-control form-control-sm input__color" required={true}></input>
+          <input type="text" name="title" value={this.state.title} onChange={this.handleOnChange} placeholder="Category" className="form-control form-control-sm input__category" required={true}></input>
+          <button type="submit" className="btn btn-sm btn-block btn-light btn__submit">Add</button>
+        </form>
+      </styles.CategoryFormStyle>
+    )
+  }
+}
+
+/**
+ * Define mapStateToProps
+ */
+
+const mapStateToProps = (state) => {
+  return state
 }
 
 /**
  * Export component
  */
 
-module.exports = CategoryForm
+module.exports = connect(mapStateToProps, { createCategory })(CategoryForm)

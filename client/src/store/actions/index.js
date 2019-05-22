@@ -134,11 +134,11 @@ const getCategories = (user_id) => dispatch => {
     })
 }
 
-const createCategories = (user_id, title, color) => dispatch => {
+const createCategory = ({created_by, title, color}) => dispatch => {
   dispatch({ type: CREATE_CATEGORY_START })
 
   return axiosWithAuth()
-    .post(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/users/${user_id}/categories`)
+    .post(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/users/${created_by}/categories`, {created_by, title, color})
     .then(res => {
       dispatch({ type: CREATE_CATEGORY_SUCCESS, payload: res.data })
     })
@@ -257,7 +257,7 @@ module.exports = {
   CREATE_CATEGORY_START,
   CREATE_CATEGORY_SUCCESS,
   CREATE_CATEGORY_ERROR,
-  createCategories,
+  createCategory,
   CREATE_CATEGORY_START,
   CREATE_CATEGORY_SUCCESS,
   CREATE_CATEGORY_ERROR,
