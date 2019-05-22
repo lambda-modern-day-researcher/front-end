@@ -95,7 +95,7 @@ const getMainLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_MAIN_LINKS_START })
 
   return axiosWithAuth()
-    .get(`${backend_url}/api/auth/user/${user_id}/links`)
+    .get(`${backend_url}/api/auth/users/${user_id}/links`)
     .then(res => {
       dispatch({ type: FETCH_MAIN_LINKS_SUCCESS, payload: res.data })
     })
@@ -108,7 +108,7 @@ const getPriorityLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_PRIORITY_LINKS_START })
 
   return axiosWithAuth()
-    .get(`${backend_url}/api/auth/user/${user_id}/links?priority=true`)
+    .get(`${backend_url}/api/auth/users/${user_id}/links?priority=true`)
     .then(res => {
       dispatch({ type: FETCH_PRIORITY_LINKS_SUCCESS, payload: res.data })
     })
@@ -121,7 +121,7 @@ const toggleLinkPriority = (user_id, link_id) => dispatch => {
   dispatch({ type: TOGGLE_LINK_PRIORITY_START })
 
   return axiosWithAuth()
-    .get(`${backend_url}/api/auth/user/${user_id}/links/${link_id}/pinned`)
+    .get(`${backend_url}/api/auth/users/${user_id}/links/${link_id}/pinned`)
     .then(res => {
       dispatch({ type: TOGGLE_LINK_PRIORITY_SUCCESS, payload: res.data })
     })
@@ -134,7 +134,7 @@ const getCategories = (user_id) => dispatch => {
   dispatch({ type: FETCH_CATEGORIES_START })
 
   return axiosWithAuth()
-    .get(`${backend_url}/api/auth/user/${user_id}/categories`)
+    .get(`${backend_url}/api/auth/users/${user_id}/categories`)
     .then(res => {
       dispatch({ type: FETCH_CATEGORIES_SUCCESS, payload: res.data })
     })
@@ -147,7 +147,7 @@ const createCategory = ({created_by, title, color}) => dispatch => {
   dispatch({ type: CREATE_CATEGORY_START })
 
   return axiosWithAuth()
-    .post(`${backend_url}/api/auth/user/${created_by}/categories`, {title, color})
+    .post(`${backend_url}/api/auth/users/${created_by}/categories`, {title, color})
     .then(res => {
       dispatch({ type: CREATE_CATEGORY_SUCCESS, payload: res.data })
     })
