@@ -62,7 +62,7 @@ class SignInUpForm extends Component {
   }
 
   handleOnChange = (event) => {
-    // NOTE lookup how store and prefill or suggest email (autocomplete via tab).
+    // NOTE lookup how to store and prefill/suggest email (autocomplete via tab).
     this.setState({ [event.target.name]: event.target.value })
   }
 
