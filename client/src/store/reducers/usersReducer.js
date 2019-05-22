@@ -54,7 +54,6 @@ function usersReducer(state = initialState, action) {
         error: ''
       })
     case actions.SIGNIN_SUCCESS:
-      console.log("action.payload", JSON.stringify(action.payload, null, 2))
       localStorage.setItem('token', action.payload.token)
       return Object.assign({}, state, {
         isSigningIn: false,

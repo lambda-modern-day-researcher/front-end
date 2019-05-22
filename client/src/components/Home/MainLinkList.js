@@ -5,8 +5,17 @@
  */
 
 const React = require('react')
+const react_redux = require('react-redux')
 const styles = require('./styles/index')
 const Link = require('./Link')
+const actions = require('../../store/actions/index')
+const getMainLinks = actions.getMainLinks
+
+/**
+ * Constants
+ */
+
+const connect = react_redux.connect
 
 /**
  * Define component
