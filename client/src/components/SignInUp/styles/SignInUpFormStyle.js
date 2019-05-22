@@ -20,7 +20,9 @@ let SignInUpFormStyle = styled.div(() => `
   margin-bottom: 5rem !important;
 
   button {
-    font-size: 1.5rem !important;
+    width: 100%;
+        background: #c0392b !important;
+        color: white !important;
   }
 
   .text-primary {
