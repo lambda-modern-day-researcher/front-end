@@ -94,7 +94,7 @@ const getMainLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_MAIN_LINKS_START })
 
   return axiosWithAuth()
-    .get(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/users/${user_id}/links`)
+    .get(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/user/${user_id}/links`)
     .then(res => {
       dispatch({ type: FETCH_MAIN_LINKS_SUCCESS, payload: res.data })
     })
@@ -107,7 +107,7 @@ const getPriorityLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_PRIORITY_LINKS_START })
 
   return axiosWithAuth()
-    .get(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/users/${user_id}/links?priority=true`)
+    .get(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/user/${user_id}/links?priority=true`)
     .then(res => {
       dispatch({ type: FETCH_PRIORITY_LINKS_SUCCESS, payload: res.data })
     })
@@ -120,7 +120,7 @@ const toggleLinkPriority = (user_id, link_id) => dispatch => {
   dispatch({ type: TOGGLE_LINK_PRIORITY_START })
 
   return axiosWithAuth()
-    .get(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/users/${user_id}/links/${link_id}/pinned`)
+    .get(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/user/${user_id}/links/${link_id}/pinned`)
     .then(res => {
       dispatch({ type: TOGGLE_LINK_PRIORITY_SUCCESS, payload: res.data })
     })

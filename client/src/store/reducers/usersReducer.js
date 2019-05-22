@@ -19,6 +19,11 @@ const initialState = {
   current_user_username: (localStorage.getItem('user_username') || null),
   current_user_is_private: (localStorage.getItem('user_is_private') || null),
   current_user_token: (localStorage.getItem('token') || null),
+  categories: [
+    { name: "News", color: "#d14a3b" },
+    { name: "Data Science", color: "#2884c3" },
+    { name: "GitHub", color: "#5c5c5c" },
+  ],
   priority_links: [
     {
       isPriority: "true",
