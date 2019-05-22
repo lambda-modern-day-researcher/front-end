@@ -22,6 +22,7 @@ const SIGNIN_ERROR = 'SIGNIN_ERROR'
 const FETCH_PRIORITY_LINKS_START = 'FETCH_PRIORITY_LINKS_START'
 const FETCH_PRIORITY_LINKS_SUCCESS = 'FETCH_PRIORITY_LINKS_SUCCESS'
 const FETCH_PRIORITY_LINKS_ERROR = 'FETCH_PRIORITY_LINKS_ERROR'
+
 const FETCH_MAIN_LINKS_START = 'FETCH_MAIN_LINKS_START'
 const FETCH_MAIN_LINKS_SUCCESS = 'FETCH_MAIN_LINKS_SUCCESS'
 const FETCH_MAIN_LINKS_ERROR = 'FETCH_MAIN_LINKS_ERROR'
@@ -95,19 +96,6 @@ const signIn = creds => dispatch => {
     })
 }
 
-const getMainLinks = (user_id) => dispatch => {
-  dispatch({ type: FETCH_MAIN_LINKS_START })
-
-  return axiosWithAuth()
-    .get(`${backend_url}/api/auth/users/${user_id}/links`)
-    .then(res => {
-      dispatch({ type: FETCH_MAIN_LINKS_SUCCESS, payload: res.data })
-    })
-    .catch(err => {
-      dispatch({ type: FETCH_MAIN_LINKS_ERROR, payload: err.response.data.message })
-    })
-}
-
 const getPriorityLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_PRIORITY_LINKS_START })
 
@@ -118,6 +106,19 @@ const getPriorityLinks = (user_id) => dispatch => {
     })
     .catch(err => {
       dispatch({ type: FETCH_PRIORITY_LINKS_ERROR, payload: err.response.data.message })
+    })
+}
+
+const getMainLinks = (user_id) => dispatch => {
+  dispatch({ type: FETCH_MAIN_LINKS_START })
+
+  return axiosWithAuth()
+    .get(`${backend_url}/api/auth/users/${user_id}/links`)
+    .then(res => {
+      dispatch({ type: FETCH_MAIN_LINKS_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: FETCH_MAIN_LINKS_ERROR, payload: err.response.data.message })
     })
 }
 
@@ -264,14 +265,14 @@ module.exports = {
   SIGNIN_SUCCESS,
   SIGNIN_ERROR,
   signIn,
-  FETCH_MAIN_LINKS_START,
-  FETCH_MAIN_LINKS_SUCCESS,
-  FETCH_MAIN_LINKS_ERROR,
-  getMainLinks,
   FETCH_PRIORITY_LINKS_START,
   FETCH_PRIORITY_LINKS_SUCCESS,
   FETCH_PRIORITY_LINKS_ERROR,
   getPriorityLinks,
+  FETCH_MAIN_LINKS_START,
+  FETCH_MAIN_LINKS_SUCCESS,
+  FETCH_MAIN_LINKS_ERROR,
+  getMainLinks,
   TOGGLE_LINK_PRIORITY_START,
   TOGGLE_LINK_PRIORITY_SUCCESS,
   TOGGLE_LINK_PRIORITY_ERROR,

@@ -13,6 +13,8 @@ const actions = require('../actions/index')
 const initialState = {
   isSigningIn: false,
   isSigningUp: false,
+  isFetchingPriorityLinks: false,
+  isFetchingMainLinks: false,
   isSettingLinkPriority: false,
   isFetchingCategories: false,
   isFilteringByCategory: false,
@@ -113,6 +115,38 @@ function usersReducer(state = initialState, action) {
     case actions.SIGNIN_ERROR:
       return Object.assign({}, state, {
         isSigningIn: false,
+        error: action.payload
+      })
+    case actions.FETCH_PRIORITY_LINKS_START:
+      return Object.assign({}, state, {
+        isFetchingPriorityLinks: true,
+        error: ''
+      })
+    case actions.FETCH_PRIORITY_LINKS_SUCCESS:
+      return Object.assign({}, state, {
+        isFetchingPriorityLinks: false,
+        priority_links: action.payload,
+        error: ''
+      })
+    case actions.FETCH_PRIORITY_LINKS_ERROR:
+      return Object.assign({}, state, {
+        isFetchingPriorityLinks: false,
+        error: action.payload
+      })
+    case actions.FETCH_MAIN_LINKS_START:
+      return Object.assign({}, state, {
+        isFetchingMainLinks: true,
+        error: ''
+      })
+    case actions.FETCH_MAIN_LINKS_SUCCESS:
+      return Object.assign({}, state, {
+        isFetchingMainLinks: false,
+        main_links: action.payload,
+        error: ''
+      })
+    case actions.FETCH_MAIN_LINKS_ERROR:
+      return Object.assign({}, state, {
+        isFetchingMainLinks: false,
         error: action.payload
       })
     case actions.TOGGLE_LINK_PRIORITY_START:
