@@ -133,7 +133,7 @@ const getCategories = (user_id) => dispatch => {
   dispatch({ type: FETCH_CATEGORIES_START })
 
   return axiosWithAuth()
-    .get(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/users/${user_id}/categories`)
+    .get(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/user/${user_id}/categories`)
     .then(res => {
       dispatch({ type: FETCH_CATEGORIES_SUCCESS, payload: res.data })
     })
@@ -146,7 +146,7 @@ const createCategory = ({created_by, title, color}) => dispatch => {
   dispatch({ type: CREATE_CATEGORY_START })
 
   return axiosWithAuth()
-    .post(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/users/${created_by}/categories`, {created_by, title, color})
+    .post(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/user/${created_by}/categories`, {created_by, title, color})
     .then(res => {
       dispatch({ type: CREATE_CATEGORY_SUCCESS, payload: res.data })
     })

@@ -27,7 +27,7 @@ class CategoryForm extends Component {
     this.state = {
       color: '#333333',
       title: '',
-      created_by: 1 // props.usersReducer.current_user_id
+      created_by: props.usersReducer.current_user_id
     }
   }
 
