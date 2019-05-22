@@ -159,11 +159,11 @@ const createCategory = ({created_by, title, color}) => dispatch => {
     })
 }
 
-const filterByCategory = (user_id) => dispatch => {
+const filterByCategory = (user_id, category_id) => dispatch => {
   dispatch({ type: FILTER_BY_CATEGORY_START })
 
   return axiosWithAuth()
-    .get(`${backend_url}/api/auth/users/${user_id}/categories`)
+    .get(`${backend_url}/api/auth/users/${user_id}/links?category=${category_id}`)
     .then(res => {
       dispatch({ type: FILTER_BY_CATEGORY_SUCCESS, payload: res.data })
     })

@@ -38,6 +38,18 @@ let CategoryStyle = styled.li(() => `
       color: #AAA;
     }
   }
+
+  .col__category {
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #fafafa;
+        box-shadow: 1px 1px 3px rgba(129, 129, 129, 0.46);
+        border-radius: 3px;
+      }
+    }
+  }
 `)
 
 /**
