@@ -28,16 +28,16 @@ const FETCH_MAIN_LINKS_ERROR = 'FETCH_MAIN_LINKS_ERROR'
 const FETCH_CATEGORIES_START = 'FETCH_CATEGORIES_START'
 const FETCH_CATEGORIES_SUCCESS = 'FETCH_CATEGORIES_SUCCESS'
 const FETCH_CATEGORIES_ERROR = 'FETCH_CATEGORIES_ERROR'
-
-const TOGGLE_LINK_PRIORITY_START = 'TOGGLE_LINK_PRIORITY_START'
-const TOGGLE_LINK_PRIORITY_SUCCESS = 'TOGGLE_LINK_PRIORITY_SUCCESS'
-const TOGGLE_LINK_PRIORITY_ERROR = 'TOGGLE_LINK_PRIORITY_ERROR'
 const CREATE_CATEGORY_START = 'CREATE_CATEGORY_START'
 const CREATE_CATEGORY_SUCCESS = 'CREATE_CATEGORY_SUCCESS'
 const CREATE_CATEGORY_ERROR = 'CREATE_CATEGORY_ERROR'
 const FILTER_BY_CATEGORY_START = 'FILTER_BY_CATEGORY_START'
 const FILTER_BY_CATEGORY_SUCCESS = 'FILTER_BY_CATEGORY_SUCCESS'
 const FILTER_BY_CATEGORY_ERROR = 'FILTER_BY_CATEGORY_ERROR'
+
+const TOGGLE_LINK_PRIORITY_START = 'TOGGLE_LINK_PRIORITY_START'
+const TOGGLE_LINK_PRIORITY_SUCCESS = 'TOGGLE_LINK_PRIORITY_SUCCESS'
+const TOGGLE_LINK_PRIORITY_ERROR = 'TOGGLE_LINK_PRIORITY_ERROR'
 const DELETE_CATEGORY_START = 'DELETE_CATEGORY_START'
 const DELETE_CATEGORY_SUCCESS = 'DELETE_CATEGORY_SUCCESS'
 const DELETE_CATEGORY_ERROR = 'DELETE_CATEGORY_ERROR'
@@ -50,6 +50,9 @@ const COMPLETE_LINK_ERROR = 'COMPLETE_LINK_ERROR'
 const UPDATE_LINK_START = 'UPDATE_LINK_START'
 const UPDATE_LINK_SUCCESS = 'UPDATE_LINK_SUCCESS'
 const UPDATE_LINK_ERROR = 'UPDATE_LINK_ERROR'
+const ADD_CATEGORY_TO_LINK_START = 'ADD_CATEGORY_TO_LINK_START'
+const ADD_CATEGORY_TO_LINK_SUCCESS = 'ADD_CATEGORY_TO_LINK_SUCCESS'
+const ADD_CATEGORY_TO_LINK_ERROR = 'ADD_CATEGORY_TO_LINK_ERROR'
 const DELETE_LINK_START = 'DELETE_LINK_START'
 const DELETE_LINK_SUCCESS = 'DELETE_LINK_SUCCESS'
 const DELETE_LINK_ERROR = 'DELETE_LINK_ERROR'
@@ -137,11 +140,9 @@ const getCategories = (user_id) => dispatch => {
   return axiosWithAuth()
     .get(`${backend_url}/api/auth/users/${user_id}/categories`)
     .then(res => {
-      console.log('FETCH_CATEGORIES_SUCCESS', res.data)
       dispatch({ type: FETCH_CATEGORIES_SUCCESS, payload: res.data })
     })
     .catch(err => {
-      console.log('FETCH_CATEGORIES_ERROR', err)
       dispatch({ type: FETCH_CATEGORIES_ERROR, payload: err.response.data.message })
     })
 }
@@ -224,6 +225,19 @@ const updateLink = (user_id, id, title) => dispatch => {
     })
 }
 
+const addCategoryToLink = (user_id, link_id, category_id) => dispatch => {
+  dispatch({ type: ADD_CATEGORY_TO_LINK_START })
+
+  return axiosWithAuth()
+    .put(`${backend_url}/api/auth/users/${user_id}/links/${link_id}?category=${category_id}`)
+    .then(res => {
+      dispatch({ type: ADD_CATEGORY_TO_LINK_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: ADD_CATEGORY_TO_LINK_ERROR, payload: err.response.data.message })
+    })
+}
+
 const deleteLink = (user_id, id) => dispatch => {
   dispatch({ type: DELETE_LINK_START })
 
@@ -270,9 +284,9 @@ module.exports = {
   CREATE_CATEGORY_SUCCESS,
   CREATE_CATEGORY_ERROR,
   createCategory,
-  CREATE_CATEGORY_START,
-  CREATE_CATEGORY_SUCCESS,
-  CREATE_CATEGORY_ERROR,
+  FILTER_BY_CATEGORY_START,
+  FILTER_BY_CATEGORY_SUCCESS,
+  FILTER_BY_CATEGORY_ERROR,
   filterByCategory,
   DELETE_CATEGORY_START,
   DELETE_CATEGORY_SUCCESS,
@@ -290,6 +304,10 @@ module.exports = {
   UPDATE_LINK_SUCCESS,
   UPDATE_LINK_ERROR,
   updateLink,
+  ADD_CATEGORY_TO_LINK_START,
+  ADD_CATEGORY_TO_LINK_SUCCESS,
+  ADD_CATEGORY_TO_LINK_ERROR,
+  addCategoryToLink,
   DELETE_LINK_START,
   DELETE_LINK_SUCCESS,
   DELETE_LINK_ERROR,
