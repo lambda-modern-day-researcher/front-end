@@ -11,6 +11,8 @@ const helpers = require('./helpers/index')
  * Constants
  */
 
+const backend_url = 'https://modern-day-researcher-mdr.herokuapp.com'
+const axiosWithAuth = helpers.axiosWithAuth
 const SIGNUP_START = 'SIGNUP_START'
 const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
 const SIGNUP_ERROR = 'SIGNUP_ERROR'
@@ -50,7 +52,6 @@ const UPDATE_LINK_ERROR = 'UPDATE_LINK_ERROR'
 const DELETE_LINK_START = 'DELETE_LINK_START'
 const DELETE_LINK_SUCCESS = 'DELETE_LINK_SUCCESS'
 const DELETE_LINK_ERROR = 'DELETE_LINK_ERROR'
-const axiosWithAuth = helpers.axiosWithAuth
 
 /**
  * Define actions
@@ -60,7 +61,7 @@ const signUp = creds => dispatch => {
   dispatch({ type: SIGNUP_START })
 
   return axios
-    .post('https://modern-day-researcher-mdr.herokuapp.com/api/auth/register', creds)
+    .post(`${backend_url}/api/auth/register`, creds)
     .then(res => {
       dispatch({ type: SIGNUP_SUCCESS, payload: res.data })
     })
@@ -73,7 +74,7 @@ const signIn = creds => dispatch => {
   dispatch({ type: SIGNIN_START })
 
   return axios
-    .post('https://modern-day-researcher-mdr.herokuapp.com/api/auth/login', creds)
+    .post(`${backend_url}/api/auth/login`, creds)
     .then(res => {
       dispatch({ type: SIGNIN_SUCCESS, payload: res.data })
     })
@@ -94,7 +95,7 @@ const getMainLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_MAIN_LINKS_START })
 
   return axiosWithAuth()
-    .get(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/user/${user_id}/links`)
+    .get(`${backend_url}/api/auth/user/${user_id}/links`)
     .then(res => {
       dispatch({ type: FETCH_MAIN_LINKS_SUCCESS, payload: res.data })
     })
@@ -107,7 +108,7 @@ const getPriorityLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_PRIORITY_LINKS_START })
 
   return axiosWithAuth()
-    .get(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/user/${user_id}/links?priority=true`)
+    .get(`${backend_url}/api/auth/user/${user_id}/links?priority=true`)
     .then(res => {
       dispatch({ type: FETCH_PRIORITY_LINKS_SUCCESS, payload: res.data })
     })
@@ -120,7 +121,7 @@ const toggleLinkPriority = (user_id, link_id) => dispatch => {
   dispatch({ type: TOGGLE_LINK_PRIORITY_START })
 
   return axiosWithAuth()
-    .get(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/user/${user_id}/links/${link_id}/pinned`)
+    .get(`${backend_url}/api/auth/user/${user_id}/links/${link_id}/pinned`)
     .then(res => {
       dispatch({ type: TOGGLE_LINK_PRIORITY_SUCCESS, payload: res.data })
     })
@@ -133,7 +134,7 @@ const getCategories = (user_id) => dispatch => {
   dispatch({ type: FETCH_CATEGORIES_START })
 
   return axiosWithAuth()
-    .get(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/user/${user_id}/categories`)
+    .get(`${backend_url}/api/auth/user/${user_id}/categories`)
     .then(res => {
       dispatch({ type: FETCH_CATEGORIES_SUCCESS, payload: res.data })
     })
@@ -146,7 +147,7 @@ const createCategory = ({created_by, title, color}) => dispatch => {
   dispatch({ type: CREATE_CATEGORY_START })
 
   return axiosWithAuth()
-    .post(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/user/${created_by}/categories`, {created_by, title, color})
+    .post(`${backend_url}/api/auth/user/${created_by}/categories`, {title, color})
     .then(res => {
       dispatch({ type: CREATE_CATEGORY_SUCCESS, payload: res.data })
     })
@@ -159,7 +160,7 @@ const filterByCategory = (user_id) => dispatch => {
   dispatch({ type: FILTER_BY_CATEGORY_START })
 
   return axiosWithAuth()
-    .get(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/users/${user_id}/categories`)
+    .get(`${backend_url}/api/auth/users/${user_id}/categories`)
     .then(res => {
       dispatch({ type: FILTER_BY_CATEGORY_SUCCESS, payload: res.data })
     })
@@ -172,7 +173,7 @@ const deleteCategory = (user_id, id) => dispatch => {
   dispatch({ type: DELETE_CATEGORY_START })
 
   return axiosWithAuth()
-    .delete(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/users/${user_id}/category/${id}`)
+    .delete(`${backend_url}/api/auth/users/${user_id}/category/${id}`)
     .then(res => {
       dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: res.data })
     })
@@ -185,7 +186,7 @@ const shareLink = (user_id, link) => dispatch => {
   dispatch({ type: SHARE_LINK_START })
 
   return axiosWithAuth()
-    .post(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/users/${user_id}/links`, link)
+    .post(`${backend_url}/api/auth/users/${user_id}/links`, link)
     .then(res => {
       dispatch({ type: SHARE_LINK_SUCCESS, payload: res.data })
     })
@@ -198,7 +199,7 @@ const completeLink = (user_id, id) => dispatch => {
   dispatch({ type: COMPLETE_LINK_START })
 
   return axiosWithAuth()
-    .put(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/users/${user_id}/links/${id}/completed`)
+    .put(`${backend_url}/api/auth/users/${user_id}/links/${id}/completed`)
     .then(res => {
       dispatch({ type: COMPLETE_LINK_SUCCESS, payload: res.data })
     })
@@ -211,7 +212,7 @@ const updateLink = (user_id, id, title) => dispatch => {
   dispatch({ type: UPDATE_LINK_START })
 
   return axiosWithAuth()
-    .put(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/users/${user_id}/links/${id}`, title)
+    .put(`${backend_url}/api/auth/users/${user_id}/links/${id}`, title)
     .then(res => {
       dispatch({ type: UPDATE_LINK_SUCCESS, payload: res.data })
     })
@@ -224,7 +225,7 @@ const deleteLink = (user_id, id) => dispatch => {
   dispatch({ type: DELETE_LINK_START })
 
   return axiosWithAuth()
-    .delete(`https://modern-day-researcher-mdr.herokuapp.com/api/auth/users/${user_id}/links/${id}`)
+    .delete(`${backend_url}/api/auth/users/${user_id}/links/${id}`)
     .then(res => {
       dispatch({ type: DELETE_LINK_SUCCESS, payload: res.data })
     })
