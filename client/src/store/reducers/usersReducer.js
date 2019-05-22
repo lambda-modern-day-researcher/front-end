@@ -14,10 +14,10 @@ const initialState = {
   isSigningIn: false,
   isSigningUp: false,
   isSettingLinkPriority: false,
-  current_user_id: null,
-  current_user_email: null,
-  current_user_username: null,
-  current_user_is_private: null,
+  current_user_id: (localStorage.getItem('user_id') || null),
+  current_user_email: (localStorage.getItem('user_email') || null),
+  current_user_username: (localStorage.getItem('user_username') || null),
+  current_user_is_private: (localStorage.getItem('user_is_private') || null),
   current_user_token: (localStorage.getItem('token') || null),
   priority_links: [
     {
@@ -60,12 +60,16 @@ function usersReducer(state = initialState, action) {
       })
     case actions.SIGNUP_SUCCESS:
       localStorage.setItem('token', action.payload.token)
+      localStorage.setItem('user_id', action.payload.user.id)
+      localStorage.setItem('user_email', action.payload.user.email)
+      localStorage.setItem('user_username', action.payload.user.username)
+      localStorage.setItem('user_is_private', action.payload.user.is_private)
       return Object.assign({}, state, {
         isSigningUp: false,
-        current_user_id: action.payload.id,
-        current_user_email: action.payload.email,
-        current_user_username: action.payload.username,
-        current_user_is_private: action.payload.is_private,
+        current_user_id: action.payload.user.id,
+        current_user_email: action.payload.user.email,
+        current_user_username: action.payload.user.username,
+        current_user_is_private: action.payload.user.is_private,
         current_user_token: action.payload.current_user_token,
         error: ''
       })
@@ -81,8 +85,17 @@ function usersReducer(state = initialState, action) {
       })
     case actions.SIGNIN_SUCCESS:
       localStorage.setItem('token', action.payload.token)
+      localStorage.setItem('user_id', action.payload.user.id)
+      localStorage.setItem('user_email', action.payload.user.email)
+      localStorage.setItem('user_username', action.payload.user.username)
+      localStorage.setItem('user_is_private', action.payload.user.is_private)
       return Object.assign({}, state, {
         isSigningIn: false,
+        current_user_id: action.payload.user.id,
+        current_user_email: action.payload.user.email,
+        current_user_username: action.payload.user.username,
+        current_user_is_private: action.payload.user.is_private,
+        current_user_token: action.payload.current_user_token,
         current_user_token: action.payload.token,
         error: ''
       })

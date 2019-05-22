@@ -78,7 +78,15 @@ const signIn = creds => dispatch => {
       dispatch({ type: SIGNIN_SUCCESS, payload: res.data })
     })
     .catch(err => {
-      dispatch({ type: SIGNIN_ERROR, payload: err.data.message })
+      let err_msg
+
+      if (err && err.response && err.response.data && err.response.data.message) {
+        err_msg = err.response.data.message
+      } else {
+        err_msg = 'Authentication failed. Please try again.'
+      }
+
+      dispatch({ type: SIGNIN_ERROR, payload: err_msg })
     })
 }
 
