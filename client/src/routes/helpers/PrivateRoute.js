@@ -23,8 +23,7 @@ const PrivateRoute = ({ component: Component, path }) => {
   let token = localStorage.getItem("token")
 
   return (
-    <Route path={path} render={props => {
-      (token) ? <Component {...props} /> : <Redirect to="/users/signup" />}} />
+    <Route path={path} render={props => (token) ? <Component {...props} /> : <Redirect to="/users/signup" />} />
   )
 }
 
