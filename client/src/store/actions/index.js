@@ -137,9 +137,11 @@ const getCategories = (user_id) => dispatch => {
   return axiosWithAuth()
     .get(`${backend_url}/api/auth/users/${user_id}/categories`)
     .then(res => {
+      console.log('FETCH_CATEGORIES_SUCCESS', res.data)
       dispatch({ type: FETCH_CATEGORIES_SUCCESS, payload: res.data })
     })
     .catch(err => {
+      console.log('FETCH_CATEGORIES_ERROR', err)
       dispatch({ type: FETCH_CATEGORIES_ERROR, payload: err.response.data.message })
     })
 }

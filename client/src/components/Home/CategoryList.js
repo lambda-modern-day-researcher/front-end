@@ -24,7 +24,7 @@ const getCategories = actions.getCategories
 
 class CategoryList extends Component {
   componentDidMount() {
-    this.props.getCategories(this.props.current_user_id)
+    this.props.getCategories(this.props.usersReducer.current_user_id)
   }
 
   render() {
