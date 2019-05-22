@@ -12,14 +12,14 @@ const styles = require('./styles/index')
  * Define component
  */
 
-function SignUp() {
+function SignUp(props) {
   return (
     <styles.SignInUpStyle>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-10 col-md-8 col-lg-5">
             <components.SignInUpTitle />
-            <components.SignInUpForm in_or_up='up' />
+            <components.SignInUpForm {...props} in_or_up='up' />
           </div>
         </div>
       </div>

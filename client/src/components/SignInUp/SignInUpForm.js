@@ -66,11 +66,10 @@ class SignInUpForm extends Component {
   }
 
   render() {
-    console.log("this.props.usersReducer.error", this.props.usersReducer.error)
     return (
       <styles.SignInUpFormStyle>
         <form className="mb-4" onSubmit={this.handleOnSubmit}>
-          {(this.props.usersReducer.error && this.props.usersReducer.error.constructor === 'String') ?
+          {(this.props.usersReducer.error && this.props.usersReducer.error.constructor === String) ?
             <div className="alert alert-danger">Error: Incorrect username or password.</div> : ''}
           {(this.props.usersReducer.error && this.props.usersReducer.error.errno) ?
             <div className="alert alert-danger">Error: User already exists. Try logging in.</div> : ''}
@@ -97,8 +96,8 @@ class SignInUpForm extends Component {
         </form>
 
         {(this.props.in_or_up === 'up') ?
-          <Link to="/users/signin">I already have an account.</Link>
-          : <Link to="/users/signup">I need an account.</Link>}
+          <Link to={{ pathname: "/users/signin", state: { fromSignUp: true }}}>I already have an account.</Link>
+          : <Link to={{ pathname: "/users/signup", state: { fromSignIn: true }}}>I need an account.</Link>}
       </styles.SignInUpFormStyle>
     )
   }
