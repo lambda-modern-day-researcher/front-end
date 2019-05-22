@@ -15,6 +15,7 @@ const actions = require('../../store/actions/index')
 
 const Component = React.Component
 const connect = react_redux.connect
+const getCategories = actions.getCategories
 const createCategory = actions.createCategory
 
 /**
@@ -34,6 +35,11 @@ class CategoryForm extends Component {
   handleOnSubmit = (event) => {
     event.preventDefault()
     this.props.createCategory(this.state)
+      .then(() => {
+        document.activeElement.blur()
+        this.setState({ color: '#333333', title: '' })
+        this.props.getCategories(this.props.usersReducer.current_user_id)
+      })
   }
 
   handleOnChange = (event) => {
@@ -65,4 +71,4 @@ const mapStateToProps = (state) => {
  * Export component
  */
 
-module.exports = connect(mapStateToProps, { createCategory })(CategoryForm)
+module.exports = connect(mapStateToProps, { createCategory, getCategories })(CategoryForm)

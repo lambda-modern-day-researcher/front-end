@@ -14,6 +14,7 @@ const initialState = {
   isSigningIn: false,
   isSigningUp: false,
   isSettingLinkPriority: false,
+  isFetchingCategories: false,
   current_user_id: (localStorage.getItem('user_id') || null),
   current_user_email: (localStorage.getItem('user_email') || null),
   current_user_username: (localStorage.getItem('user_username') || null),
@@ -126,6 +127,22 @@ function usersReducer(state = initialState, action) {
     case actions.TOGGLE_LINK_PRIORITY_ERROR:
       return Object.assign({}, state, {
         isSettingLinkPriority: false,
+        error: action.payload
+      })
+    case actions.FETCH_CATEGORIES_START:
+      return Object.assign({}, state, {
+        isFetchingCategories: true,
+        error: ''
+      })
+    case actions.FETCH_CATEGORIES_SUCCESS:
+      return Object.assign({}, state, {
+        isFetchingCategories: false,
+        categories: action.payload,
+        error: ''
+      })
+    case actions.FETCH_CATEGORIES_ERROR:
+      return Object.assign({}, state, {
+        isFetchingCategories: false,
         error: action.payload
       })
     default:
