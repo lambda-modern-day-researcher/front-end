@@ -28,6 +28,10 @@ let LinkStyle = styled.li(() => `
     color: #AAA;
   }
 
+  .list__categories {
+    margin-top: 5px;
+  }
+
   .list__categories li {
     display: inline-block;
   }
@@ -64,6 +68,20 @@ let LinkStyle = styled.li(() => `
   .glyph__open {
     fill: #007BFF;
     margin-left: 5px;
+  }
+
+  .a__link {
+    text-decoration: none;
+
+    div {
+      margin-top: 5px;
+
+      &:hover {
+        background-color: #fafafa;
+        box-shadow: 1px 1px 3px rgba(129, 129, 129, 0.46);
+        border-radius: 3px;
+      }
+    }
   }
 `)
 
