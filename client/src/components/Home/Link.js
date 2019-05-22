@@ -26,16 +26,17 @@ class Link extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      id: props.id,
+      link_id: props.id,
       title: props.title,
       url: props.url,
       isPriority: props.isPriority,
       categories: props.categories,
+      user_id: props.usersReducer.current_user_id,
     }
   }
 
   handleToggleLinkPriority = (event) => {
-    this.props.toggleLinkPriority(this.props.current_user_id, this.props.id)
+    this.props.toggleLinkPriority(this.state.user_id, this.state.link_id)
   }
 
   render() {

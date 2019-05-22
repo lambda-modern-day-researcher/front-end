@@ -26,6 +26,7 @@ const initialState = {
   ],
   priority_links: [
     {
+      id: 1000,
       isPriority: "true",
       title: "Lambda School Blog",
       url: "https://lambdaschool.com/blog/",
@@ -34,16 +35,19 @@ const initialState = {
   ],
   main_links: [
     {
+      id: 2000,
       title: "Modern Day Researcher GitHub Organization",
       url: "https://github.com/lambda-modern-day-researcher",
       categories: [{ name: 'GitHub', color: '#5c5c5c' }]
     },
     {
+      id: 3000,
       title: "No degree. No debt",
       url: "https://twitter.com/Austen/status/1120371071243309057",
       categories: [{ name: 'News', color: '#d14a3b' }]
     },
     {
+      id: 4000,
       title: "AI Transformation Playbook",
       url: "https://landing.ai/ai-transformation-playbook/",
       categories: [{ name: 'News', color: '#d14a3b' }, { name: 'Data Science', color: '#2884c3' }]

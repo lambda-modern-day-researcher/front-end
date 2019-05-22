@@ -122,7 +122,7 @@ const toggleLinkPriority = (user_id, link_id) => dispatch => {
   dispatch({ type: TOGGLE_LINK_PRIORITY_START })
 
   return axiosWithAuth()
-    .get(`${backend_url}/api/auth/users/${user_id}/links/${link_id}/pinned`)
+    .put(`${backend_url}/api/auth/users/${user_id}/links/${link_id}/pinned`)
     .then(res => {
       dispatch({ type: TOGGLE_LINK_PRIORITY_SUCCESS, payload: res.data })
     })
