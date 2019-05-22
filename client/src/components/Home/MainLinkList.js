@@ -24,7 +24,7 @@ const getMainLinks = actions.getMainLinks
 
 class MainLinkList extends Component {
   componentDidMount() {
-    this.props.getMainLinks()
+    this.props.getMainLinks(this.props.current_user_id)
   }
 
   render() {
@@ -35,7 +35,7 @@ class MainLinkList extends Component {
         <hr/>
 
         <ul>
-          {this.props.main_links.map(link => <Link {...link} />)}
+          {this.props.main_links.map((link, i) => <Link key={i} {...link} />)}
         </ul>
       </styles.MainLinkListStyle>
     )
@@ -47,9 +47,9 @@ class MainLinkList extends Component {
  */
 
 const mapStateToProps = (state) => {
-  console.log('MainLinkList.mapStateToProps.state', state)
   return {
-    main_links: state.usersReducer.main_links
+    main_links: state.usersReducer.main_links,
+    current_user_id: state.usersReducer.current_user_id
   }
 }
 

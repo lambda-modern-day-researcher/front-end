@@ -12,6 +12,7 @@ const styles = require('./styles/index')
  */
 
 function CategoryIndicator({ color, name }) {
+  // TODO onHover of category show the name
   return (
     <styles.CategoryIndicatorStyle>
       <span className="glyph__circle" style={{ backgroundColor: color }}></span>

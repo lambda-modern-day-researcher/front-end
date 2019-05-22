@@ -24,7 +24,7 @@ const getPriorityLinks = actions.getPriorityLinks
 
 class PriorityLinkList extends Component {
   componentDidMount() {
-    this.props.getPriorityLinks()
+    this.props.getPriorityLinks(this.props.current_user_id)
   }
 
   render() {
@@ -35,7 +35,7 @@ class PriorityLinkList extends Component {
         <hr/>
 
         <ul>
-          {this.props.priority_links.map(link => <Link {...link} />)}
+          {this.props.priority_links.map((link, i) => <Link key={i} {...link} />)}
         </ul>
       </styles.PriorityLinkListStyle>
     )
@@ -47,9 +47,9 @@ class PriorityLinkList extends Component {
  */
 
 const mapStateToProps = (state) => {
-  console.log('PriorityLinkList.mapStateToProps.state', state)
   return {
-    priority_links: state.usersReducer.priority_links
+    priority_links: state.usersReducer.priority_links,
+    current_user_id: state.usersReducer.current_user_id
   }
 }
 
