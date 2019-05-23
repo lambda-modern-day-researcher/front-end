@@ -98,9 +98,8 @@ const getPriorityLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_PRIORITY_LINKS_START })
 
   return axiosWithAuth()
-    // TEMP for testing
-    // .get(`${backend_url}/api/auth/users/${user_id}/links?priority=true`)
-    .get(`${backend_url}/api/auth/users/1/links?priority=true`)
+    // .get(`${backend_url}/api/auth/users/1/links?priority=true`)
+    .get(`${backend_url}/api/auth/users/${user_id}/links?priority=true`)
     .then(res => {
       dispatch({ type: FETCH_PRIORITY_LINKS_SUCCESS, payload: res.data })
     })
@@ -113,27 +112,13 @@ const getMainLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_MAIN_LINKS_START })
 
   return axiosWithAuth()
-    // TEMP for testing
-    // .get(`${backend_url}/api/auth/users/${user_id}/links`)
-    .get(`${backend_url}/api/auth/users/1/links`)
+    // .get(`${backend_url}/api/auth/users/1/links`)
+    .get(`${backend_url}/api/auth/users/${user_id}/links`)
     .then(res => {
       dispatch({ type: FETCH_MAIN_LINKS_SUCCESS, payload: res.data })
     })
     .catch(err => {
       dispatch({ type: FETCH_MAIN_LINKS_ERROR, payload: err.response.data.message })
-    })
-}
-
-const toggleLinkPriority = (user_id, link_id) => dispatch => {
-  dispatch({ type: TOGGLE_LINK_PRIORITY_START })
-
-  return axiosWithAuth()
-    .put(`${backend_url}/api/auth/users/${user_id}/links/${link_id}/pinned`)
-    .then(res => {
-      dispatch({ type: TOGGLE_LINK_PRIORITY_SUCCESS, payload: res.data })
-    })
-    .catch(err => {
-      dispatch({ type: TOGGLE_LINK_PRIORITY_ERROR, payload: err.response.data.message })
     })
 }
 
@@ -163,6 +148,58 @@ const createCategory = ({created_by, title, color}) => dispatch => {
     })
 }
 
+const deleteCategory = (user_id, id) => dispatch => {
+  dispatch({ type: DELETE_CATEGORY_START })
+
+  return axiosWithAuth()
+    .delete(`${backend_url}/api/auth/users/${user_id}/category/${id}`)
+    .then(res => {
+      dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_CATEGORY_ERROR, payload: err.response.data.message })
+    })
+}
+
+const completeLink = (user_id, id) => dispatch => {
+  dispatch({ type: COMPLETE_LINK_START })
+
+  return axiosWithAuth()
+    .put(`${backend_url}/api/auth/users/${user_id}/links/${id}/completed`)
+    .then(res => {
+      dispatch({ type: COMPLETE_LINK_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: COMPLETE_LINK_ERROR, payload: err.response.data.message })
+    })
+}
+
+const deleteLink = (user_id, id) => dispatch => {
+  dispatch({ type: DELETE_LINK_START })
+
+  return axiosWithAuth()
+    .delete(`${backend_url}/api/auth/users/${user_id}/links/${id}`)
+    .then(res => {
+      dispatch({ type: DELETE_LINK_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_LINK_ERROR, payload: err.response.data.message })
+    })
+}
+
+const toggleLinkPriority = (user_id, link_id) => dispatch => {
+  dispatch({ type: TOGGLE_LINK_PRIORITY_START })
+
+  return axiosWithAuth()
+    .put(`${backend_url}/api/auth/users/${user_id}/links/${link_id}/pinned`)
+    .then(res => {
+      dispatch({ type: TOGGLE_LINK_PRIORITY_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: TOGGLE_LINK_PRIORITY_ERROR, payload: err.response.data.message })
+    })
+}
+
 const filterByCategory = (user_id, category_id) => dispatch => {
   dispatch({ type: FILTER_BY_CATEGORY_START })
 
@@ -173,54 +210,6 @@ const filterByCategory = (user_id, category_id) => dispatch => {
     })
     .catch(err => {
       dispatch({ type: FILTER_BY_CATEGORY_ERROR, payload: err.response.data.message })
-    })
-}
-
-const deleteCategory = (user_id, id) => dispatch => {
-  dispatch({ type: DELETE_CATEGORY_START })
-
-  // TEMP testing
-  dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: id })
-  // return axiosWithAuth()
-  //   .delete(`${backend_url}/api/auth/users/${user_id}/category/${id}`)
-  //   .then(res => {
-  //     dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: res.data })
-  //   })
-  //   .catch(err => {
-  //     dispatch({ type: DELETE_CATEGORY_ERROR, payload: err.response.data.message })
-  //   })
-}
-
-const shareLink = (link) => dispatch => {
-  dispatch({ type: SHARE_LINK_START })
-
-  // TEMP for testing
-  // dispatch({ type: SHARE_LINK_SUCCESS, payload: link })
-
-  return axiosWithAuth()
-    .post(`${backend_url}/api/auth/users/${link.created_by}/links`, link)
-    .then(res => {
-      dispatch({ type: SHARE_LINK_SUCCESS, payload: res.data })
-    })
-    .catch(err => {
-      console.log("shareLink: err.response.data", err.response.data)
-      dispatch({ type: SHARE_LINK_ERROR, payload: err.response.data.message })
-    })
-}
-
-const completeLink = (user_id, id) => dispatch => {
-  dispatch({ type: COMPLETE_LINK_START })
-
-  // TEMP for testing
-  dispatch({ type: COMPLETE_LINK_SUCCESS, payload: id })
-
-  return axiosWithAuth()
-    .put(`${backend_url}/api/auth/users/${user_id}/links/${id}/completed`)
-    .then(res => {
-      dispatch({ type: COMPLETE_LINK_SUCCESS, payload: res.data })
-    })
-    .catch(err => {
-      dispatch({ type: COMPLETE_LINK_ERROR, payload: err.response.data.message })
     })
 }
 
@@ -250,16 +239,17 @@ const addCategoryToLink = (user_id, link_id, category_id) => dispatch => {
     })
 }
 
-const deleteLink = (user_id, id) => dispatch => {
-  dispatch({ type: DELETE_LINK_START })
+const shareLink = (link) => dispatch => {
+  dispatch({ type: SHARE_LINK_START })
 
   return axiosWithAuth()
-    .delete(`${backend_url}/api/auth/users/${user_id}/links/${id}`)
+    .post(`${backend_url}/api/auth/users/${link.created_by}/links`, link)
     .then(res => {
-      dispatch({ type: DELETE_LINK_SUCCESS, payload: res.data })
+      dispatch({ type: SHARE_LINK_SUCCESS, payload: res.data })
     })
     .catch(err => {
-      dispatch({ type: DELETE_LINK_ERROR, payload: err.response.data.message })
+      console.log("shareLink: err.response.data", err.response.data)
+      dispatch({ type: SHARE_LINK_ERROR, payload: err.response.data.message })
     })
 }
 
@@ -284,10 +274,6 @@ module.exports = {
   FETCH_MAIN_LINKS_SUCCESS,
   FETCH_MAIN_LINKS_ERROR,
   getMainLinks,
-  TOGGLE_LINK_PRIORITY_START,
-  TOGGLE_LINK_PRIORITY_SUCCESS,
-  TOGGLE_LINK_PRIORITY_ERROR,
-  toggleLinkPriority,
   FETCH_CATEGORIES_START,
   FETCH_CATEGORIES_SUCCESS,
   FETCH_CATEGORIES_ERROR,
@@ -296,22 +282,26 @@ module.exports = {
   CREATE_CATEGORY_SUCCESS,
   CREATE_CATEGORY_ERROR,
   createCategory,
-  FILTER_BY_CATEGORY_START,
-  FILTER_BY_CATEGORY_SUCCESS,
-  FILTER_BY_CATEGORY_ERROR,
-  filterByCategory,
   DELETE_CATEGORY_START,
   DELETE_CATEGORY_SUCCESS,
   DELETE_CATEGORY_ERROR,
   deleteCategory,
-  SHARE_LINK_START,
-  SHARE_LINK_SUCCESS,
-  SHARE_LINK_ERROR,
-  shareLink,
   COMPLETE_LINK_START,
   COMPLETE_LINK_SUCCESS,
   COMPLETE_LINK_ERROR,
   completeLink,
+  DELETE_LINK_START,
+  DELETE_LINK_SUCCESS,
+  DELETE_LINK_ERROR,
+  deleteLink,
+  TOGGLE_LINK_PRIORITY_START,
+  TOGGLE_LINK_PRIORITY_SUCCESS,
+  TOGGLE_LINK_PRIORITY_ERROR,
+  toggleLinkPriority,
+  FILTER_BY_CATEGORY_START,
+  FILTER_BY_CATEGORY_SUCCESS,
+  FILTER_BY_CATEGORY_ERROR,
+  filterByCategory,
   UPDATE_LINK_TITLE_START,
   UPDATE_LINK_TITLE_SUCCESS,
   UPDATE_LINK_TITLE_ERROR,
@@ -320,8 +310,8 @@ module.exports = {
   ADD_CATEGORY_TO_LINK_SUCCESS,
   ADD_CATEGORY_TO_LINK_ERROR,
   addCategoryToLink,
-  DELETE_LINK_START,
-  DELETE_LINK_SUCCESS,
-  DELETE_LINK_ERROR,
-  deleteLink,
+  SHARE_LINK_START,
+  SHARE_LINK_SUCCESS,
+  SHARE_LINK_ERROR,
+  shareLink,
 }
