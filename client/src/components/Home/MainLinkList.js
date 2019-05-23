@@ -6,6 +6,7 @@
 
 const React = require('react')
 const react_redux = require('react-redux')
+const material_ui = require('@material-ui/core')
 const styles = require('./styles/index')
 const Link = require('./Link')
 const actions = require('../../store/actions/index')
@@ -16,6 +17,7 @@ const actions = require('../../store/actions/index')
 
 const Component = React.Component
 const connect = react_redux.connect
+const LinearProgress = material_ui.LinearProgress
 const getMainLinks = actions.getMainLinks
 
 /**
@@ -24,7 +26,7 @@ const getMainLinks = actions.getMainLinks
 
 class MainLinkList extends Component {
   componentDidMount() {
-    this.props.getMainLinks(this.props.current_user_id)
+    this.props.getMainLinks(this.props.usersReducer.current_user_id)
   }
 
   render() {
@@ -34,9 +36,12 @@ class MainLinkList extends Component {
 
         <hr/>
 
-        <ul>
-          {this.props.main_links.map((link, i) => <Link key={i} {...link} />)}
-        </ul>
+        {(this.props.usersReducer.isFetchingMainLinks) ?
+          <LinearProgress /> :
+          <ul>
+            {this.props.usersReducer.main_links.map((link, i) => <Link key={i} {...link} />)}
+          </ul>
+        }
       </styles.MainLinkListStyle>
     )
   }
@@ -47,10 +52,7 @@ class MainLinkList extends Component {
  */
 
 const mapStateToProps = (state) => {
-  return {
-    main_links: state.usersReducer.main_links,
-    current_user_id: state.usersReducer.current_user_id
-  }
+  return state
 }
 
 /**

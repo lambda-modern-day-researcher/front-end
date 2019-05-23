@@ -29,33 +29,33 @@ const initialState = {
     { id: 3000, title: "GitHub", color: "#5c5c5c" },
   ],
   priority_links: [
-    {
-      id: 1000,
-      isPriority: "true",
-      title: "Lambda School Blog",
-      url: "https://lambdaschool.com/blog/",
-      categories: [{ title: 'News', color: '#d14a3b' }]
-    }
+    // {
+    //   id: 1000,
+    //   isPriority: "true",
+    //   title: "Lambda School Blog",
+    //   url: "https://lambdaschool.com/blog/",
+    //   categories: [{ title: 'News', color: '#d14a3b' }]
+    // }
   ],
   main_links: [
-    {
-      id: 2000,
-      title: "Modern Day Researcher GitHub Organization",
-      url: "https://github.com/lambda-modern-day-researcher",
-      categories: [{ title: 'GitHub', color: '#5c5c5c' }]
-    },
-    {
-      id: 3000,
-      title: "No degree. No debt",
-      url: "https://twitter.com/Austen/status/1120371071243309057",
-      categories: [{ title: 'News', color: '#d14a3b' }]
-    },
-    {
-      id: 4000,
-      title: "AI Transformation Playbook",
-      url: "https://landing.ai/ai-transformation-playbook/",
-      categories: [{ title: 'News', color: '#d14a3b' }, { title: 'Data Science', color: '#2884c3' }]
-    }
+    // {
+    //   id: 2000,
+    //   title: "Modern Day Researcher GitHub Organization",
+    //   url: "https://github.com/lambda-modern-day-researcher",
+    //   categories: [{ title: 'GitHub', color: '#5c5c5c' }]
+    // },
+    // {
+    //   id: 3000,
+    //   title: "No degree. No debt",
+    //   url: "https://twitter.com/Austen/status/1120371071243309057",
+    //   categories: [{ title: 'News', color: '#d14a3b' }]
+    // },
+    // {
+    //   id: 4000,
+    //   title: "AI Transformation Playbook",
+    //   url: "https://landing.ai/ai-transformation-playbook/",
+    //   categories: [{ title: 'News', color: '#d14a3b' }, { title: 'Data Science', color: '#2884c3' }]
+    // }
   ],
   error: null
 }

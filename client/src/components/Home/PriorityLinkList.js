@@ -6,6 +6,7 @@
 
 const React = require('react')
 const react_redux = require('react-redux')
+const material_ui = require('@material-ui/core')
 const styles = require('./styles/index')
 const Link = require('./Link')
 const actions = require('../../store/actions/index')
@@ -16,6 +17,7 @@ const actions = require('../../store/actions/index')
 
 const Component = React.Component
 const connect = react_redux.connect
+const LinearProgress = material_ui.LinearProgress
 const getPriorityLinks = actions.getPriorityLinks
 
 /**
@@ -24,19 +26,28 @@ const getPriorityLinks = actions.getPriorityLinks
 
 class PriorityLinkList extends Component {
   componentDidMount() {
-    this.props.getPriorityLinks(this.props.current_user_id)
+    this.props.getPriorityLinks(this.props.usersReducer.current_user_id)
   }
 
   render() {
     return (
       <styles.PriorityLinkListStyle>
-        <h4>Priority</h4>
+        {(this.props.usersReducer.priority_links.length > 0) ?
+          <div className="row">
+            <div className="col-12">
+              <h4>Priority</h4>
 
-        <hr/>
+              <hr/>
 
-        <ul>
-          {this.props.priority_links.map((link, i) => <Link key={i} {...link} />)}
-        </ul>
+              {(this.props.usersReducer.isFetchingPriorityLinks) ?
+                <LinearProgress /> :
+                <ul>
+                  {this.props.usersReducer.priority_links.map((link, i) => <Link key={i} {...link} />)}
+                </ul>
+              }
+            </div>
+          </div>
+          : ''}
       </styles.PriorityLinkListStyle>
     )
   }
@@ -47,10 +58,7 @@ class PriorityLinkList extends Component {
  */
 
 const mapStateToProps = (state) => {
-  return {
-    priority_links: state.usersReducer.priority_links,
-    current_user_id: state.usersReducer.current_user_id
-  }
+  return state
 }
 
 /**
