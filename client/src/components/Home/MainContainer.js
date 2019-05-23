@@ -6,6 +6,7 @@
 
 const React = require('react')
 const styles = require('./styles/index')
+const SignOutLink = require('./SignOutLink')
 const LinkForm = require('./LinkForm')
 const PriorityLinkList = require('./PriorityLinkList')
 const MainLinkList = require('./MainLinkList')
@@ -21,6 +22,7 @@ function MainContainer() {
         <div className="container">
           <div className="row">
             <div className="col-12">
+              <SignOutLink />
               <LinkForm />
               <PriorityLinkList />
               <MainLinkList />

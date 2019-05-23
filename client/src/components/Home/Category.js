@@ -47,7 +47,6 @@ class Category extends Component {
   }
 
   render() {
-    console.log('Category', this.props)
     return (
       <styles.CategoryStyle>
         <div className="row">
