@@ -51,7 +51,7 @@ class SignInUpForm extends Component {
     } else {
       this.props.signIn({ username: this.state.username, password: this.state.password })
         .then((res) => {
-          if (this.props.usersReducer.error) {
+          if (this.props.error) {
             this.setState({ email: '', username: '', password: '' })
             document.activeElement.blur()
           } else {
@@ -62,7 +62,6 @@ class SignInUpForm extends Component {
   }
 
   handleOnChange = (event) => {
-    // NOTE lookup how to store and prefill/suggest email (autocomplete via tab).
     this.setState({ [event.target.name]: event.target.value })
   }
 

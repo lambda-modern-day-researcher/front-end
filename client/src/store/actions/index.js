@@ -98,7 +98,6 @@ const getPriorityLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_PRIORITY_LINKS_START })
 
   return axiosWithAuth()
-    // .get(`${backend_url}/api/auth/users/1/links?priority=true`)
     .get(`${backend_url}/api/auth/users/${user_id}/links?priority=true`)
     .then(res => {
       dispatch({ type: FETCH_PRIORITY_LINKS_SUCCESS, payload: res.data })
@@ -112,7 +111,6 @@ const getMainLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_MAIN_LINKS_START })
 
   return axiosWithAuth()
-    // .get(`${backend_url}/api/auth/users/1/links`)
     .get(`${backend_url}/api/auth/users/${user_id}/links`)
     .then(res => {
       dispatch({ type: FETCH_MAIN_LINKS_SUCCESS, payload: res.data })
@@ -189,6 +187,8 @@ const deleteLink = (user_id, id) => dispatch => {
 
 const toggleLinkPriority = (user_id, link_id) => dispatch => {
   dispatch({ type: TOGGLE_LINK_PRIORITY_START })
+
+  console.log(`${backend_url}/api/auth/users/${user_id}/links/${link_id}/pinned`)
 
   return axiosWithAuth()
     .put(`${backend_url}/api/auth/users/${user_id}/links/${link_id}/pinned`)
