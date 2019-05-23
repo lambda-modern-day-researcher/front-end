@@ -95,6 +95,10 @@ let LinkStyle = styled.li(() => `
       color: #AAA;
     }
   }
+
+  a {
+    color: #0000EE;
+  }
 `)
 
 /**

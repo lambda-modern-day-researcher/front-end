@@ -97,8 +97,6 @@ const signIn = creds => dispatch => {
 const getPriorityLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_PRIORITY_LINKS_START })
 
-  console.log('getPriorityLinks', `${backend_url}/api/auth/users/${user_id}/links?priority=true`)
-
   return axiosWithAuth()
     .get(`${backend_url}/api/auth/users/${user_id}/links?priority=true`)
     .then(res => {
@@ -111,8 +109,6 @@ const getPriorityLinks = (user_id) => dispatch => {
 
 const getMainLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_MAIN_LINKS_START })
-
-  console.log('getMainLinks', `${backend_url}/api/auth/users/${user_id}/links`)
 
   return axiosWithAuth()
     .get(`${backend_url}/api/auth/users/${user_id}/links`)
@@ -153,8 +149,6 @@ const createCategory = ({created_by, title, color}) => dispatch => {
 const deleteCategory = (user_id, id) => dispatch => {
   dispatch({ type: DELETE_CATEGORY_START })
 
-  console.log(`${backend_url}/api/auth/users/${user_id}/category/${id}`)
-
   return axiosWithAuth()
     .delete(`${backend_url}/api/auth/users/${user_id}/category/${id}`)
     .then(res => {
@@ -181,8 +175,6 @@ const completeLink = (user_id, id) => dispatch => {
 const deleteLink = (user_id, id) => dispatch => {
   dispatch({ type: DELETE_LINK_START })
 
-  console.log('deleteLink', `${backend_url}/api/auth/users/${user_id}/links/${id}`)
-
   return axiosWithAuth()
     .delete(`${backend_url}/api/auth/users/${user_id}/links/${id}`)
     .then(res => {
@@ -195,8 +187,6 @@ const deleteLink = (user_id, id) => dispatch => {
 
 const toggleLinkPriority = (user_id, link_id) => dispatch => {
   dispatch({ type: TOGGLE_LINK_PRIORITY_START })
-
-  console.log(`${backend_url}/api/auth/users/${user_id}/links/${link_id}/pinned`)
 
   return axiosWithAuth()
     .put(`${backend_url}/api/auth/users/${user_id}/links/${link_id}/pinned`)
