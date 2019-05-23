@@ -97,6 +97,8 @@ const signIn = creds => dispatch => {
 const getPriorityLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_PRIORITY_LINKS_START })
 
+  console.log('getPriorityLinks', `${backend_url}/api/auth/users/${user_id}/links?priority=true`)
+
   return axiosWithAuth()
     .get(`${backend_url}/api/auth/users/${user_id}/links?priority=true`)
     .then(res => {
@@ -109,6 +111,8 @@ const getPriorityLinks = (user_id) => dispatch => {
 
 const getMainLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_MAIN_LINKS_START })
+
+  console.log('getMainLinks', `${backend_url}/api/auth/users/${user_id}/links`)
 
   return axiosWithAuth()
     .get(`${backend_url}/api/auth/users/${user_id}/links`)
@@ -176,6 +180,8 @@ const completeLink = (user_id, id) => dispatch => {
 
 const deleteLink = (user_id, id) => dispatch => {
   dispatch({ type: DELETE_LINK_START })
+
+  console.log('deleteLink', `${backend_url}/api/auth/users/${user_id}/links/${id}`)
 
   return axiosWithAuth()
     .delete(`${backend_url}/api/auth/users/${user_id}/links/${id}`)
