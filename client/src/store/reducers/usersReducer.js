@@ -201,12 +201,29 @@ function usersReducer(state = initialState, action) {
     case actions.CREATE_CATEGORY_SUCCESS:
       return Object.assign({}, state, {
         isCreatingCategory: false,
-        categories: state.categories.concat(action.temp_data_insert),
+        // categories: state.categories.concat(action.temp_data_insert),
+        categories: state.categories.concat(action.temp_data_insert).map((category, i) => { category.id = i; return category}),
         error: ''
       })
     case actions.CREATE_CATEGORY_ERROR:
       return Object.assign({}, state, {
         isCreatingCategory: false,
+        error: action.payload
+      })
+    case actions.DELETE_CATEGORY_START:
+      return Object.assign({}, state, {
+        isDeletingCategory: true,
+        error: ''
+      })
+    case actions.DELETE_CATEGORY_SUCCESS:
+      return Object.assign({}, state, {
+        isDeletingCategory: false,
+        categories: state.categories.filter(category => category.id !== action.payload),
+        error: ''
+      })
+    case actions.DELETE_CATEGORY_ERROR:
+      return Object.assign({}, state, {
+        isDeletingCategory: false,
         error: action.payload
       })
     default:

@@ -29,14 +29,17 @@ class Category extends Component {
     if (yes) {
       this.props.deleteCategory(
         this.props.usersReducer.current_user_id,
-        this.props.id
+        (this.props.id || this.props.fake_id),
       )
     }
   }
 
   handleFilterByCategory = (event) => {
     event.preventDefault()
-    this.props.filterByCategory(this.props.usersReducer.current_user_id, this.props.id)
+    this.props.filterByCategory(
+      this.props.usersReducer.current_user_id,
+      (this.props.id || this.props.fake_id),
+    )
   }
 
   render() {

@@ -30,7 +30,6 @@ class CategoryList extends Component {
   }
 
   render() {
-    console.log('this.props.usersReducer.categories', this.props.usersReducer.categories)
     return (
       <styles.CategoryListStyle>
         <div className="row">
@@ -38,7 +37,7 @@ class CategoryList extends Component {
             {(this.props.usersReducer.isFetchingCategories) ?
               <LinearProgress /> :
               <ul>
-                {this.props.usersReducer.categories.map((category, i) => <Category key={i} {...category} />)}
+                {this.props.usersReducer.categories.map((category, i) => <Category key={i} {...category} fake_id={i} />)}
               </ul>
             }
           </div>

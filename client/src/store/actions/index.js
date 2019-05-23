@@ -31,22 +31,22 @@ const FETCH_CATEGORIES_ERROR = 'FETCH_CATEGORIES_ERROR'
 const CREATE_CATEGORY_START = 'CREATE_CATEGORY_START'
 const CREATE_CATEGORY_SUCCESS = 'CREATE_CATEGORY_SUCCESS'
 const CREATE_CATEGORY_ERROR = 'CREATE_CATEGORY_ERROR'
-
 const DELETE_CATEGORY_START = 'DELETE_CATEGORY_START'
 const DELETE_CATEGORY_SUCCESS = 'DELETE_CATEGORY_SUCCESS'
 const DELETE_CATEGORY_ERROR = 'DELETE_CATEGORY_ERROR'
-const FILTER_BY_CATEGORY_START = 'FILTER_BY_CATEGORY_START'
-const FILTER_BY_CATEGORY_SUCCESS = 'FILTER_BY_CATEGORY_SUCCESS'
-const FILTER_BY_CATEGORY_ERROR = 'FILTER_BY_CATEGORY_ERROR'
-const TOGGLE_LINK_PRIORITY_START = 'TOGGLE_LINK_PRIORITY_START'
-const TOGGLE_LINK_PRIORITY_SUCCESS = 'TOGGLE_LINK_PRIORITY_SUCCESS'
-const TOGGLE_LINK_PRIORITY_ERROR = 'TOGGLE_LINK_PRIORITY_ERROR'
+
 const SHARE_LINK_START = 'SHARE_LINK_START'
 const SHARE_LINK_SUCCESS = 'SHARE_LINK_SUCCESS'
 const SHARE_LINK_ERROR = 'SHARE_LINK_ERROR'
+const TOGGLE_LINK_PRIORITY_START = 'TOGGLE_LINK_PRIORITY_START'
+const TOGGLE_LINK_PRIORITY_SUCCESS = 'TOGGLE_LINK_PRIORITY_SUCCESS'
+const TOGGLE_LINK_PRIORITY_ERROR = 'TOGGLE_LINK_PRIORITY_ERROR'
 const COMPLETE_LINK_START = 'COMPLETE_LINK_START'
 const COMPLETE_LINK_SUCCESS = 'COMPLETE_LINK_SUCCESS'
 const COMPLETE_LINK_ERROR = 'COMPLETE_LINK_ERROR'
+const FILTER_BY_CATEGORY_START = 'FILTER_BY_CATEGORY_START'
+const FILTER_BY_CATEGORY_SUCCESS = 'FILTER_BY_CATEGORY_SUCCESS'
+const FILTER_BY_CATEGORY_ERROR = 'FILTER_BY_CATEGORY_ERROR'
 const UPDATE_LINK_START = 'UPDATE_LINK_START'
 const UPDATE_LINK_SUCCESS = 'UPDATE_LINK_SUCCESS'
 const UPDATE_LINK_ERROR = 'UPDATE_LINK_ERROR'
@@ -176,14 +176,16 @@ const filterByCategory = (user_id, category_id) => dispatch => {
 const deleteCategory = (user_id, id) => dispatch => {
   dispatch({ type: DELETE_CATEGORY_START })
 
-  return axiosWithAuth()
-    .delete(`${backend_url}/api/auth/users/${user_id}/category/${id}`)
-    .then(res => {
-      dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: res.data })
-    })
-    .catch(err => {
-      dispatch({ type: DELETE_CATEGORY_ERROR, payload: err.response.data.message })
-    })
+  // TEMP testing
+  dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: id })
+  // return axiosWithAuth()
+  //   .delete(`${backend_url}/api/auth/users/${user_id}/category/${id}`)
+  //   .then(res => {
+  //     dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: res.data })
+  //   })
+  //   .catch(err => {
+  //     dispatch({ type: DELETE_CATEGORY_ERROR, payload: err.response.data.message })
+  //   })
 }
 
 const shareLink = (link) => dispatch => {
