@@ -149,6 +149,8 @@ const createCategory = ({created_by, title, color}) => dispatch => {
 const deleteCategory = (user_id, id) => dispatch => {
   dispatch({ type: DELETE_CATEGORY_START })
 
+  console.log(`${backend_url}/api/auth/users/${user_id}/category/${id}`)
+
   return axiosWithAuth()
     .delete(`${backend_url}/api/auth/users/${user_id}/category/${id}`)
     .then(res => {

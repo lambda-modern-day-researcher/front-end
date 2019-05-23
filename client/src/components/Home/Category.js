@@ -15,6 +15,7 @@ const actions = require('../../store/actions/index')
 
 const Component = React.Component
 const connect = react_redux.connect
+const getCategories = actions.getCategories
 const filterByCategory = actions.filterByCategory
 const deleteCategory = actions.deleteCategory
 
@@ -29,8 +30,11 @@ class Category extends Component {
     if (yes) {
       this.props.deleteCategory(
         this.props.usersReducer.current_user_id,
-        (this.props.id || this.props.fake_id),
+        this.props.id,
       )
+      .then(() => {
+        this.props.getCategories(this.props.usersReducer.current_user_id)
+      })
     }
   }
 
@@ -38,11 +42,12 @@ class Category extends Component {
     event.preventDefault()
     this.props.filterByCategory(
       this.props.usersReducer.current_user_id,
-      (this.props.id || this.props.fake_id),
+      this.props.id,
     )
   }
 
   render() {
+    console.log('Category', this.props)
     return (
       <styles.CategoryStyle>
         <div className="row">
@@ -72,4 +77,4 @@ const mapStateToProps = (state) => {
  * Export component
  */
 
-module.exports = connect(mapStateToProps, { filterByCategory, deleteCategory })(Category)
+module.exports = connect(mapStateToProps, { getCategories, filterByCategory, deleteCategory })(Category)
