@@ -16,4 +16,5 @@ module.exports = {
   MainLinkListStyle: require('./MainLinkListStyle'),
   NavbarStyle: require('./NavbarStyle'),
   PriorityLinkListStyle: require('./PriorityLinkListStyle'),
+  SignOutLinkStyle: require('./SignOutLinkStyle'),
 }

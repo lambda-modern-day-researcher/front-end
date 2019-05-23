@@ -5,31 +5,58 @@
  */
 
 const React = require('react')
+const react_redux = require('react-redux')
+const material_ui = require('@material-ui/core')
 const styles = require('./styles/index')
 const Category = require('./Category')
+const actions = require('../../store/actions/index')
+
+/**
+ * Constants
+ */
+
+const Component = React.Component
+const connect = react_redux.connect
+const LinearProgress = material_ui.LinearProgress
+const getCategories = actions.getCategories
 
 /**
  * Define component
  */
 
-function CategoryList() {
-  return (
-    <styles.CategoryListStyle>
-      <div className="row">
-        <div className="col-12">
-          <ul>
-            <Category name="News" color="#d14a3b" />
-            <Category name="Data Science" color="#2884c3" />
-            <Category name="GitHub" color="#5c5c5c" />
-          </ul>
+class CategoryList extends Component {
+  componentDidMount() {
+    this.props.getCategories(this.props.usersReducer.current_user_id)
+  }
+
+  render() {
+    return (
+      <styles.CategoryListStyle>
+        <div className="row">
+          <div className="col-12">
+            {(this.props.usersReducer.isFetchingCategories) ?
+              <LinearProgress /> :
+              <ul>
+                {this.props.usersReducer.categories.map((category, i) => <Category key={i} {...category} fake_id={i} />)}
+              </ul>
+            }
+          </div>
         </div>
-      </div>
-    </styles.CategoryListStyle>
-  )
+      </styles.CategoryListStyle>
+    )
+  }
+}
+
+/**
+ * Define mapStateToProps
+ */
+
+const mapStateToProps = (state) => {
+  return state
 }
 
 /**
  * Export component
  */
 
-module.exports = CategoryList
+module.exports = connect(mapStateToProps, { getCategories })(CategoryList)

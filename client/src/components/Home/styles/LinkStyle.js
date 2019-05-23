@@ -83,6 +83,22 @@ let LinkStyle = styled.li(() => `
       }
     }
   }
+
+  .btn__control {
+    color: #DDD;
+    float: right;
+    padding: 0px 5px;
+    margin: 0px 10px;
+    cursor: pointer;
+
+    &:hover {
+      color: #AAA;
+    }
+  }
+
+  a {
+    color: #0000EE;
+  }
 `)
 
 /**

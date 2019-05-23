@@ -5,24 +5,75 @@
  */
 
 const React = require('react')
+const react_redux = require('react-redux')
 const styles = require('./styles/index')
+const actions = require('../../store/actions/index')
+
+/**
+ * Constants
+ */
+
+const Component = React.Component
+const connect = react_redux.connect
+const getCategories = actions.getCategories
+const filterByCategory = actions.filterByCategory
+const deleteCategory = actions.deleteCategory
 
 /**
  * Define component
  */
 
-function Category({ color, name }) {
-  return (
-    <styles.CategoryStyle>
-      <span className="glyph__circle" style={{ backgroundColor: color }}></span>
-      <span className="text__category">{name}</span>
-      <span className="btn__delete">x</span>
-    </styles.CategoryStyle>
-  )
+class Category extends Component {
+  handleDeleteCategory = () => {
+    let yes = window.confirm("Are you sure?")
+
+    if (yes) {
+      this.props.deleteCategory(
+        this.props.usersReducer.current_user_id,
+        this.props.id,
+      )
+      .then(() => {
+        this.props.getCategories(this.props.usersReducer.current_user_id)
+      })
+    }
+  }
+
+  handleFilterByCategory = (event) => {
+    event.preventDefault()
+    this.props.filterByCategory(
+      this.props.usersReducer.current_user_id,
+      this.props.id,
+    )
+  }
+
+  render() {
+    return (
+      <styles.CategoryStyle>
+        <div className="row">
+          <div className="col-10 col__category" onClick={this.handleFilterByCategory}>
+            <span className="glyph__circle" style={{ backgroundColor: this.props.color }}></span>
+            <span className="text__category">{this.props.title}</span>
+          </div>
+
+          <div className="col-2">
+            <span className="btn__delete" onClick={this.handleDeleteCategory}>x</span>
+          </div>
+        </div>
+      </styles.CategoryStyle>
+    )
+  }
+}
+
+/**
+ * Define mapStateToProps
+ */
+
+const mapStateToProps = (state) => {
+  return state
 }
 
 /**
  * Export component
  */
 
-module.exports = Category
+module.exports = connect(mapStateToProps, { getCategories, filterByCategory, deleteCategory })(Category)
