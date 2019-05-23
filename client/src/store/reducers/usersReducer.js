@@ -17,43 +17,19 @@ const initialState = {
   isFetchingMainLinks: false,
   isSettingLinkPriority: false,
   isFetchingCategories: false,
+  isDeletingCategory: false,
+  isSharingLink: false,
   isFilteringByCategory: false,
   isCreatingCategory: false,
+  isCompletingLink: false,
   current_user_id: (localStorage.getItem('user_id') || null),
   current_user_email: (localStorage.getItem('user_email') || null),
   current_user_username: (localStorage.getItem('user_username') || null),
   current_user_is_private: (localStorage.getItem('user_is_private') || null),
   current_user_token: (localStorage.getItem('token') || null),
   categories: [],
-  priority_links: [
-    // {
-    //   id: 1000,
-    //   isPriority: "true",
-    //   title: "Lambda School Blog",
-    //   url: "https://lambdaschool.com/blog/",
-    //   categories: [{ title: 'News', color: '#d14a3b' }]
-    // }
-  ],
-  main_links: [
-    // {
-    //   id: 2000,
-    //   title: "Modern Day Researcher GitHub Organization",
-    //   url: "https://github.com/lambda-modern-day-researcher",
-    //   categories: [{ title: 'GitHub', color: '#5c5c5c' }]
-    // },
-    // {
-    //   id: 3000,
-    //   title: "No degree. No debt",
-    //   url: "https://twitter.com/Austen/status/1120371071243309057",
-    //   categories: [{ title: 'News', color: '#d14a3b' }]
-    // },
-    // {
-    //   id: 4000,
-    //   title: "AI Transformation Playbook",
-    //   url: "https://landing.ai/ai-transformation-playbook/",
-    //   categories: [{ title: 'News', color: '#d14a3b' }, { title: 'Data Science', color: '#2884c3' }]
-    // }
-  ],
+  priority_links: [],
+  main_links: [],
   error: null
 }
 
@@ -168,7 +144,7 @@ function usersReducer(state = initialState, action) {
       })
     case actions.FETCH_CATEGORIES_SUCCESS:
       return Object.assign({}, state, {
-        categories: state.categories.concat(action.payload),
+        categories: action.payload,
         isFetchingCategories: false,
         error: ''
       })
@@ -201,8 +177,7 @@ function usersReducer(state = initialState, action) {
     case actions.CREATE_CATEGORY_SUCCESS:
       return Object.assign({}, state, {
         isCreatingCategory: false,
-        // categories: state.categories.concat(action.temp_data_insert),
-        categories: state.categories.concat(action.temp_data_insert).map((category, i) => { category.id = i; return category}),
+        categories: state.categories.concat(action.payload.category),
         error: ''
       })
     case actions.CREATE_CATEGORY_ERROR:
@@ -224,6 +199,38 @@ function usersReducer(state = initialState, action) {
     case actions.DELETE_CATEGORY_ERROR:
       return Object.assign({}, state, {
         isDeletingCategory: false,
+        error: action.payload
+      })
+    case actions.SHARE_LINK_START:
+      return Object.assign({}, state, {
+        isSharingLink: true,
+        error: ''
+      })
+    case actions.SHARE_LINK_SUCCESS:
+      console.log('actions.SHARE_LINK_SUCCESS', action.payload)
+      return Object.assign({}, state, {
+        isSharingLink: false,
+        main_links: state.main_links.concat(action.payload),
+        error: ''
+      })
+    case actions.SHARE_LINK_ERROR:
+      return Object.assign({}, state, {
+        isSharingLink: false,
+        error: action.payload
+      })
+    case actions.COMPLETE_LINK_START:
+      return Object.assign({}, state, {
+        isCompletingLink: true,
+        error: ''
+      })
+    case actions.COMPLETE_LINK_SUCCESS:
+      return Object.assign({}, state, {
+        isCompletingLink: false,
+        error: ''
+      })
+    case actions.COMPLETE_LINK_ERROR:
+      return Object.assign({}, state, {
+        isCompletingLink: false,
         error: action.payload
       })
     default:

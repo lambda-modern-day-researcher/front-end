@@ -35,6 +35,10 @@ class Link extends Component {
     }
   }
 
+  handleCompleteLink = (event) => {
+    this.props.completeLink(this.state.user_id, this.state.link_id)
+  }
+
   handleToggleLinkPriority = (event) => {
     this.props.toggleLinkPriority(this.state.user_id, this.state.link_id)
   }
@@ -44,7 +48,7 @@ class Link extends Component {
       <styles.LinkStyle>
         <div className="row">
           <div className="col-12 col-lg-2 col-xl-1 d-flex">
-            <svg className="control control__completed" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+            <svg onClick={this.handleCompleteLink} className="control control__completed" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
             {/*<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>*/}
 
             <svg onClick={this.handleToggleLinkPriority} className="control control__priority" style={(this.props.isPriority) ? { fill: 'red' } : { fill: '#AAA' }}

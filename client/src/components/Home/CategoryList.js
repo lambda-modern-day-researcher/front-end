@@ -30,6 +30,7 @@ class CategoryList extends Component {
   }
 
   render() {
+    console.log("this.props.usersReducer", this.props.usersReducer)
     return (
       <styles.CategoryListStyle>
         <div className="row">

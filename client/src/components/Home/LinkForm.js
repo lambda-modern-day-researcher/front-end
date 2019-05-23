@@ -16,6 +16,7 @@ const actions = require('../../store/actions/index')
 const Component = React.Component
 const connect = react_redux.connect
 const shareLink = actions.shareLink
+const getMainLinks = actions.getMainLinks
 
 /**
  * Define component
@@ -27,8 +28,6 @@ class LinkForm extends Component {
     this.state = {
       url: '',
       title: '',
-      created_by: props.usersReducer.current_user_id,
-      shared_with: props.usersReducer.current_user_id,
     }
   }
 
@@ -37,8 +36,13 @@ class LinkForm extends Component {
     this.props.shareLink({
       url: this.state.url,
       title: this.state.title,
-      created_by: this.state.created_by,
-      shared_with: this.state.shared_with,
+      created_by: this.props.usersReducer.current_user_id,
+      shared_with: this.props.usersReducer.current_user_id,
+    }).then(() => {
+      document.activeElement.blur()
+      this.setState({ url: '', title: '' })
+      // TEMP for testing
+      // this.props.getMainLinks(this.props.usersReducer.current_user_id)
     })
   }
 
@@ -81,4 +85,4 @@ const mapStateToProps = (state) => {
  * Export component
  */
 
-module.exports = connect(mapStateToProps, { shareLink })(LinkForm)
+module.exports = connect(mapStateToProps, { shareLink, getMainLinks })(LinkForm)
