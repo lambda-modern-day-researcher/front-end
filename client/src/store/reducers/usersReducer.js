@@ -15,13 +15,16 @@ const initialState = {
   isSigningUp: false,
   isFetchingPriorityLinks: false,
   isFetchingMainLinks: false,
-  isSettingLinkPriority: false,
   isFetchingCategories: false,
   isDeletingCategory: false,
   isSharingLink: false,
-  isFilteringByCategory: false,
   isCreatingCategory: false,
   isCompletingLink: false,
+  isDeletingLink: false,
+  isSettingLinkPriority: false,
+  isFilteringByCategory: false,
+  isUpdatingLinkTitle: false,
+  isAddingCategoryToLink: false,
   current_user_id: (localStorage.getItem('user_id') || null),
   current_user_email: (localStorage.getItem('user_email') || null),
   current_user_username: (localStorage.getItem('user_username') || null),
@@ -122,21 +125,6 @@ function usersReducer(state = initialState, action) {
         isFetchingMainLinks: false,
         error: action.payload
       })
-    case actions.TOGGLE_LINK_PRIORITY_START:
-      return Object.assign({}, state, {
-        isSettingLinkPriority: true,
-        error: ''
-      })
-    case actions.TOGGLE_LINK_PRIORITY_SUCCESS:
-      return Object.assign({}, state, {
-        isSettingLinkPriority: false,
-        error: ''
-      })
-    case actions.TOGGLE_LINK_PRIORITY_ERROR:
-      return Object.assign({}, state, {
-        isSettingLinkPriority: false,
-        error: action.payload
-      })
     case actions.FETCH_CATEGORIES_START:
       return Object.assign({}, state, {
         isFetchingCategories: true,
@@ -151,22 +139,6 @@ function usersReducer(state = initialState, action) {
     case actions.FETCH_CATEGORIES_ERROR:
       return Object.assign({}, state, {
         isFetchingCategories: false,
-        error: action.payload
-      })
-    case actions.FILTER_BY_CATEGORY_START:
-      return Object.assign({}, state, {
-        isFilteringByCategory: true,
-        error: ''
-      })
-    case actions.FILTER_BY_CATEGORY_SUCCESS:
-      return Object.assign({}, state, {
-        isFilteringByCategory: false,
-        main_links: action.payload,
-        error: ''
-      })
-    case actions.FILTER_BY_CATEGORY_ERROR:
-      return Object.assign({}, state, {
-        isFilteringByCategory: false,
         error: action.payload
       })
     case actions.CREATE_CATEGORY_START:
@@ -201,23 +173,6 @@ function usersReducer(state = initialState, action) {
         isDeletingCategory: false,
         error: action.payload
       })
-    case actions.SHARE_LINK_START:
-      return Object.assign({}, state, {
-        isSharingLink: true,
-        error: ''
-      })
-    case actions.SHARE_LINK_SUCCESS:
-      console.log('actions.SHARE_LINK_SUCCESS', action.payload)
-      return Object.assign({}, state, {
-        isSharingLink: false,
-        main_links: state.main_links.concat(action.payload),
-        error: ''
-      })
-    case actions.SHARE_LINK_ERROR:
-      return Object.assign({}, state, {
-        isSharingLink: false,
-        error: action.payload
-      })
     case actions.COMPLETE_LINK_START:
       return Object.assign({}, state, {
         isCompletingLink: true,
@@ -231,6 +186,100 @@ function usersReducer(state = initialState, action) {
     case actions.COMPLETE_LINK_ERROR:
       return Object.assign({}, state, {
         isCompletingLink: false,
+        error: action.payload
+      })
+    case actions.DELETE_LINK_START:
+      return Object.assign({}, state, {
+        isDeletingLink: true,
+        error: ''
+      })
+    case actions.DELETE_LINK_SUCCESS:
+      return Object.assign({}, state, {
+        isDeletingLink: false,
+        error: ''
+      })
+    case actions.DELETE_LINK_ERROR:
+      return Object.assign({}, state, {
+        isDeletingLink: false,
+        error: action.payload
+      })
+    case actions.TOGGLE_LINK_PRIORITY_START:
+      return Object.assign({}, state, {
+        isSettingLinkPriority: true,
+        error: ''
+      })
+    case actions.TOGGLE_LINK_PRIORITY_SUCCESS:
+      return Object.assign({}, state, {
+        isSettingLinkPriority: false,
+        error: ''
+      })
+    case actions.TOGGLE_LINK_PRIORITY_ERROR:
+      return Object.assign({}, state, {
+        isSettingLinkPriority: false,
+        error: action.payload
+      })
+    case actions.FILTER_BY_CATEGORY_START:
+      return Object.assign({}, state, {
+        isFilteringByCategory: true,
+        error: ''
+      })
+    case actions.FILTER_BY_CATEGORY_SUCCESS:
+      return Object.assign({}, state, {
+        isFilteringByCategory: false,
+        main_links: action.payload,
+        error: ''
+      })
+    case actions.FILTER_BY_CATEGORY_ERROR:
+      return Object.assign({}, state, {
+        isFilteringByCategory: false,
+        error: action.payload
+      })
+    case actions.UPDATE_LINK_TITLE_START:
+      return Object.assign({}, state, {
+        isUpdatingLinkTitle: true,
+        error: ''
+      })
+    case actions.UPDATE_LINK_TITLE_SUCCESS:
+      return Object.assign({}, state, {
+        isUpdatingLinkTitle: false,
+        main_links: action.payload,
+        error: ''
+      })
+    case actions.UPDATE_LINK_TITLE_ERROR:
+      return Object.assign({}, state, {
+        isUpdatingLinkTitle: false,
+        error: action.payload
+      })
+    case actions.ADD_CATEGORY_TO_LINK_START:
+      return Object.assign({}, state, {
+        isAddingCategoryToLink: true,
+        error: ''
+      })
+    case actions.ADD_CATEGORY_TO_LINK_SUCCESS:
+      return Object.assign({}, state, {
+        isAddingCategoryToLink: false,
+        main_links: action.payload,
+        error: ''
+      })
+    case actions.ADD_CATEGORY_TO_LINK_ERROR:
+      return Object.assign({}, state, {
+        isAddingCategoryToLink: false,
+        error: action.payload
+      })
+    case actions.SHARE_LINK_START:
+      return Object.assign({}, state, {
+        isSharingLink: true,
+        error: ''
+      })
+    case actions.SHARE_LINK_SUCCESS:
+      return Object.assign({}, state, {
+        isSharingLink: false,
+        main_links: state.main_links.concat(action.payload),
+        error: ''
+      })
+    case actions.SHARE_LINK_ERROR:
+      return Object.assign({}, state, {
+        isSharingLink: false,
         error: action.payload
       })
     default:

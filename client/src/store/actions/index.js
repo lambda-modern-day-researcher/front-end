@@ -34,7 +34,6 @@ const DELETE_CATEGORY_ERROR = 'DELETE_CATEGORY_ERROR'
 const CREATE_CATEGORY_START = 'CREATE_CATEGORY_START'
 const CREATE_CATEGORY_SUCCESS = 'CREATE_CATEGORY_SUCCESS'
 const CREATE_CATEGORY_ERROR = 'CREATE_CATEGORY_ERROR'
-
 const COMPLETE_LINK_START = 'COMPLETE_LINK_START'
 const COMPLETE_LINK_SUCCESS = 'COMPLETE_LINK_SUCCESS'
 const COMPLETE_LINK_ERROR = 'COMPLETE_LINK_ERROR'
@@ -47,9 +46,9 @@ const TOGGLE_LINK_PRIORITY_ERROR = 'TOGGLE_LINK_PRIORITY_ERROR'
 const FILTER_BY_CATEGORY_START = 'FILTER_BY_CATEGORY_START'
 const FILTER_BY_CATEGORY_SUCCESS = 'FILTER_BY_CATEGORY_SUCCESS'
 const FILTER_BY_CATEGORY_ERROR = 'FILTER_BY_CATEGORY_ERROR'
-const UPDATE_LINK_START = 'UPDATE_LINK_START'
-const UPDATE_LINK_SUCCESS = 'UPDATE_LINK_SUCCESS'
-const UPDATE_LINK_ERROR = 'UPDATE_LINK_ERROR'
+const UPDATE_LINK_TITLE_START = 'UPDATE_LINK_TITLE_START'
+const UPDATE_LINK_TITLE_SUCCESS = 'UPDATE_LINK_TITLE_SUCCESS'
+const UPDATE_LINK_TITLE_ERROR = 'UPDATE_LINK_TITLE_ERROR'
 const ADD_CATEGORY_TO_LINK_START = 'ADD_CATEGORY_TO_LINK_START'
 const ADD_CATEGORY_TO_LINK_SUCCESS = 'ADD_CATEGORY_TO_LINK_SUCCESS'
 const ADD_CATEGORY_TO_LINK_ERROR = 'ADD_CATEGORY_TO_LINK_ERROR'
@@ -99,7 +98,9 @@ const getPriorityLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_PRIORITY_LINKS_START })
 
   return axiosWithAuth()
-    .get(`${backend_url}/api/auth/users/${user_id}/links?priority=true`)
+    // TEMP for testing
+    // .get(`${backend_url}/api/auth/users/${user_id}/links?priority=true`)
+    .get(`${backend_url}/api/auth/users/1/links?priority=true`)
     .then(res => {
       dispatch({ type: FETCH_PRIORITY_LINKS_SUCCESS, payload: res.data })
     })
@@ -112,7 +113,9 @@ const getMainLinks = (user_id) => dispatch => {
   dispatch({ type: FETCH_MAIN_LINKS_START })
 
   return axiosWithAuth()
-    .get(`${backend_url}/api/auth/users/${user_id}/links`)
+    // TEMP for testing
+    // .get(`${backend_url}/api/auth/users/${user_id}/links`)
+    .get(`${backend_url}/api/auth/users/1/links`)
     .then(res => {
       dispatch({ type: FETCH_MAIN_LINKS_SUCCESS, payload: res.data })
     })
@@ -194,8 +197,6 @@ const shareLink = (link) => dispatch => {
   // TEMP for testing
   // dispatch({ type: SHARE_LINK_SUCCESS, payload: link })
 
-  console.log('SHARE_LINK_START.link', link)
-
   return axiosWithAuth()
     .post(`${backend_url}/api/auth/users/${link.created_by}/links`, link)
     .then(res => {
@@ -224,15 +225,15 @@ const completeLink = (user_id, id) => dispatch => {
 }
 
 const updateLink = (user_id, id, title) => dispatch => {
-  dispatch({ type: UPDATE_LINK_START })
+  dispatch({ type: UPDATE_LINK_TITLE_START })
 
   return axiosWithAuth()
     .put(`${backend_url}/api/auth/users/${user_id}/links/${id}`, title)
     .then(res => {
-      dispatch({ type: UPDATE_LINK_SUCCESS, payload: res.data })
+      dispatch({ type: UPDATE_LINK_TITLE_SUCCESS, payload: res.data })
     })
     .catch(err => {
-      dispatch({ type: UPDATE_LINK_ERROR, payload: err.response.data.message })
+      dispatch({ type: UPDATE_LINK_TITLE_ERROR, payload: err.response.data.message })
     })
 }
 
@@ -311,9 +312,9 @@ module.exports = {
   COMPLETE_LINK_SUCCESS,
   COMPLETE_LINK_ERROR,
   completeLink,
-  UPDATE_LINK_START,
-  UPDATE_LINK_SUCCESS,
-  UPDATE_LINK_ERROR,
+  UPDATE_LINK_TITLE_START,
+  UPDATE_LINK_TITLE_SUCCESS,
+  UPDATE_LINK_TITLE_ERROR,
   updateLink,
   ADD_CATEGORY_TO_LINK_START,
   ADD_CATEGORY_TO_LINK_SUCCESS,

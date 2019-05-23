@@ -33,6 +33,7 @@ class LinkForm extends Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault()
+
     this.props.shareLink({
       url: this.state.url,
       title: this.state.title,
@@ -41,8 +42,7 @@ class LinkForm extends Component {
     }).then(() => {
       document.activeElement.blur()
       this.setState({ url: '', title: '' })
-      // TEMP for testing
-      // this.props.getMainLinks(this.props.usersReducer.current_user_id)
+      this.props.getMainLinks(this.props.usersReducer.current_user_id)
     })
   }
 
@@ -57,10 +57,14 @@ class LinkForm extends Component {
           <div className="row">
             <div className="col-9 pr-1">
               <div className="form-group">
-                <input type="text" name="title" placeholder="Title" value={this.state.title} onChange={this.handleOnChange} className="form-control form-control-sm"></input>
+                <input type="text" name="title" placeholder="Title"
+                       value={this.state.title} onChange={this.handleOnChange}
+                       className="form-control form-control-sm"></input>
               </div>
               <div className="form-group mb-0">
-                <input type="text" name="url" placeholder="https://google.com" value={this.state.url} onChange={this.handleOnChange} className="form-control form-control-sm" required={true}></input>
+                <input type="text" name="url" placeholder="https://google.com"
+                       value={this.state.url} onChange={this.handleOnChange}
+                       className="form-control form-control-sm" required={true}></input>
               </div>
             </div>
             <div className="col-3 pl-0">
