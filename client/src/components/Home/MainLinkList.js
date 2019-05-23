@@ -32,16 +32,22 @@ class MainLinkList extends Component {
   render() {
     return (
       <styles.MainLinkListStyle>
-        <h4>All</h4>
+        {(this.props.usersReducer.main_links.length > 0) ?
+          <div className="row">
+            <div className="col-12">
+              <h4>All</h4>
 
-        <hr/>
+              <hr/>
 
-        {(this.props.usersReducer.isFetchingMainLinks) ?
-          <LinearProgress /> :
-          <ul>
-            {this.props.usersReducer.main_links.map((link, i) => <Link key={i} {...link} />)}
-          </ul>
-        }
+              {(this.props.usersReducer.isFetchingMainLinks) ?
+                <LinearProgress /> :
+                <ul>
+                  {this.props.usersReducer.main_links.map((link, i) => <Link key={i} {...link} />)}
+                </ul>
+              }
+            </div>
+          </div>
+          : ''}
       </styles.MainLinkListStyle>
     )
   }
