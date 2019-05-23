@@ -16,30 +16,10 @@ const styled = styled_components.default
  * Define style
  */
 
+
+
 let SignInUpStyle = styled.div(() => `
  
-@media(max-width:500px){
-  
-  .container {
-    
-    width: 100%;
-    background: #f39c12;
-    position: relative;
-    top:70px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px;
-    border-radius:7px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
-  }
-
-}
-
-
 
 .container {
     

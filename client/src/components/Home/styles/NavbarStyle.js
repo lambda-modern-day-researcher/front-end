@@ -22,12 +22,15 @@ let NavbarStyle = styled.div(() => `
   }
 
   .bg-dark {
-    background-color: #343a40 !important;
+    background-color: #f9ab00 !important;
   }
 
   .navbar {
     position: relative;
     padding: .5rem 1rem;
+    border-radius: 10px;
+    background-color: #f9ab00 !important;
+   
   }
 
   .navbar-dark .navbar-brand {

@@ -18,7 +18,7 @@ const styled = styled_components.default
 
 let MainContainerStyle = styled.div(() => `
   height: 100vh;
-  background-color: #FFF;
+  
 `)
 
 /**
