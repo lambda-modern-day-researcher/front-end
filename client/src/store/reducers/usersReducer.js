@@ -18,16 +18,13 @@ const initialState = {
   isSettingLinkPriority: false,
   isFetchingCategories: false,
   isFilteringByCategory: false,
+  isCreatingCategory: false,
   current_user_id: (localStorage.getItem('user_id') || null),
   current_user_email: (localStorage.getItem('user_email') || null),
   current_user_username: (localStorage.getItem('user_username') || null),
   current_user_is_private: (localStorage.getItem('user_is_private') || null),
   current_user_token: (localStorage.getItem('token') || null),
-  categories: [
-    { id: 1000, title: "News", color: "#d14a3b" },
-    { id: 2000, title: "Data Science", color: "#2884c3" },
-    { id: 3000, title: "GitHub", color: "#5c5c5c" },
-  ],
+  categories: [],
   priority_links: [
     // {
     //   id: 1000,
@@ -171,7 +168,7 @@ function usersReducer(state = initialState, action) {
       })
     case actions.FETCH_CATEGORIES_SUCCESS:
       return Object.assign({}, state, {
-        categories: action.payload,
+        categories: state.categories.concat(action.payload),
         isFetchingCategories: false,
         error: ''
       })
@@ -194,6 +191,22 @@ function usersReducer(state = initialState, action) {
     case actions.FILTER_BY_CATEGORY_ERROR:
       return Object.assign({}, state, {
         isFilteringByCategory: false,
+        error: action.payload
+      })
+    case actions.CREATE_CATEGORY_START:
+      return Object.assign({}, state, {
+        isCreatingCategory: true,
+        error: ''
+      })
+    case actions.CREATE_CATEGORY_SUCCESS:
+      return Object.assign({}, state, {
+        isCreatingCategory: false,
+        categories: state.categories.concat(action.temp_data_insert),
+        error: ''
+      })
+    case actions.CREATE_CATEGORY_ERROR:
+      return Object.assign({}, state, {
+        isCreatingCategory: false,
         error: action.payload
       })
     default:
