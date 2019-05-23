@@ -84,7 +84,7 @@ let LinkStyle = styled.li(() => `
     }
   }
 
-  .btn__delete {
+  .btn__control {
     color: #DDD;
     float: right;
     padding: 0px 5px;

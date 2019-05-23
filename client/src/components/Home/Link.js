@@ -22,6 +22,7 @@ const completeLink = actions.completeLink
 const getPriorityLinks = actions.getPriorityLinks
 const getMainLinks = actions.getMainLinks
 const deleteLink = actions.deleteLink
+const updateLink = actions.updateLink
 
 /**
  * Define component
@@ -76,6 +77,22 @@ class Link extends Component {
     }
   }
 
+  handleEditLinkTitle = () => {
+    let title = prompt("New Link Title")
+
+    if (title) {
+      this.props.updateLink(
+        this.state.user_id,
+        this.state.link_id,
+        title,
+      )
+      .then(() => {
+        this.props.getPriorityLinks(this.props.usersReducer.current_user_id)
+        this.props.getMainLinks(this.props.usersReducer.current_user_id)
+      })
+    }
+  }
+
   // handleClose = value => {
   //   this.setState({ is_modal_open: false })
   // }
@@ -111,7 +128,8 @@ class Link extends Component {
           </div>
 
           <div className="col-12 col-lg-1 col-xl-1">
-            <span className="btn__delete" onClick={this.handleDeleteLink}>x</span>
+            <span className="btn__control" onClick={this.handleEditLinkTitle}>edit</span>
+            <span className="btn__control" onClick={this.handleDeleteLink}>x</span>
           </div>
         </div>
       </styles.LinkStyle>
@@ -138,4 +156,5 @@ module.exports = connect(mapStateToProps, {
   getPriorityLinks,
   getMainLinks,
   deleteLink,
+  updateLink,
 })(Link)

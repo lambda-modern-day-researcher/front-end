@@ -214,13 +214,15 @@ const filterByCategory = (user_id, category_id) => dispatch => {
 const updateLink = (user_id, id, title) => dispatch => {
   dispatch({ type: UPDATE_LINK_TITLE_START })
 
+  console.log(`${backend_url}/api/auth/users/${user_id}/links/${id}/title`, title)
+
   return axiosWithAuth()
-    .put(`${backend_url}/api/auth/users/${user_id}/links/${id}`, title)
+    .put(`${backend_url}/api/auth/users/${user_id}/links/${id}/title`, title)
     .then(res => {
       dispatch({ type: UPDATE_LINK_TITLE_SUCCESS, payload: res.data })
     })
     .catch(err => {
-      dispatch({ type: UPDATE_LINK_TITLE_ERROR, payload: err.response.data.message })
+      dispatch({ type: UPDATE_LINK_TITLE_ERROR, payload: err })
     })
 }
 
@@ -233,7 +235,7 @@ const addCategoryToLink = (user_id, link_id, category_id) => dispatch => {
       dispatch({ type: ADD_CATEGORY_TO_LINK_SUCCESS, payload: res.data })
     })
     .catch(err => {
-      dispatch({ type: ADD_CATEGORY_TO_LINK_ERROR, payload: err.response.data.message })
+      dispatch({ type: ADD_CATEGORY_TO_LINK_ERROR, payload: err })
     })
 }
 
@@ -246,7 +248,6 @@ const shareLink = (link) => dispatch => {
       dispatch({ type: SHARE_LINK_SUCCESS, payload: res.data })
     })
     .catch(err => {
-      console.log("shareLink: err.response.data", err.response.data)
       dispatch({ type: SHARE_LINK_ERROR, payload: err.response.data.message })
     })
 }

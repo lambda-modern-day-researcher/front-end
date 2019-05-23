@@ -240,7 +240,6 @@ function usersReducer(state = initialState, action) {
     case actions.UPDATE_LINK_TITLE_SUCCESS:
       return Object.assign({}, state, {
         isUpdatingLinkTitle: false,
-        main_links: action.payload,
         error: ''
       })
     case actions.UPDATE_LINK_TITLE_ERROR:
