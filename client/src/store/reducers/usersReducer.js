@@ -171,8 +171,8 @@ function usersReducer(state = initialState, action) {
       })
     case actions.FETCH_CATEGORIES_SUCCESS:
       return Object.assign({}, state, {
-        isFetchingCategories: false,
         categories: action.payload,
+        isFetchingCategories: false,
         error: ''
       })
     case actions.FETCH_CATEGORIES_ERROR:

@@ -6,6 +6,7 @@
 
 const React = require('react')
 const react_redux = require('react-redux')
+const material_ui = require('@material-ui/core')
 const styles = require('./styles/index')
 const Category = require('./Category')
 const actions = require('../../store/actions/index')
@@ -16,6 +17,7 @@ const actions = require('../../store/actions/index')
 
 const Component = React.Component
 const connect = react_redux.connect
+const LinearProgress = material_ui.LinearProgress
 const getCategories = actions.getCategories
 
 /**
@@ -32,9 +34,12 @@ class CategoryList extends Component {
       <styles.CategoryListStyle>
         <div className="row">
           <div className="col-12">
-            <ul>
-              {this.props.usersReducer.categories.map((category, i) => <Category key={i} {...category} />)}
-            </ul>
+            {(this.props.usersReducer.isFetchingCategories) ?
+              <LinearProgress /> :
+              <ul>
+                {this.props.usersReducer.categories.map((category, i) => <Category key={i} {...category} />)}
+              </ul>
+            }
           </div>
         </div>
       </styles.CategoryListStyle>
