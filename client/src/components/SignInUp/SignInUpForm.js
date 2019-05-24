@@ -41,8 +41,6 @@ class SignInUpForm extends Component {
           if (this.props.usersReducer.error) {
             this.setState({ email: '', username: '', password: '' })
             document.activeElement.blur()
-          } else {
-            this.props.history.push('/home')
           }
         })
     } else {
@@ -51,8 +49,6 @@ class SignInUpForm extends Component {
           if (this.props.error) {
             this.setState({ email: '', username: '', password: '' })
             document.activeElement.blur()
-          } else {
-            this.props.history.push('/home')
           }
         })
     }
@@ -65,36 +61,46 @@ class SignInUpForm extends Component {
   render() {
     return (
       <SignInUpFormStyle>
-        <form className="mb-4" onSubmit={this.handleOnSubmit}>
-          {(this.props.usersReducer.error && this.props.usersReducer.error.constructor === String) ?
-            <div className="alert alert-danger">Error: Incorrect username or password.</div> : ''}
-          {(this.props.usersReducer.error && this.props.usersReducer.error.errno) ?
-            <div className="alert alert-danger">Error: User already exists. Try logging in.</div> : ''}
+        {(this.props.usersReducer.current_user_token) ?
+          <div>
+            <hr/>
+            <h2>Success!</h2>
+            <Link to="/home" className="btn btn-block btn-success">Get started</Link>
+          </div> :
 
-          {(this.props.in_or_up === 'up') ?
-          <div className="form-group">
-            <label htmlFor="input_email" className="text-primary">Email <span className="text-danger">*</span></label>
-            <input id="input_email" type="email" name="email" value={this.state.email} onChange={this.handleOnChange} className="form-control" autoFocus={true} required={true}></input>
-          </div> : ''}
+          <div>
+            <form className="mb-4" onSubmit={this.handleOnSubmit}>
+              {(this.props.usersReducer.error && this.props.usersReducer.error.constructor === String) ?
+                <div className="alert alert-danger">Error: Incorrect username or password.</div> : ''}
+              {(this.props.usersReducer.error && this.props.usersReducer.error.errno) ?
+                <div className="alert alert-danger">Error: User already exists. Try logging in.</div> : ''}
 
-          <div className="form-group">
-            <label htmlFor="input_username" className="text-primary">Username <span className="text-danger">*</span></label>
-            <input id="input_username" type="text" name="username" value={this.state.username} onChange={this.handleOnChange} className="form-control" required={true}></input>
+              {(this.props.in_or_up === 'up') ?
+              <div className="form-group">
+                <label htmlFor="input_email" className="text-primary">Email <span className="text-danger">*</span></label>
+                <input id="input_email" type="email" name="email" value={this.state.email} onChange={this.handleOnChange} className="form-control" autoFocus={true} required={true}></input>
+              </div> : ''}
+
+              <div className="form-group">
+                <label htmlFor="input_username" className="text-primary">Username <span className="text-danger">*</span></label>
+                <input id="input_username" type="text" name="username" value={this.state.username} onChange={this.handleOnChange} className="form-control" required={true}></input>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="input_password" className="text-primary">Password <span className="text-danger">*</span></label>
+                <input id="input_password" type="password" name="password" value={this.state.password} onChange={this.handleOnChange} className="form-control" required={true}></input>
+              </div>
+
+              <button type="submit" className="btn btn-block btn-primary">
+                {(this.props.in_or_up === 'in') ? 'Sign in' : 'Sign up'}
+              </button>
+            </form>
+
+            {(this.props.in_or_up === 'up') ?
+              <Link to={{ pathname: "/users/signin", state: { fromSignUp: true }}}>I already have an account.</Link>
+              : <Link to={{ pathname: "/users/signup", state: { fromSignIn: true }}}>I need an account.</Link>}
           </div>
-
-          <div className="form-group">
-            <label htmlFor="input_password" className="text-primary">Password <span className="text-danger">*</span></label>
-            <input id="input_password" type="password" name="password" value={this.state.password} onChange={this.handleOnChange} className="form-control" required={true}></input>
-          </div>
-
-          <button type="submit" className="btn btn-block btn-primary">
-            {(this.props.in_or_up === 'in') ? 'Sign in' : 'Sign up'}
-          </button>
-        </form>
-
-        {(this.props.in_or_up === 'up') ?
-          <Link to={{ pathname: "/users/signin", state: { fromSignUp: true }}}>I already have an account.</Link>
-          : <Link to={{ pathname: "/users/signup", state: { fromSignIn: true }}}>I need an account.</Link>}
+        }
       </SignInUpFormStyle>
     )
   }

@@ -53,6 +53,7 @@ function usersReducer(state = initialState, action) {
       localStorage.setItem('user_email', action.payload.user.email)
       localStorage.setItem('user_username', action.payload.user.username)
       localStorage.setItem('user_is_private', action.payload.user.is_private)
+      console.log('actions.SIGNUP_SUCCESS')
       return Object.assign({}, state, {
         isSigningUp: false,
         current_user_id: action.payload.user.id,
@@ -78,6 +79,7 @@ function usersReducer(state = initialState, action) {
       localStorage.setItem('user_email', action.payload.user.email)
       localStorage.setItem('user_username', action.payload.user.username)
       localStorage.setItem('user_is_private', action.payload.user.is_private)
+      console.log('actions.SIGNIN_SUCCESS')
       return Object.assign({}, state, {
         isSigningIn: false,
         current_user_id: action.payload.user.id,

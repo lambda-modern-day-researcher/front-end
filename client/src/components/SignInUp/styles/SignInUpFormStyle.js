@@ -17,6 +17,10 @@ const SignInUpFormStyle = styled.div(() => `
     font-size: 1.5rem !important;
   }
 
+  h2 {
+    text-align: center;
+  }
+
   .text-primary {
     color: #007bff !important;
   }
@@ -54,6 +58,7 @@ const SignInUpFormStyle = styled.div(() => `
   }
 
   .btn {
+    text-decoration: none;
     display: inline-block;
     font-weight: 400;
     color: #212529;
@@ -66,7 +71,7 @@ const SignInUpFormStyle = styled.div(() => `
     background-color: transparent;
     border: 1px solid transparent;
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 1.3rem;
     line-height: 1.5;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
@@ -99,6 +104,28 @@ const SignInUpFormStyle = styled.div(() => `
   .btn.focus, .btn:focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  }
+
+  .btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+
+  .btn-success:hover {
+    color: #fff;
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+
+  .btn-success.focus, .btn-success:focus {
+    box-shadow: 0 0 0 0.2rem rgba(72,180,97,.5);
+  }
+
+  .btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+    color: #fff;
+    background-color: #1e7e34;
+    border-color: #1c7430;
   }
 
   .btn-block {
