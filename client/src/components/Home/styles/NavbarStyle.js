@@ -27,9 +27,8 @@ let NavbarStyle = styled.div(() => `
 
   .navbar {
     position: relative;
-    padding: .5rem 1rem;
-    border-radius: 10px;
-    background-color: #f9ab00 !important;
+    padding: .5rem 1rem;  
+    background-color: #f39c12 !important;
    
   }
 
