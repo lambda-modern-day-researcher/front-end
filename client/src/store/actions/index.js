@@ -4,8 +4,8 @@
  * Dependencies
  */
 
-const axios = require('axios')
-const helpers = require('./helpers/index')
+import axios from 'axios'
+import helpers from './helpers/index'
 
 /**
  * Constants

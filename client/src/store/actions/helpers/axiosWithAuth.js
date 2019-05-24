@@ -4,7 +4,7 @@
  * Dependencies
  */
 
-const axios = require('axios')
+import axios from 'axios'
 
 /**
  * Define helper

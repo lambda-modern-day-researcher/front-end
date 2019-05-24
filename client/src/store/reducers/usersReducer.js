@@ -4,7 +4,7 @@
  * Dependencies
  */
 
-const actions = require('../actions/index')
+import actions from '../actions/index'
 
 /**
  * Constants
