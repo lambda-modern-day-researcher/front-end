@@ -4,34 +4,74 @@
  * Dependencies
  */
 
-const React = require('react')
-const styles = require('./styles/index')
+import React from 'react'
+import { connect } from 'react-redux'
+import { NavbarStyle } from './styles/index'
+import actions from '../../store/actions/index'
+
+/**
+ * Constants
+ */
+
+const Component = React.Component
+const shareLink = actions.shareLink
+const getMainLinks = actions.getMainLinks
+const filterBySearch = actions.filterBySearch
 
 /**
  * Define component
  */
 
-function Navbar() {
-  return (
-    <styles.NavbarStyle>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="row">
-          <div className="col-12 d-flex justify-content-center">
+class Navbar extends Component {
+  constructor() {
+    super()
+    this.state = {
+      query: ''
+    }
+  }
 
-            <form className="form-inline">
-              <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-              <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-            </form>
+  handleFilterBySearch = (event) => {
+    event.preventDefault()
+    this.props.filterBySearch(
+      this.props.usersReducer.current_user_id,
+      this.state.query,
+    )
+  }
 
+  handleOnChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  render() {
+    return (
+      <NavbarStyle>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div className="row">
+            <div className="col-12 d-flex justify-content-center">
+
+              <form className="form-inline" onSubmit={this.handleFilterBySearch}>
+                <input className="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search" value={this.state.query} onChange={this.handleOnChange}></input>
+                <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+              </form>
+
+            </div>
           </div>
-        </div>
-      </nav>
-    </styles.NavbarStyle>
-  )
+        </nav>
+      </NavbarStyle>
+    )
+  }
+}
+
+/**
+ * Define mapStateToProps
+ */
+
+const mapStateToProps = (state) => {
+  return state
 }
 
 /**
  * Export component
  */
 
-module.exports = Navbar
+export default connect(mapStateToProps, { filterBySearch, getMainLinks })(Navbar)

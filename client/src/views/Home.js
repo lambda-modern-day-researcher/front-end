@@ -4,9 +4,9 @@
  * Dependencies
  */
 
-const React = require('react')
-const components = require('../components/Home/index')
-const styles = require('./styles/index')
+import React from 'react'
+import { Navbar, LeftNav, MainContainer } from '../components/Home/index'
+import { HomeStyle } from './styles/index'
 
 /**
  * Define component
@@ -14,18 +14,18 @@ const styles = require('./styles/index')
 
 function Home() {
   return (
-    <styles.HomeStyle>
-      <components.Navbar />
+    <HomeStyle>
+      <Navbar />
 
       <div className="row mx-auto">
         <div className="col-4 col-lg-3 col-xl-2 border-right">
-          <components.LeftNav />
+          <LeftNav />
         </div>
         <div className="col-8 col-lg-9 col-xl-10">
-          <components.MainContainer />
+          <MainContainer />
         </div>
       </div>
-    </styles.HomeStyle>
+    </HomeStyle>
   )
 }
 
@@ -33,4 +33,4 @@ function Home() {
  * Export component
  */
 
-module.exports = Home
+export default Home

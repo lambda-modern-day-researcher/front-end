@@ -1,9 +1,15 @@
 'use strict'
 
 /**
+ * Dependencies
+ */
+
+import TitleStyle from './TitleStyle'
+
+/**
  * Export styles
  */
 
-module.exports = {
-  TitleStyle: require('./TitleStyle'),
+export {
+  TitleStyle,
 }

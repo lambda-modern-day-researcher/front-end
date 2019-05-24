@@ -1,9 +1,15 @@
 'use strict'
 
 /**
+ * Dependencies
+ */
+
+import PrivateRoute from './PrivateRoute'
+
+/**
  * Export route helpers
  */
 
-module.exports = {
-  PrivateRoute: require('./PrivateRoute'),
+export {
+  PrivateRoute,
 }

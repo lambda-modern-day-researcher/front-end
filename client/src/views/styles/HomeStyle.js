@@ -4,19 +4,13 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
-
-/**
- * Constants
- */
-
-const styled = styled_components.default
+import styled from 'styled-components'
 
 /**
  * Define style
  */
 
-let HomeStyle = styled.div(() => `
+const HomeStyle = styled.div(() => `
   height: 100vh;
 
   .mx-auto {
@@ -32,4 +26,4 @@ let HomeStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = HomeStyle
+export default HomeStyle

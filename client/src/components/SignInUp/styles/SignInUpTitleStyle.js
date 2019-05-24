@@ -4,19 +4,13 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
-
-/**
- * Constants
- */
-
-const styled = styled_components.default
+import styled from 'styled-components'
 
 /**
  * Define style
  */
 
-let SignInUpTitleStyle = styled.div(() => `
+const SignInUpTitleStyle = styled.div(() => `
   .text-center {
     text-align: center !important;
   }
@@ -34,4 +28,4 @@ let SignInUpTitleStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = SignInUpTitleStyle
+export default SignInUpTitleStyle

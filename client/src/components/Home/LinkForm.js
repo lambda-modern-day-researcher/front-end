@@ -4,17 +4,16 @@
  * Dependencies
  */
 
-const React = require('react')
-const react_redux = require('react-redux')
-const styles = require('./styles/index')
-const actions = require('../../store/actions/index')
+import React from 'react'
+import { connect } from 'react-redux'
+import { LinkFormStyle } from './styles/index'
+import actions from '../../store/actions/index'
 
 /**
  * Constants
  */
 
 const Component = React.Component
-const connect = react_redux.connect
 const shareLink = actions.shareLink
 const getMainLinks = actions.getMainLinks
 
@@ -52,7 +51,7 @@ class LinkForm extends Component {
 
   render() {
     return (
-      <styles.LinkFormStyle>
+      <LinkFormStyle>
         <form onSubmit={this.handleOnSubmit}>
           <div className="row">
             <div className="col-9 pr-1">
@@ -72,7 +71,7 @@ class LinkForm extends Component {
             </div>
           </div>
         </form>
-      </styles.LinkFormStyle>
+      </LinkFormStyle>
     )
   }
 }
@@ -89,4 +88,4 @@ const mapStateToProps = (state) => {
  * Export component
  */
 
-module.exports = connect(mapStateToProps, { shareLink, getMainLinks })(LinkForm)
+export default connect(mapStateToProps, { shareLink, getMainLinks })(LinkForm)

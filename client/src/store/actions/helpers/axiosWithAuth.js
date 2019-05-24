@@ -4,7 +4,7 @@
  * Dependencies
  */
 
-const axios = require('axios')
+import axios from 'axios'
 
 /**
  * Define helper
@@ -25,4 +25,4 @@ const axiosWithAuth = () => {
  * Export helper
  */
 
-module.exports = axiosWithAuth
+export default axiosWithAuth

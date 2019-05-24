@@ -4,20 +4,19 @@
  * Dependencies
  */
 
-const React = require('react')
-const react_redux = require('react-redux')
-const material_ui = require('@material-ui/core')
-const styles = require('./styles/index')
-const Category = require('./Category')
-const actions = require('../../store/actions/index')
+import React from 'react'
+import { connect } from 'react-redux'
+import { LinearProgress } from '@material-ui/core'
+import { CategoryListStyle } from './styles/index'
+import Category from './Category'
+import actions from '../../store/actions/index'
 
 /**
  * Constants
  */
 
 const Component = React.Component
-const connect = react_redux.connect
-const LinearProgress = material_ui.LinearProgress
+
 const getCategories = actions.getCategories
 
 /**
@@ -31,7 +30,7 @@ class CategoryList extends Component {
 
   render() {
     return (
-      <styles.CategoryListStyle>
+      <CategoryListStyle>
         <div className="row">
           <div className="col-12">
             {(this.props.usersReducer.isFetchingCategories) ?
@@ -42,7 +41,7 @@ class CategoryList extends Component {
             }
           </div>
         </div>
-      </styles.CategoryListStyle>
+      </CategoryListStyle>
     )
   }
 }
@@ -59,4 +58,4 @@ const mapStateToProps = (state) => {
  * Export component
  */
 
-module.exports = connect(mapStateToProps, { getCategories })(CategoryList)
+export default connect(mapStateToProps, { getCategories })(CategoryList)

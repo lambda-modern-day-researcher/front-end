@@ -4,19 +4,13 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
-
-/**
- * Constants
- */
-
-const styled = styled_components.default
+import styled from 'styled-components'
 
 /**
  * Define style
  */
 
-let SignInUpStyle = styled.div(() => `
+const SignInUpStyle = styled.div(() => `
   height: 100vh;
   background-color: #F8F9FC !important;
 `)
@@ -25,4 +19,4 @@ let SignInUpStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = SignInUpStyle
+export default SignInUpStyle

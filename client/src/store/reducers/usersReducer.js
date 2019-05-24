@@ -4,7 +4,7 @@
  * Dependencies
  */
 
-const actions = require('../actions/index')
+import actions from '../actions/index'
 
 /**
  * Constants
@@ -13,6 +13,7 @@ const actions = require('../actions/index')
 const initialState = {
   isSigningIn: false,
   isSigningUp: false,
+  isSigningOut: false,
   isFetchingPriorityLinks: false,
   isFetchingMainLinks: false,
   isFetchingCategories: false,
@@ -21,6 +22,7 @@ const initialState = {
   isCreatingCategory: false,
   isCompletingLink: false,
   isDeletingLink: false,
+  isFilteringBySearch: false,
   isSettingLinkPriority: false,
   isFilteringByCategory: false,
   isUpdatingLinkTitle: false,
@@ -53,6 +55,7 @@ function usersReducer(state = initialState, action) {
       localStorage.setItem('user_email', action.payload.user.email)
       localStorage.setItem('user_username', action.payload.user.username)
       localStorage.setItem('user_is_private', action.payload.user.is_private)
+      console.log('actions.SIGNUP_SUCCESS')
       return Object.assign({}, state, {
         isSigningUp: false,
         current_user_id: action.payload.user.id,
@@ -78,6 +81,7 @@ function usersReducer(state = initialState, action) {
       localStorage.setItem('user_email', action.payload.user.email)
       localStorage.setItem('user_username', action.payload.user.username)
       localStorage.setItem('user_is_private', action.payload.user.is_private)
+      console.log('actions.SIGNIN_SUCCESS')
       return Object.assign({}, state, {
         isSigningIn: false,
         current_user_id: action.payload.user.id,
@@ -93,15 +97,52 @@ function usersReducer(state = initialState, action) {
         isSigningIn: false,
         error: action.payload
       })
+    case actions.SIGNOUT_START:
+      localStorage.clear()
+      return Object.assign({}, state, {
+        isSigningOut: true,
+        error: action.payload
+      })
+    case actions.SIGNOUT_SUCCESS:
+      return Object.assign({}, state, {
+        isSigningOut: false,
+        error: action.payload
+      })
     case actions.FETCH_PRIORITY_LINKS_START:
       return Object.assign({}, state, {
         isFetchingPriorityLinks: true,
         error: ''
       })
     case actions.FETCH_PRIORITY_LINKS_SUCCESS:
+      let priority_links = {}
+
+      action.payload.forEach(link => {
+        priority_links[link.link_id] = (priority_links[link.link_id] || {})
+        priority_links[link.link_id].categories = (priority_links[link.link_id].categories || [])
+
+        priority_links[link.link_id] = {
+          link_id: link.link_id,
+          is_pinned: link.is_pinned,
+          read: link.read,
+          shared_by: link.shared_by,
+          shared_with: link.shared_with,
+          title: link.title,
+          url: link.url,
+          categories: priority_links[link.link_id].categories.concat({
+            category_color: link.category_color,
+            category_title: link.category_title,
+            category_id: link.category_id,
+          })
+        }
+      })
+
+      let new_priority_links = Object.keys(priority_links).map(key => {
+        return priority_links[key]
+      })
+
       return Object.assign({}, state, {
         isFetchingPriorityLinks: false,
-        priority_links: action.payload,
+        priority_links: new_priority_links,
         error: ''
       })
     case actions.FETCH_PRIORITY_LINKS_ERROR:
@@ -115,9 +156,35 @@ function usersReducer(state = initialState, action) {
         error: ''
       })
     case actions.FETCH_MAIN_LINKS_SUCCESS:
+      let main_links = {}
+
+      action.payload.forEach(link => {
+        main_links[link.link_id] = (main_links[link.link_id] || {})
+        main_links[link.link_id].categories = (main_links[link.link_id].categories || [])
+
+        main_links[link.link_id] = {
+          link_id: link.link_id,
+          is_pinned: link.is_pinned,
+          read: link.read,
+          shared_by: link.shared_by,
+          shared_with: link.shared_with,
+          title: link.title,
+          url: link.url,
+          categories: main_links[link.link_id].categories.concat({
+            category_color: link.category_color,
+            category_title: link.category_title,
+            category_id: link.category_id,
+          })
+        }
+      })
+
+      let new_main_links = Object.keys(main_links).map(key => {
+        return main_links[key]
+      })
+
       return Object.assign({}, state, {
         isFetchingMainLinks: false,
-        main_links: action.payload,
+        main_links: new_main_links,
         error: ''
       })
     case actions.FETCH_MAIN_LINKS_ERROR:
@@ -222,14 +289,84 @@ function usersReducer(state = initialState, action) {
         error: ''
       })
     case actions.FILTER_BY_CATEGORY_SUCCESS:
+      let filtered = {}
+
+      action.payload.forEach(link => {
+        filtered[link.link_id] = (filtered[link.link_id] || {})
+        filtered[link.link_id].categories = (filtered[link.link_id].categories || [])
+
+        filtered[link.link_id] = {
+          link_id: link.link_id,
+          is_pinned: link.is_pinned,
+          read: link.read,
+          shared_by: link.shared_by,
+          shared_with: link.shared_with,
+          title: link.title,
+          url: link.url,
+          categories: filtered[link.link_id].categories.concat({
+            category_color: link.category_color,
+            category_title: link.category_title,
+            category_id: link.category_id,
+          })
+        }
+      })
+
+      let new_filtered = Object.keys(filtered).map(key => {
+        return filtered[key]
+      })
+
       return Object.assign({}, state, {
         isFilteringByCategory: false,
-        main_links: action.payload,
+        main_links: new_filtered,
         error: ''
       })
     case actions.FILTER_BY_CATEGORY_ERROR:
       return Object.assign({}, state, {
         isFilteringByCategory: false,
+        error: action.payload
+      })
+    case actions.FILTER_BY_SEARCH_START:
+      return Object.assign({}, state, {
+        isFilteringBySearch: true,
+        error: ''
+      })
+    case actions.FILTER_BY_SEARCH_SUCCESS:
+      let search_filtered = {}
+
+      action.payload.forEach(link => {
+        search_filtered[link.link_id] = (search_filtered[link.link_id] || {})
+        search_filtered[link.link_id].categories = (search_filtered[link.link_id].categories || [])
+
+        search_filtered[link.link_id] = {
+          link_id: link.link_id,
+          is_pinned: link.is_pinned,
+          read: link.read,
+          shared_by: link.shared_by,
+          shared_with: link.shared_with,
+          title: link.title,
+          url: link.url,
+          categories: search_filtered[link.link_id].categories.concat({
+            category_color: link.category_color,
+            category_title: link.category_title,
+            category_id: link.category_id,
+          })
+        }
+      })
+
+      let new_search_filtered = Object.keys(search_filtered).map(key => {
+        return search_filtered[key]
+      })
+
+      let query_search_filtered = new_search_filtered.filter(link => link.title.includes(action.query))
+
+      return Object.assign({}, state, {
+        isFilteringBySearch: false,
+        main_links: query_search_filtered,
+        error: ''
+      })
+    case actions.FILTER_BY_SEARCH_ERROR:
+      return Object.assign({}, state, {
+        isFilteringBySearch: false,
         error: action.payload
       })
     case actions.UPDATE_LINK_TITLE_START:
@@ -289,4 +426,4 @@ function usersReducer(state = initialState, action) {
  * Export reducer
  */
 
-module.exports = usersReducer
+export default usersReducer

@@ -4,31 +4,47 @@
  * Dependencies
  */
 
-const React = require('react')
-const react_router_dom = require('react-router-dom')
-const styles = require('./styles/index')
+import React from 'react'
+import { connect } from 'react-redux'
+import { Link, Router } from 'react-router-dom'
+import { SignOutLinkStyle } from './styles/index'
+import actions from '../../store/actions/index'
 
 /**
  * Constants
  */
 
-const Link = react_router_dom.Link
-const Router = react_router_dom.Router
+const Component = React.Component
+const signOut = actions.signOut
 
 /**
  * Define component
  */
 
-function SignOutLink(props) {
-  return (
-    <styles.SignOutLinkStyle>
-      <Link to="/users/signin" onClick={() => localStorage.clear()}>Sign out</Link>
-    </styles.SignOutLinkStyle>
-  )
+class SignOutLink extends Component {
+  handleSignOut = (event) => {
+    this.props.signOut()
+  }
+
+  render() {
+    return (
+      <SignOutLinkStyle>
+        <Link to="/users/signin" onClick={this.handleSignOut}>Sign out</Link>
+      </SignOutLinkStyle>
+    )
+  }
+}
+
+/**
+ * Define mapStateToProps
+ */
+
+const mapStateToProps = (state) => {
+  return state
 }
 
 /**
  * Export component
  */
 
-module.exports = SignOutLink
+export default connect(null, { signOut })(SignOutLink)

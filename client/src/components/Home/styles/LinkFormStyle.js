@@ -4,19 +4,13 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
-
-/**
- * Constants
- */
-
-const styled = styled_components.default
+import styled from 'styled-components'
 
 /**
  * Define style
  */
 
-let LinkFormStyle = styled.div(() => `
+const LinkFormStyle = styled.div(() => `
   padding-top: 5px;
 
   .form-group {
@@ -118,4 +112,4 @@ let LinkFormStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = LinkFormStyle
+export default LinkFormStyle

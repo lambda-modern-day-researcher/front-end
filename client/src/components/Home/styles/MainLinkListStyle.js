@@ -4,19 +4,13 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
-
-/**
- * Constants
- */
-
-const styled = styled_components.default
+import styled from 'styled-components'
 
 /**
  * Define style
  */
 
-let MainLinkListStyle = styled.div(() => `
+const MainLinkListStyle = styled.div(() => `
   margin-top: 15px;
 `)
 
@@ -24,4 +18,4 @@ let MainLinkListStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = MainLinkListStyle
+export default MainLinkListStyle

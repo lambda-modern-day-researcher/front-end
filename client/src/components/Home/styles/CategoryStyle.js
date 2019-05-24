@@ -4,19 +4,13 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
-
-/**
- * Constants
- */
-
-const styled = styled_components.default
+import styled from 'styled-components'
 
 /**
  * Define style
  */
 
-let CategoryStyle = styled.li(() => `
+const CategoryStyle = styled.li(() => `
   .glyph__circle {
     height: 15px;
     width: 15px;
@@ -56,4 +50,4 @@ let CategoryStyle = styled.li(() => `
  * Export style
  */
 
-module.exports = CategoryStyle
+export default CategoryStyle

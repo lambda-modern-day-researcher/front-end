@@ -4,20 +4,18 @@
  * Dependencies
  */
 
-const React = require('react')
-const react_redux = require('react-redux')
-const material_ui = require('@material-ui/core')
-const styles = require('./styles/index')
-const Link = require('./Link')
-const actions = require('../../store/actions/index')
+import React from 'react'
+import { connect } from 'react-redux'
+import { LinearProgress } from '@material-ui/core'
+import { PriorityLinkListStyle } from './styles/index'
+import Link from './Link'
+import actions from '../../store/actions/index'
 
 /**
  * Constants
  */
 
 const Component = React.Component
-const connect = react_redux.connect
-const LinearProgress = material_ui.LinearProgress
 const getPriorityLinks = actions.getPriorityLinks
 
 /**
@@ -30,8 +28,9 @@ class PriorityLinkList extends Component {
   }
 
   render() {
+    console.log("this.props.usersReducer.priority_links", this.props.usersReducer.priority_links)
     return (
-      <styles.PriorityLinkListStyle>
+      <PriorityLinkListStyle>
         {(this.props.usersReducer.priority_links.length > 0) ?
           <div className="row">
             <div className="col-12">
@@ -48,7 +47,7 @@ class PriorityLinkList extends Component {
             </div>
           </div>
           : ''}
-      </styles.PriorityLinkListStyle>
+      </PriorityLinkListStyle>
     )
   }
 }
@@ -65,4 +64,4 @@ const mapStateToProps = (state) => {
  * Export component
  */
 
-module.exports = connect(mapStateToProps, { getPriorityLinks })(PriorityLinkList)
+export default connect(mapStateToProps, { getPriorityLinks })(PriorityLinkList)

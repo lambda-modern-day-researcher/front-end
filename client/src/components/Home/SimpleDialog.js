@@ -4,9 +4,9 @@
  * Dependencies
  */
 
-const React = require('react')
-const Dialog = require('@material-ui/core/Dialog')
-const DialogTitle = require('@material-ui/core/DialogTitle')
+import React from 'react'
+import Dialog from '@material-ui/core/Dialog'
+import DialogTitle from '@material-ui/core/DialogTitle'
 
 /**
  * Define component
@@ -32,4 +32,4 @@ function SimpleDialog(props) {
  * Export component
  */
 
-module.exports = SimpleDialog
+export default SimpleDialog

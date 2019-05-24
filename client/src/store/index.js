@@ -4,19 +4,10 @@
  * Dependencies
  */
 
-const redux = require('redux')
-const redux_logger = require('redux-logger')
-const redux_thunk = require('redux-thunk')
-const reducers = require('./reducers/index')
-
-/**
- * Constants
- */
-
-const createStore = redux.createStore
-const applyMiddleware = redux.applyMiddleware
-const logger = redux_logger.logger
-const think = redux_thunk.default
+import { createStore, applyMiddleware } from 'redux'
+import { logger } from 'redux-logger'
+import thunk from 'redux-thunk'
+import reducers from './reducers/index'
 
 /**
  * Define store
@@ -26,7 +17,7 @@ const store = createStore(
   reducers,
   applyMiddleware(
     logger,
-    think
+    thunk
   )
 )
 
@@ -34,4 +25,4 @@ const store = createStore(
  * Export store
  */
 
-module.exports = store
+export default store

@@ -4,20 +4,18 @@
  * Dependencies
  */
 
-const React = require('react')
-const react_redux = require('react-redux')
-const material_ui = require('@material-ui/core')
-const styles = require('./styles/index')
-const Link = require('./Link')
-const actions = require('../../store/actions/index')
+import React from 'react'
+import { connect } from 'react-redux'
+import { LinearProgress } from '@material-ui/core'
+import { MainLinkListStyle } from './styles/index'
+import Link from './Link'
+import actions from '../../store/actions/index'
 
 /**
  * Constants
  */
 
 const Component = React.Component
-const connect = react_redux.connect
-const LinearProgress = material_ui.LinearProgress
 const getMainLinks = actions.getMainLinks
 
 /**
@@ -31,18 +29,24 @@ class MainLinkList extends Component {
 
   render() {
     return (
-      <styles.MainLinkListStyle>
-        <h4>All</h4>
+      <MainLinkListStyle>
+        {(this.props.usersReducer.main_links.length > 0) ?
+          <div className="row">
+            <div className="col-12">
+              <h4>All</h4>
 
-        <hr/>
+              <hr/>
 
-        {(this.props.usersReducer.isFetchingMainLinks) ?
-          <LinearProgress /> :
-          <ul>
-            {this.props.usersReducer.main_links.map((link, i) => <Link key={i} {...link} />)}
-          </ul>
-        }
-      </styles.MainLinkListStyle>
+              {(this.props.usersReducer.isFetchingMainLinks) ?
+                <LinearProgress /> :
+                <ul>
+                  {this.props.usersReducer.main_links.map((link, i) => <Link key={i} {...link} />)}
+                </ul>
+              }
+            </div>
+          </div>
+          : ''}
+      </MainLinkListStyle>
     )
   }
 }
@@ -59,4 +63,4 @@ const mapStateToProps = (state) => {
  * Export component
  */
 
-module.exports = connect(mapStateToProps, { getMainLinks })(MainLinkList)
+export default connect(mapStateToProps, { getMainLinks })(MainLinkList)

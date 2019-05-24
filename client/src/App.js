@@ -4,24 +4,17 @@
  * Dependencies
  */
 
-const React = require('react')
-const react_redux = require('react-redux')
-const react_router_dom = require('react-router-dom')
-const routes = require('./routes/index')
-const store = require('./store/index')
-
-/**
- * Constants
- */
-
-const Provider = react_redux.Provider
-const BrowserRouter = react_router_dom.BrowserRouter
+import React from 'react'
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+import { RootRouter, UsersRouter } from './routes/index'
+import store from './store/index'
 
 /**
  * Importing global styles
  */
 
-require('./App.scss')
+import './App.scss'
 
 /**
  * Define component
@@ -31,8 +24,8 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <routes.RootRouter mount="/" />
-        <routes.UsersRouter mount="/users" />
+        <RootRouter mount="/" />
+        <UsersRouter mount="/users" />
       </BrowserRouter>
     </Provider>
   )
@@ -42,4 +35,4 @@ function App() {
  * Export component
  */
 
-module.exports = App
+export default App

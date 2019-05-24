@@ -1,10 +1,17 @@
 'use strict'
 
 /**
+ * Dependencies
+ */
+
+import SignInUpForm from './SignInUpForm'
+import SignInUpTitle from './SignInUpTitle'
+
+/**
  * Export components
  */
 
-module.exports = {
-  SignInUpForm: require('./SignInUpForm'),
-  SignInUpTitle: require('./SignInUpTitle'),
+export {
+  SignInUpForm,
+  SignInUpTitle,
 }

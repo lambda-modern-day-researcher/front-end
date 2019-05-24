@@ -1,10 +1,17 @@
 'use strict'
 
 /**
+ * Dependencies
+ */
+
+import SignInUpFormStyle from './SignInUpFormStyle'
+import SignInUpTitleStyle from './SignInUpTitleStyle'
+
+/**
  * Export styles
  */
 
-module.exports = {
-  SignInUpFormStyle: require('./SignInUpFormStyle'),
-  SignInUpTitleStyle: require('./SignInUpTitleStyle'),
+export {
+  SignInUpFormStyle,
+  SignInUpTitleStyle,
 }

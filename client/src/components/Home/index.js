@@ -1,11 +1,19 @@
 'use strict'
 
 /**
+ * Dependencies
+ */
+
+import LeftNav from './LeftNav'
+import MainContainer from './MainContainer'
+import Navbar from './Navbar'
+
+/**
  * Export components
  */
 
-module.exports = {
-  LeftNav: require('./LeftNav'),
-  MainContainer: require('./MainContainer'),
-  Navbar: require('./Navbar'),
+export {
+  LeftNav,
+  MainContainer,
+  Navbar,
 }

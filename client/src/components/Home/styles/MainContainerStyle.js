@@ -4,19 +4,13 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
-
-/**
- * Constants
- */
-
-const styled = styled_components.default
+import styled from 'styled-components'
 
 /**
  * Define style
  */
 
-let MainContainerStyle = styled.div(() => `
+const MainContainerStyle = styled.div(() => `
   height: 100vh;
   background-color: #FFF;
 `)
@@ -25,4 +19,4 @@ let MainContainerStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = MainContainerStyle
+export default MainContainerStyle

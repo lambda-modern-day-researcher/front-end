@@ -4,9 +4,9 @@
  * Dependencies
  */
 
-const React = require('react')
-const components = require('../components/SignInUp/index')
-const styles = require('./styles/index')
+import React from 'react'
+import { SignInUpTitle, SignInUpForm } from '../components/SignInUp/index'
+import { SignInUpStyle } from './styles/index'
 
 /**
  * Define component
@@ -14,16 +14,16 @@ const styles = require('./styles/index')
 
 function SignUp(props) {
   return (
-    <styles.SignInUpStyle>
+    <SignInUpStyle>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-10 col-md-8 col-lg-5">
-            <components.SignInUpTitle />
-            <components.SignInUpForm {...props} in_or_up='up' />
+            <SignInUpTitle />
+            <SignInUpForm {...props} in_or_up='up' />
           </div>
         </div>
       </div>
-    </styles.SignInUpStyle>
+    </SignInUpStyle>
   )
 }
 
@@ -31,4 +31,4 @@ function SignUp(props) {
  * Export component
  */
 
-module.exports = SignUp
+export default SignUp

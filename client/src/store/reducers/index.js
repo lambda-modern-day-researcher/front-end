@@ -4,14 +4,8 @@
  * Dependencies
  */
 
-const redux = require('redux')
-const usersReducer = require('./usersReducer')
-
-/**
- * Constants
- */
-
-const combineReducers = redux.combineReducers
+import { combineReducers } from 'redux'
+import usersReducer from './usersReducer'
 
 /**
  * Combine reducers
@@ -26,4 +20,4 @@ const reducers = combineReducers({
  * Export reducers
  */
 
-module.exports = reducers
+export default reducers

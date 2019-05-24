@@ -1,9 +1,15 @@
 'use strict'
 
 /**
+ * Dependencies
+ */
+
+import axiosWithAuth from './axiosWithAuth'
+
+/**
  * Export action helpers
  */
 
-module.exports = {
-  axiosWithAuth: require('./axiosWithAuth'),
+export {
+  axiosWithAuth,
 }

@@ -1,9 +1,15 @@
 'use strict'
 
 /**
+ * Dependencies
+ */
+
+import Title from './Title'
+
+/**
  * Export components
  */
 
-module.exports = {
-  Title: require('./Title'),
+export {
+  Title,
 }

@@ -4,12 +4,12 @@
  * Dependencies
  */
 
-const React = require('react')
-const styles = require('./styles/index')
-const SignOutLink = require('./SignOutLink')
-const LinkForm = require('./LinkForm')
-const PriorityLinkList = require('./PriorityLinkList')
-const MainLinkList = require('./MainLinkList')
+import React from 'react'
+import { MainContainerStyle } from './styles/index'
+import SignOutLink from './SignOutLink'
+import LinkForm from './LinkForm'
+import PriorityLinkList from './PriorityLinkList'
+import MainLinkList from './MainLinkList'
 
 /**
  * Define component
@@ -17,7 +17,7 @@ const MainLinkList = require('./MainLinkList')
 
 function MainContainer() {
   return (
-    <styles.MainContainerStyle>
+    <MainContainerStyle>
       <section>
         <div className="container">
           <div className="row">
@@ -30,7 +30,7 @@ function MainContainer() {
           </div>
         </div>
       </section>
-    </styles.MainContainerStyle>
+    </MainContainerStyle>
   )
 }
 
@@ -38,4 +38,4 @@ function MainContainer() {
  * Export component
  */
 
-module.exports = MainContainer
+export default MainContainer

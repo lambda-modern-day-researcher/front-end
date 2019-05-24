@@ -4,8 +4,8 @@
  * Dependencies
  */
 
-const React = require('react')
-const styles = require('./styles/index')
+import React from 'react'
+import { SignInUpTitleStyle } from './styles/index'
 
 /**
  * Define component
@@ -13,10 +13,10 @@ const styles = require('./styles/index')
 
 function SignInUpTitle() {
   return (
-    <styles.SignInUpTitleStyle>
+    <SignInUpTitleStyle>
       <p className="text-center mt-4">LET'S DO THIS</p>
       <h2 className="text-center mb-4">Time to manage link chaos</h2>
-    </styles.SignInUpTitleStyle>
+    </SignInUpTitleStyle>
   )
 }
 
@@ -24,4 +24,4 @@ function SignInUpTitle() {
  * Export component
  */
 
-module.exports = SignInUpTitle
+export default SignInUpTitle

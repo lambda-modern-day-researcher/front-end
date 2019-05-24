@@ -1,20 +1,37 @@
 'use strict'
 
 /**
+ * Dependencies
+ */
+
+import CategoryFormStyle from './CategoryFormStyle'
+import CategoryIndicatorStyle from './CategoryIndicatorStyle'
+import CategoryListStyle from './CategoryListStyle'
+import CategoryStyle from './CategoryStyle'
+import LeftNavStyle from './LeftNavStyle'
+import LinkFormStyle from './LinkFormStyle'
+import LinkStyle from './LinkStyle'
+import MainContainerStyle from './MainContainerStyle'
+import MainLinkListStyle from './MainLinkListStyle'
+import NavbarStyle from './NavbarStyle'
+import PriorityLinkListStyle from './PriorityLinkListStyle'
+import SignOutLinkStyle from './SignOutLinkStyle'
+
+/**
  * Export styles
  */
 
-module.exports = {
-  CategoryFormStyle: require('./CategoryFormStyle'),
-  CategoryIndicatorStyle: require('./CategoryIndicatorStyle'),
-  CategoryListStyle: require('./CategoryListStyle'),
-  CategoryStyle: require('./CategoryStyle'),
-  LeftNavStyle: require('./LeftNavStyle'),
-  LinkFormStyle: require('./LinkFormStyle'),
-  LinkStyle: require('./LinkStyle'),
-  MainContainerStyle: require('./MainContainerStyle'),
-  MainLinkListStyle: require('./MainLinkListStyle'),
-  NavbarStyle: require('./NavbarStyle'),
-  PriorityLinkListStyle: require('./PriorityLinkListStyle'),
-  SignOutLinkStyle: require('./SignOutLinkStyle'),
+export {
+  CategoryFormStyle,
+  CategoryIndicatorStyle,
+  CategoryListStyle,
+  CategoryStyle,
+  LeftNavStyle,
+  LinkFormStyle,
+  LinkStyle,
+  MainContainerStyle,
+  MainLinkListStyle,
+  NavbarStyle,
+  PriorityLinkListStyle,
+  SignOutLinkStyle,
 }

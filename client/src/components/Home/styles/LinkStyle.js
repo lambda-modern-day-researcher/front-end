@@ -4,19 +4,13 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
-
-/**
- * Constants
- */
-
-const styled = styled_components.default
+import styled from 'styled-components'
 
 /**
  * Define style
  */
 
-let LinkStyle = styled.li(() => `
+const LinkStyle = styled.li(() => `
   margin-bottom: 10px;
 
   .text__title {
@@ -99,10 +93,19 @@ let LinkStyle = styled.li(() => `
   a {
     color: #0000EE;
   }
+
+  .glyph__circle {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
 `)
 
 /**
  * Export style
  */
 
-module.exports = LinkStyle
+export default LinkStyle

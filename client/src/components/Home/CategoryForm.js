@@ -4,17 +4,16 @@
  * Dependencies
  */
 
-const React = require('react')
-const react_redux = require('react-redux')
-const styles = require('./styles/index')
-const actions = require('../../store/actions/index')
+import React from 'react'
+import { connect } from 'react-redux'
+import { CategoryFormStyle } from './styles/index'
+import actions from '../../store/actions/index'
 
 /**
  * Constants
  */
 
 const Component = React.Component
-const connect = react_redux.connect
 const getCategories = actions.getCategories
 const createCategory = actions.createCategory
 
@@ -48,13 +47,13 @@ class CategoryForm extends Component {
 
   render() {
     return (
-      <styles.CategoryFormStyle>
+      <CategoryFormStyle>
         <form className="form-inline" onSubmit={this.handleOnSubmit}>
           <input type="color" name="color" value={this.state.color} onChange={this.handleOnChange} className="form-control form-control-sm input__color" required={true}></input>
           <input type="text" name="title" value={this.state.title} onChange={this.handleOnChange} placeholder="Category" className="form-control form-control-sm input__category" required={true}></input>
           <button type="submit" className="btn btn-sm btn-block btn-light btn__submit">Add</button>
         </form>
-      </styles.CategoryFormStyle>
+      </CategoryFormStyle>
     )
   }
 }
@@ -71,4 +70,4 @@ const mapStateToProps = (state) => {
  * Export component
  */
 
-module.exports = connect(mapStateToProps, { createCategory, getCategories })(CategoryForm)
+export default connect(mapStateToProps, { createCategory, getCategories })(CategoryForm)

@@ -4,19 +4,13 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
-
-/**
- * Constants
- */
-
-const styled = styled_components.default
+import styled from 'styled-components'
 
 /**
  * Define style
  */
 
-let LeftNavStyle = styled.div(() => `
+const LeftNavStyle = styled.div(() => `
   height: 100vh;
 `)
 
@@ -24,4 +18,4 @@ let LeftNavStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = LeftNavStyle
+export default LeftNavStyle
