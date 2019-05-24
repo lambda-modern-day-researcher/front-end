@@ -93,6 +93,15 @@ const LinkStyle = styled.li(() => `
   a {
     color: #0000EE;
   }
+
+  .glyph__circle {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
 `)
 
 /**

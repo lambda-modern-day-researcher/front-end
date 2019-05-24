@@ -113,9 +113,35 @@ function usersReducer(state = initialState, action) {
         error: ''
       })
     case actions.FETCH_PRIORITY_LINKS_SUCCESS:
+      let priority_links = {}
+
+      action.payload.forEach(link => {
+        priority_links[link.link_id] = (priority_links[link.link_id] || {})
+        priority_links[link.link_id].categories = (priority_links[link.link_id].categories || [])
+
+        priority_links[link.link_id] = {
+          link_id: link.link_id,
+          is_pinned: link.is_pinned,
+          read: link.read,
+          shared_by: link.shared_by,
+          shared_with: link.shared_with,
+          title: link.title,
+          url: link.url,
+          categories: priority_links[link.link_id].categories.concat({
+            category_color: link.category_color,
+            category_title: link.category_title,
+            category_id: link.category_id,
+          })
+        }
+      })
+
+      let new_priority_links = Object.keys(priority_links).map(key => {
+        return priority_links[key]
+      })
+
       return Object.assign({}, state, {
         isFetchingPriorityLinks: false,
-        priority_links: action.payload,
+        priority_links: new_priority_links,
         error: ''
       })
     case actions.FETCH_PRIORITY_LINKS_ERROR:
@@ -129,9 +155,35 @@ function usersReducer(state = initialState, action) {
         error: ''
       })
     case actions.FETCH_MAIN_LINKS_SUCCESS:
+      let main_links = {}
+
+      action.payload.forEach(link => {
+        main_links[link.link_id] = (main_links[link.link_id] || {})
+        main_links[link.link_id].categories = (main_links[link.link_id].categories || [])
+
+        main_links[link.link_id] = {
+          link_id: link.link_id,
+          is_pinned: link.is_pinned,
+          read: link.read,
+          shared_by: link.shared_by,
+          shared_with: link.shared_with,
+          title: link.title,
+          url: link.url,
+          categories: main_links[link.link_id].categories.concat({
+            category_color: link.category_color,
+            category_title: link.category_title,
+            category_id: link.category_id,
+          })
+        }
+      })
+
+      let new_main_links = Object.keys(main_links).map(key => {
+        return main_links[key]
+      })
+
       return Object.assign({}, state, {
         isFetchingMainLinks: false,
-        main_links: action.payload,
+        main_links: new_main_links,
         error: ''
       })
     case actions.FETCH_MAIN_LINKS_ERROR:
@@ -236,9 +288,35 @@ function usersReducer(state = initialState, action) {
         error: ''
       })
     case actions.FILTER_BY_CATEGORY_SUCCESS:
+      let filtered = {}
+
+      action.payload.forEach(link => {
+        filtered[link.link_id] = (filtered[link.link_id] || {})
+        filtered[link.link_id].categories = (filtered[link.link_id].categories || [])
+
+        filtered[link.link_id] = {
+          link_id: link.link_id,
+          is_pinned: link.is_pinned,
+          read: link.read,
+          shared_by: link.shared_by,
+          shared_with: link.shared_with,
+          title: link.title,
+          url: link.url,
+          categories: filtered[link.link_id].categories.concat({
+            category_color: link.category_color,
+            category_title: link.category_title,
+            category_id: link.category_id,
+          })
+        }
+      })
+
+      let new_filtered = Object.keys(filtered).map(key => {
+        return filtered[key]
+      })
+
       return Object.assign({}, state, {
         isFilteringByCategory: false,
-        main_links: action.payload,
+        main_links: new_filtered,
         error: ''
       })
     case actions.FILTER_BY_CATEGORY_ERROR:

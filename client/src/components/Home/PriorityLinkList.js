@@ -28,6 +28,7 @@ class PriorityLinkList extends Component {
   }
 
   render() {
+    console.log("this.props.usersReducer.priority_links", this.props.usersReducer.priority_links)
     return (
       <PriorityLinkListStyle>
         {(this.props.usersReducer.priority_links.length > 0) ?
