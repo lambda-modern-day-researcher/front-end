@@ -4,8 +4,8 @@
  * Dependencies
  */
 
-const React = require('react')
-const styles = require('./styles/index')
+import React from 'react'
+import styles from './styles/index'
 
 /**
  * Define component
@@ -23,4 +23,4 @@ function Title() {
  * Export component
  */
 
-module.exports = Title
+export default Title

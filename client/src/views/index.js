@@ -4,7 +4,7 @@
  * Export views
  */
 
-module.exports = {
+export default {
   Friends: require('./Friends'),
   Home: require('./Home'),
   SignIn: require('./SignIn'),

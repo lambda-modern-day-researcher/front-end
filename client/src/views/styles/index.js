@@ -4,7 +4,7 @@
  * Export styles
  */
 
-module.exports = {
+export default {
   FriendsStyle: require('./FriendsStyle'),
   HomeStyle: require('./HomeStyle'),
   SignInUpStyle: require('./SignInUpStyle'),

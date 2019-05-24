@@ -4,10 +4,10 @@
  * Dependencies
  */
 
-const React = require('react')
+import React from 'react'
 const react_redux = require('react-redux')
 const material_ui = require('@material-ui/core')
-const styles = require('./styles/index')
+import styles from './styles/index'
 const Category = require('./Category')
 const actions = require('../../store/actions/index')
 
@@ -59,4 +59,4 @@ const mapStateToProps = (state) => {
  * Export component
  */
 
-module.exports = connect(mapStateToProps, { getCategories })(CategoryList)
+export default connect(mapStateToProps, { getCategories })(CategoryList)

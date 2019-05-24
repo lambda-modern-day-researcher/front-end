@@ -4,7 +4,7 @@
  * Export components
  */
 
-module.exports = {
+export default {
   LeftNav: require('./LeftNav'),
   MainContainer: require('./MainContainer'),
   Navbar: require('./Navbar'),

@@ -4,9 +4,9 @@
  * Dependencies
  */
 
-const React = require('react')
+import React from 'react'
 const components = require('../components/Home/index')
-const styles = require('./styles/index')
+import styles from './styles/index'
 
 /**
  * Define component
@@ -33,4 +33,4 @@ function Home() {
  * Export component
  */
 
-module.exports = Home
+export default Home

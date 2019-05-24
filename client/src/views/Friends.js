@@ -4,9 +4,9 @@
  * Dependencies
  */
 
-const React = require('react')
+import React from 'react'
 const components = require('../components/Friends/index')
-const styles = require('./styles/index')
+import styles from './styles/index'
 
 /**
  * Define component
@@ -24,4 +24,4 @@ function Friends() {
  * Export component
  */
 
-module.exports = Friends
+export default Friends

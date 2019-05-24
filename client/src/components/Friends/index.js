@@ -4,6 +4,6 @@
  * Export components
  */
 
-module.exports = {
+export default {
   Title: require('./Title'),
 }

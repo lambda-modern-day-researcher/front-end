@@ -4,11 +4,11 @@
  * Dependencies
  */
 
-const React = require('react')
-const react_redux = require('react-redux')
-const react_router_dom = require('react-router-dom')
-const routes = require('./routes/index')
-const store = require('./store/index')
+import React from 'react'
+import react_redux from 'react-redux'
+import react_router_dom from 'react-router-dom'
+import routes from './routes/index'
+import store from './store/index'
 
 /**
  * Constants
@@ -21,7 +21,7 @@ const BrowserRouter = react_router_dom.BrowserRouter
  * Importing global styles
  */
 
-require('./App.scss')
+import './App.scss'
 
 /**
  * Define component
@@ -42,4 +42,4 @@ function App() {
  * Export component
  */
 
-module.exports = App
+export default App

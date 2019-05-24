@@ -4,9 +4,9 @@
  * Dependencies
  */
 
-const React = require('react')
+import React from 'react'
 const components = require('../components/SignInUp/index')
-const styles = require('./styles/index')
+import styles from './styles/index'
 
 /**
  * Define component
@@ -31,4 +31,4 @@ function SignIn(props) {
  * Export component
  */
 
-module.exports = SignIn
+export default SignIn

@@ -4,19 +4,19 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
+import styled_components from 'styled-components'
 
 /**
  * Constants
  */
 
-const styled = styled_components.default
+
 
 /**
  * Define style
  */
 
-let NavbarStyle = styled.div(() => `
+let NavbarStyle = styled_components(() => `
   .bg-light {
     background-color: #f8f9fa !important;
   }
@@ -202,4 +202,4 @@ let NavbarStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = NavbarStyle
+export default NavbarStyle

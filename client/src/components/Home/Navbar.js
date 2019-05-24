@@ -4,8 +4,8 @@
  * Dependencies
  */
 
-const React = require('react')
-const styles = require('./styles/index')
+import React from 'react'
+import styles from './styles/index'
 
 /**
  * Define component
@@ -34,4 +34,4 @@ function Navbar() {
  * Export component
  */
 
-module.exports = Navbar
+export default Navbar

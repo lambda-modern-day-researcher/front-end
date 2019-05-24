@@ -34,4 +34,4 @@ const store = createStore(
  * Export store
  */
 
-module.exports = store
+export default store

@@ -4,9 +4,9 @@
  * Dependencies
  */
 
-const React = require('react')
+import React from 'react'
 const react_redux = require('react-redux')
-const styles = require('./styles/index')
+import styles from './styles/index'
 const CategoryIndicator = require('./CategoryIndicator')
 // const SimpleDialog = require('./SimpleDialog')
 const actions = require('../../store/actions/index')
@@ -150,7 +150,7 @@ const mapStateToProps = (state) => {
  * Export component
  */
 
-module.exports = connect(mapStateToProps, {
+export default connect(mapStateToProps, {
   toggleLinkPriority,
   completeLink,
   getPriorityLinks,

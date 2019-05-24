@@ -4,8 +4,8 @@
  * Dependencies
  */
 
-const React = require('react')
-const styles = require('./styles/index')
+import React from 'react'
+import styles from './styles/index'
 const SignOutLink = require('./SignOutLink')
 const LinkForm = require('./LinkForm')
 const PriorityLinkList = require('./PriorityLinkList')
@@ -38,4 +38,4 @@ function MainContainer() {
  * Export component
  */
 
-module.exports = MainContainer
+export default MainContainer

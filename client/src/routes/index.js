@@ -4,7 +4,7 @@
  * Export routers
  */
 
-module.exports = {
+export default {
   RootRouter: require('./RootRouter'),
   UsersRouter: require('./UsersRouter'),
 }

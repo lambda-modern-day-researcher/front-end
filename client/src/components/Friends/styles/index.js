@@ -4,6 +4,6 @@
  * Export styles
  */
 
-module.exports = {
+export default {
   TitleStyle: require('./TitleStyle'),
 }

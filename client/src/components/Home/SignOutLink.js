@@ -4,9 +4,9 @@
  * Dependencies
  */
 
-const React = require('react')
+import React from 'react'
 const react_router_dom = require('react-router-dom')
-const styles = require('./styles/index')
+import styles from './styles/index'
 
 /**
  * Constants
@@ -31,4 +31,4 @@ function SignOutLink(props) {
  * Export component
  */
 
-module.exports = SignOutLink
+export default SignOutLink

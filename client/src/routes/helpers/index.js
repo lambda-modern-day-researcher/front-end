@@ -4,6 +4,6 @@
  * Export route helpers
  */
 
-module.exports = {
+export default {
   PrivateRoute: require('./PrivateRoute'),
 }

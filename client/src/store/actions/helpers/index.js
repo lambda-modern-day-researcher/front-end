@@ -4,6 +4,6 @@
  * Export action helpers
  */
 
-module.exports = {
+export default {
   axiosWithAuth: require('./axiosWithAuth'),
 }

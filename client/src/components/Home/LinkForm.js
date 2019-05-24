@@ -4,9 +4,9 @@
  * Dependencies
  */
 
-const React = require('react')
+import React from 'react'
 const react_redux = require('react-redux')
-const styles = require('./styles/index')
+import styles from './styles/index'
 const actions = require('../../store/actions/index')
 
 /**
@@ -89,4 +89,4 @@ const mapStateToProps = (state) => {
  * Export component
  */
 
-module.exports = connect(mapStateToProps, { shareLink, getMainLinks })(LinkForm)
+export default connect(mapStateToProps, { shareLink, getMainLinks })(LinkForm)

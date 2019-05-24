@@ -4,19 +4,19 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
+import styled_components from 'styled-components'
 
 /**
  * Constants
  */
 
-const styled = styled_components.default
+
 
 /**
  * Define style
  */
 
-let SignOutLinkStyle = styled.div(() => `
+let SignOutLinkStyle = styled_components(() => `
   text-align: right;
   padding-bottom: 15px;
 
@@ -33,4 +33,4 @@ let SignOutLinkStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = SignOutLinkStyle
+export default SignOutLinkStyle

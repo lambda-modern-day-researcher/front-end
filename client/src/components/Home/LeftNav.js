@@ -4,8 +4,8 @@
  * Dependencies
  */
 
-const React = require('react')
-const styles = require('./styles/index')
+import React from 'react'
+import styles from './styles/index'
 const CategoryForm = require('./CategoryForm')
 const CategoryList = require('./CategoryList')
 
@@ -28,4 +28,4 @@ function LeftNav() {
  * Export component
  */
 
-module.exports = LeftNav
+export default LeftNav

@@ -26,4 +26,4 @@ const reducers = combineReducers({
  * Export reducers
  */
 
-module.exports = reducers
+export default reducers

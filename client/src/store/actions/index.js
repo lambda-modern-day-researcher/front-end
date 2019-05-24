@@ -256,7 +256,7 @@ const shareLink = (link) => dispatch => {
  * Export actions
  */
 
-module.exports = {
+export default {
   SIGNUP_START,
   SIGNUP_SUCCESS,
   SIGNUP_ERROR,

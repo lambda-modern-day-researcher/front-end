@@ -4,19 +4,19 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
+import styled_components from 'styled-components'
 
 /**
  * Constants
  */
 
-const styled = styled_components.default
+
 
 /**
  * Define style
  */
 
-let CategoryListStyle = styled.div(() => `
+let CategoryListStyle = styled_components(() => `
   margin-top: 15px;
 `)
 
@@ -24,4 +24,4 @@ let CategoryListStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = CategoryListStyle
+export default CategoryListStyle

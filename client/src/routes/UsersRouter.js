@@ -4,7 +4,7 @@
  * Dependencies
  */
 
-const React = require('react')
+import React from 'react'
 const react_router_dom = require('react-router-dom')
 const views = require('../views/index')
 
@@ -34,4 +34,4 @@ function UsersRouter({ mount }) {
  * Export router
  */
 
-module.exports = UsersRouter
+export default UsersRouter

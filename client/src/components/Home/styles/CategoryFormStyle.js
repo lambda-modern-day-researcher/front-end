@@ -4,19 +4,19 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
+import styled_components from 'styled-components'
 
 /**
  * Constants
  */
 
-const styled = styled_components.default
+
 
 /**
  * Define style
  */
 
-let CategoryFormStyle = styled.div(() => `
+let CategoryFormStyle = styled_components(() => `
   padding-top: 5px;
 
   .form-inline {
@@ -170,4 +170,4 @@ let CategoryFormStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = CategoryFormStyle
+export default CategoryFormStyle

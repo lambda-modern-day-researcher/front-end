@@ -4,7 +4,7 @@
  * Export styles
  */
 
-module.exports = {
+export default {
   CategoryFormStyle: require('./CategoryFormStyle'),
   CategoryIndicatorStyle: require('./CategoryIndicatorStyle'),
   CategoryListStyle: require('./CategoryListStyle'),

@@ -4,7 +4,7 @@
  * Export components
  */
 
-module.exports = {
+export default {
   SignInUpForm: require('./SignInUpForm'),
   SignInUpTitle: require('./SignInUpTitle'),
 }

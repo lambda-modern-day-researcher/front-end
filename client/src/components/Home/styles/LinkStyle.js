@@ -4,13 +4,13 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
+import styled_components from 'styled-components'
 
 /**
  * Constants
  */
 
-const styled = styled_components.default
+
 
 /**
  * Define style
@@ -105,4 +105,4 @@ let LinkStyle = styled.li(() => `
  * Export style
  */
 
-module.exports = LinkStyle
+export default LinkStyle

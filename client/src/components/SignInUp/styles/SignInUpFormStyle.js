@@ -4,19 +4,19 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
+import styled_components from 'styled-components'
 
 /**
  * Constants
  */
 
-const styled = styled_components.default
+
 
 /**
  * Define style
  */
 
-let SignInUpFormStyle = styled.div(() => `
+let SignInUpFormStyle = styled_components(() => `
   margin-bottom: 5rem !important;
 
   button {
@@ -147,4 +147,4 @@ let SignInUpFormStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = SignInUpFormStyle
+export default SignInUpFormStyle

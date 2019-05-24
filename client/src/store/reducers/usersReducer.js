@@ -289,4 +289,4 @@ function usersReducer(state = initialState, action) {
  * Export reducer
  */
 
-module.exports = usersReducer
+export default usersReducer

@@ -4,7 +4,7 @@
  * Dependencies
  */
 
-const React = require('react')
+import React from 'react'
 const react_router_dom = require('react-router-dom')
 const views = require('../views/index')
 const helpers = require('./helpers/index')
@@ -39,4 +39,4 @@ function RootRouter() {
  * Export router
  */
 
-module.exports = RootRouter
+export default RootRouter

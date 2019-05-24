@@ -4,7 +4,7 @@
  * Export styles
  */
 
-module.exports = {
+export default {
   SignInUpFormStyle: require('./SignInUpFormStyle'),
   SignInUpTitleStyle: require('./SignInUpTitleStyle'),
 }

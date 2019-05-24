@@ -4,10 +4,10 @@
  * Dependencies
  */
 
-const React = require('react')
+import React from 'react'
 const react_redux = require('react-redux')
 const react_router_dom = require('react-router-dom')
-const styles = require('./styles/index')
+import styles from './styles/index'
 const actions = require('../../store/actions/index')
 
 /**
@@ -115,4 +115,4 @@ const mapStateToProps = (state) => {
  * Export component
  */
 
-module.exports = connect(mapStateToProps, { signUp, signIn })(SignInUpForm)
+export default connect(mapStateToProps, { signUp, signIn })(SignInUpForm)

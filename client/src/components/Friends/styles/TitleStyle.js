@@ -4,23 +4,17 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
-
-/**
- * Constants
- */
-
-const styled = styled_components.default
+import styled_components from 'styled-components'
 
 /**
  * Define style
  */
 
-let TitleStyle = styled.div(() => `
+let TitleStyle = styled_components(() => `
 `)
 
 /**
  * Export style
  */
 
-module.exports = TitleStyle
+export default TitleStyle

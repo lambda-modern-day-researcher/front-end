@@ -4,8 +4,8 @@
  * Dependencies
  */
 
-const React = require('react')
-const styles = require('./styles/index')
+import React from 'react'
+import styles from './styles/index'
 
 /**
  * Define component
@@ -24,4 +24,4 @@ function CategoryIndicator({ color, name }) {
  * Export component
  */
 
-module.exports = CategoryIndicator
+export default CategoryIndicator

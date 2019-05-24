@@ -25,4 +25,4 @@ const axiosWithAuth = () => {
  * Export helper
  */
 
-module.exports = axiosWithAuth
+export default axiosWithAuth

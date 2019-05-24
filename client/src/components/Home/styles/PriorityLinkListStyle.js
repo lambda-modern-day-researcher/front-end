@@ -4,19 +4,19 @@
  * Dependencies
  */
 
-const styled_components = require('styled-components')
+import styled_components from 'styled-components'
 
 /**
  * Constants
  */
 
-const styled = styled_components.default
+
 
 /**
  * Define style
  */
 
-let PriorityLinkListStyle = styled.div(() => `
+let PriorityLinkListStyle = styled_components(() => `
   margin-top: 15px;
 `)
 
@@ -24,4 +24,4 @@ let PriorityLinkListStyle = styled.div(() => `
  * Export style
  */
 
-module.exports = PriorityLinkListStyle
+export default PriorityLinkListStyle
