@@ -39,10 +39,10 @@ class Category extends Component {
 
   handleFilterByCategory = (event) => {
     event.preventDefault()
-    this.props.filterByCategory(
-      this.props.usersReducer.current_user_id,
-      this.props.id,
-    )
+    // this.props.filterByCategory(
+    //   this.props.usersReducer.current_user_id,
+    //   this.props.id,
+    // )
   }
 
   render() {

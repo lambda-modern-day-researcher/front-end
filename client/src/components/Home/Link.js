@@ -153,7 +153,6 @@ class Link extends Component {
           </div>
 
           <div className="col-12 col-lg-1 col-xl-1">
-            <button onClick={this.handleAddCategoryToLink}>Add Category</button>
             <span className="btn__control" onClick={this.handleEditLinkTitle}>edit</span>
             <span className="btn__control" onClick={this.handleDeleteLink}>x</span>
           </div>
@@ -162,6 +161,7 @@ class Link extends Component {
     )
   }
 }
+// <button onClick={this.handleAddCategoryToLink}>Add Category</button>
 // <SimpleDialog open={this.state.is_modal_open} onClose={this.handleClose} />
 
 /**
