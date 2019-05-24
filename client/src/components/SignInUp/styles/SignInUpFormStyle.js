@@ -20,7 +20,8 @@ let SignInUpFormStyle = styled.div(() => `
   margin-bottom: 5rem !important;
 
   button {
-    font-size: 1.5rem !important;
+    width: 100%;
+        color: white !important;
   }
 
   .text-primary {
@@ -114,6 +115,14 @@ let SignInUpFormStyle = styled.div(() => `
 
   .text-center {
     text-align: center !important;
+  }
+
+  a {
+    text-decoration:none;
+  }
+
+  a:hover {
+    color:red;
   }
 
   .mt-4 {

@@ -18,6 +18,7 @@ const styled = styled_components.default
 
 let CategoryListStyle = styled.div(() => `
   margin-top: 15px;
+  
 `)
 
 /**

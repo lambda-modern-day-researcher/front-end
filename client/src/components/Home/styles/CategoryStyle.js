@@ -17,15 +17,21 @@ const styled = styled_components.default
  */
 
 let CategoryStyle = styled.li(() => `
-  .glyph__circle {
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
+
+border-radius:5px;
+margin:8px 0;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+.glyph__circle {
+    height: 20px;
+    width: 8px;
     display: inline-block;
     margin-right: 10px;
   }
 
-  .text__category { }
+  .text__category {
+    
+   }
 
   .btn__delete {
     color: #DDD;

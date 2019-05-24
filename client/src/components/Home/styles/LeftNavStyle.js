@@ -18,6 +18,7 @@ const styled = styled_components.default
 
 let LeftNavStyle = styled.div(() => `
   height: 100vh;
+  
 `)
 
 /**
