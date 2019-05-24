@@ -6,7 +6,7 @@
 
 import React from 'react'
 import components from '../components/Home/index'
-import styles from './styles/index'
+import { HomeStyle } from './styles/index'
 
 /**
  * Define component
@@ -14,7 +14,7 @@ import styles from './styles/index'
 
 function Home() {
   return (
-    <styles.HomeStyle>
+    <HomeStyle>
       <components.Navbar />
 
       <div className="row mx-auto">
@@ -25,7 +25,7 @@ function Home() {
           <components.MainContainer />
         </div>
       </div>
-    </styles.HomeStyle>
+    </HomeStyle>
   )
 }
 

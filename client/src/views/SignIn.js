@@ -5,8 +5,8 @@
  */
 
 import React from 'react'
-import components from '../components/SignInUp/index'
-import styles from './styles/index'
+import { SignInUpTitle, SignInUpForm } from '../components/SignInUp/index'
+import { SignInUpStyle } from './styles/index'
 
 /**
  * Define component
@@ -14,16 +14,16 @@ import styles from './styles/index'
 
 function SignIn(props) {
   return (
-    <styles.SignInUpStyle>
+    <SignInUpStyle>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-10 col-md-8 col-lg-5">
-            <components.SignInUpTitle />
-            <components.SignInUpForm {...props} in_or_up='in' />
+            <SignInUpTitle />
+            <SignInUpForm {...props} in_or_up='in' />
           </div>
         </div>
       </div>
-    </styles.SignInUpStyle>
+    </SignInUpStyle>
   )
 }
 

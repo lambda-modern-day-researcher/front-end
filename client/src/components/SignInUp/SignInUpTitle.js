@@ -5,7 +5,7 @@
  */
 
 import React from 'react'
-import styles from './styles/index'
+import { SignInUpTitleStyle } from './styles/index'
 
 /**
  * Define component
@@ -13,10 +13,10 @@ import styles from './styles/index'
 
 function SignInUpTitle() {
   return (
-    <styles.SignInUpTitleStyle>
+    <SignInUpTitleStyle>
       <p className="text-center mt-4">LET'S DO THIS</p>
       <h2 className="text-center mb-4">Time to manage link chaos</h2>
-    </styles.SignInUpTitleStyle>
+    </SignInUpTitleStyle>
   )
 }
 

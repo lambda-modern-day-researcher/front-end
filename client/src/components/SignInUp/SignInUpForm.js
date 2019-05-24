@@ -7,7 +7,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
-import styles from './styles/index'
+import { SignInUpFormStyle } from './styles/index'
 import actions from '../../store/actions/index'
 
 /**
@@ -64,7 +64,7 @@ class SignInUpForm extends Component {
 
   render() {
     return (
-      <styles.SignInUpFormStyle>
+      <SignInUpFormStyle>
         <form className="mb-4" onSubmit={this.handleOnSubmit}>
           {(this.props.usersReducer.error && this.props.usersReducer.error.constructor === String) ?
             <div className="alert alert-danger">Error: Incorrect username or password.</div> : ''}
@@ -95,7 +95,7 @@ class SignInUpForm extends Component {
         {(this.props.in_or_up === 'up') ?
           <Link to={{ pathname: "/users/signin", state: { fromSignUp: true }}}>I already have an account.</Link>
           : <Link to={{ pathname: "/users/signup", state: { fromSignIn: true }}}>I need an account.</Link>}
-      </styles.SignInUpFormStyle>
+      </SignInUpFormStyle>
     )
   }
 }

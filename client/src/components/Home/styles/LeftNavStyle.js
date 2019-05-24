@@ -7,12 +7,6 @@
 import styled from 'styled-components'
 
 /**
- * Constants
- */
-
-
-
-/**
  * Define style
  */
 

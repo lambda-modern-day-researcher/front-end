@@ -6,7 +6,7 @@
 
 import React from 'react'
 import { Link, Router } from 'react-router-dom'
-import styles from './styles/index'
+import { SignOutLinkStyle } from './styles/index'
 
 /**
  * Define component
@@ -14,9 +14,9 @@ import styles from './styles/index'
 
 function SignOutLink(props) {
   return (
-    <styles.SignOutLinkStyle>
+    <SignOutLinkStyle>
       <Link to="/users/signin" onClick={() => localStorage.clear()}>Sign out</Link>
-    </styles.SignOutLinkStyle>
+    </SignOutLinkStyle>
   )
 }
 

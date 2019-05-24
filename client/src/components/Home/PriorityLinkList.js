@@ -7,7 +7,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { LinearProgress } from '@material-ui/core'
-import styles from './styles/index'
+import { PriorityLinkListStyle } from './styles/index'
 import Link from './Link'
 import actions from '../../store/actions/index'
 
@@ -29,7 +29,7 @@ class PriorityLinkList extends Component {
 
   render() {
     return (
-      <styles.PriorityLinkListStyle>
+      <PriorityLinkListStyle>
         {(this.props.usersReducer.priority_links.length > 0) ?
           <div className="row">
             <div className="col-12">
@@ -46,7 +46,7 @@ class PriorityLinkList extends Component {
             </div>
           </div>
           : ''}
-      </styles.PriorityLinkListStyle>
+      </PriorityLinkListStyle>
     )
   }
 }

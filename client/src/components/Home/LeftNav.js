@@ -5,7 +5,7 @@
  */
 
 import React from 'react'
-import styles from './styles/index'
+import { LeftNavStyle } from './styles/index'
 import CategoryForm from './CategoryForm'
 import CategoryList from './CategoryList'
 
@@ -15,12 +15,12 @@ import CategoryList from './CategoryList'
 
 function LeftNav() {
   return (
-    <styles.LeftNavStyle>
+    <LeftNavStyle>
       <section>
         <CategoryForm />
         <CategoryList />
       </section>
-    </styles.LeftNavStyle>
+    </LeftNavStyle>
   )
 }
 

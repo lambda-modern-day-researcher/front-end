@@ -5,7 +5,7 @@
  */
 
 import React from 'react'
-import styles from './styles/index'
+import { NavbarStyle } from './styles/index'
 
 /**
  * Define component
@@ -13,7 +13,7 @@ import styles from './styles/index'
 
 function Navbar() {
   return (
-    <styles.NavbarStyle>
+    <NavbarStyle>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="row">
           <div className="col-12 d-flex justify-content-center">
@@ -26,7 +26,7 @@ function Navbar() {
           </div>
         </div>
       </nav>
-    </styles.NavbarStyle>
+    </NavbarStyle>
   )
 }
 

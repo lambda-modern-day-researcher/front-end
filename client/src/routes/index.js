@@ -1,10 +1,17 @@
 'use strict'
 
 /**
+ * Dependencies
+ */
+
+import RootRouter from './RootRouter'
+import UsersRouter from './UsersRouter'
+
+/**
  * Export routers
  */
 
-export default {
-  RootRouter: require('./RootRouter'),
-  UsersRouter: require('./UsersRouter'),
+export {
+  RootRouter,
+  UsersRouter,
 }

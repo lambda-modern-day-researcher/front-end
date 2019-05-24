@@ -5,7 +5,7 @@
  */
 
 import React from 'react'
-import styles from './styles/index'
+import { MainContainerStyle } from './styles/index'
 import SignOutLink from './SignOutLink'
 import LinkForm from './LinkForm'
 import PriorityLinkList from './PriorityLinkList'
@@ -17,7 +17,7 @@ import MainLinkList from './MainLinkList'
 
 function MainContainer() {
   return (
-    <styles.MainContainerStyle>
+    <MainContainerStyle>
       <section>
         <div className="container">
           <div className="row">
@@ -30,7 +30,7 @@ function MainContainer() {
           </div>
         </div>
       </section>
-    </styles.MainContainerStyle>
+    </MainContainerStyle>
   )
 }
 

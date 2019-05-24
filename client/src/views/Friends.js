@@ -5,8 +5,8 @@
  */
 
 import React from 'react'
-import components from '../components/Friends/index'
-import styles from './styles/index'
+import { Title } from '../components/Friends/index'
+import { FriendsStyle } from './styles/index'
 
 /**
  * Define component
@@ -14,9 +14,9 @@ import styles from './styles/index'
 
 function Friends() {
   return (
-    <styles.FriendsStyle>
-      <components.Title />
-    </styles.FriendsStyle>
+    <FriendsStyle>
+      <Title />
+    </FriendsStyle>
   )
 }
 

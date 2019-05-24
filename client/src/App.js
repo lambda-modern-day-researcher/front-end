@@ -7,7 +7,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
-import routes from './routes/index'
+import { RootRouter } from './routes/index'
 import store from './store/index'
 
 /**
@@ -21,11 +21,11 @@ import './App.scss'
  */
 
 function App() {
+  // <routes.UsersRouter mount="/users" />
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <routes.RootRouter mount="/" />
-        <routes.UsersRouter mount="/users" />
+        <RootRouter mount="/" />
       </BrowserRouter>
     </Provider>
   )

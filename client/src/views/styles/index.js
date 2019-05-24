@@ -1,11 +1,19 @@
 'use strict'
 
 /**
+ * Dependencies
+ */
+
+import FriendsStyle from './FriendsStyle'
+import HomeStyle from './HomeStyle'
+import SignInUpStyle from './SignInUpStyle'
+
+/**
  * Export styles
  */
 
-export default {
-  FriendsStyle: require('./FriendsStyle'),
-  HomeStyle: require('./HomeStyle'),
-  SignInUpStyle: require('./SignInUpStyle'),
+export {
+  FriendsStyle,
+  HomeStyle,
+  SignInUpStyle,
 }

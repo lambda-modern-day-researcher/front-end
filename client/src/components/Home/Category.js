@@ -6,7 +6,7 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import styles from './styles/index'
+import { CategoryStyle } from './styles/index'
 import actions from '../../store/actions/index'
 
 /**
@@ -47,7 +47,7 @@ class Category extends Component {
 
   render() {
     return (
-      <styles.CategoryStyle>
+      <CategoryStyle>
         <div className="row">
           <div className="col-10 col__category" onClick={this.handleFilterByCategory}>
             <span className="glyph__circle" style={{ backgroundColor: this.props.color }}></span>
@@ -58,7 +58,7 @@ class Category extends Component {
             <span className="btn__delete" onClick={this.handleDeleteCategory}>x</span>
           </div>
         </div>
-      </styles.CategoryStyle>
+      </CategoryStyle>
     )
   }
 }

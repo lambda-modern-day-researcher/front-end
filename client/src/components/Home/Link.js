@@ -6,7 +6,7 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import styles from './styles/index'
+import { LinkStyle } from './styles/index'
 import CategoryIndicator from './CategoryIndicator'
 // import SimpleDialog from './SimpleDialog'
 import actions from '../../store/actions/index'
@@ -99,7 +99,7 @@ class Link extends Component {
 
   render() {
     return (
-      <styles.LinkStyle>
+      <LinkStyle>
         <div className="row">
           <div className="col-12 col-lg-2 col-xl-1 d-flex">
             <svg onClick={this.handleCompleteLink} className="control control__completed" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
@@ -132,7 +132,7 @@ class Link extends Component {
             <span className="btn__control" onClick={this.handleDeleteLink}>x</span>
           </div>
         </div>
-      </styles.LinkStyle>
+      </LinkStyle>
     )
   }
 }

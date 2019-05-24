@@ -6,7 +6,7 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import styles from './styles/index'
+import { LinkFormStyle } from './styles/index'
 import actions from '../../store/actions/index'
 
 /**
@@ -51,7 +51,7 @@ class LinkForm extends Component {
 
   render() {
     return (
-      <styles.LinkFormStyle>
+      <LinkFormStyle>
         <form onSubmit={this.handleOnSubmit}>
           <div className="row">
             <div className="col-9 pr-1">
@@ -71,7 +71,7 @@ class LinkForm extends Component {
             </div>
           </div>
         </form>
-      </styles.LinkFormStyle>
+      </LinkFormStyle>
     )
   }
 }

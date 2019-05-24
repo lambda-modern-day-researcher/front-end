@@ -5,14 +5,13 @@
  */
 
 import axios from 'axios'
-import helpers from './helpers/index'
+import { axiosWithAuth } from './helpers/index'
 
 /**
  * Constants
  */
 
 const backend_url = 'https://modern-day-researcher-mdr.herokuapp.com'
-const axiosWithAuth = helpers.axiosWithAuth
 const SIGNUP_START = 'SIGNUP_START'
 const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
 const SIGNUP_ERROR = 'SIGNUP_ERROR'

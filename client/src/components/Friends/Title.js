@@ -5,7 +5,7 @@
  */
 
 import React from 'react'
-import styles from './styles/index'
+import { TitleStyle } from './styles/index'
 
 /**
  * Define component
@@ -13,9 +13,9 @@ import styles from './styles/index'
 
 function Title() {
   return (
-    <styles.TitleStyle>
+    <TitleStyle>
       <h1>Friends</h1>
-    </styles.TitleStyle>
+    </TitleStyle>
   )
 }
 

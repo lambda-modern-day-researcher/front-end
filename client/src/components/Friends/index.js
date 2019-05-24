@@ -1,9 +1,15 @@
 'use strict'
 
 /**
+ * Dependencies
+ */
+
+import Title from './Title'
+
+/**
  * Export components
  */
 
-export default {
-  Title: require('./Title'),
+export {
+  Title,
 }

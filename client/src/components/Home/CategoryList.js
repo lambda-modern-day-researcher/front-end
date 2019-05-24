@@ -7,7 +7,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { LinearProgress } from '@material-ui/core'
-import styles from './styles/index'
+import { CategoryListStyle } from './styles/index'
 import Category from './Category'
 import actions from '../../store/actions/index'
 
@@ -30,7 +30,7 @@ class CategoryList extends Component {
 
   render() {
     return (
-      <styles.CategoryListStyle>
+      <CategoryListStyle>
         <div className="row">
           <div className="col-12">
             {(this.props.usersReducer.isFetchingCategories) ?
@@ -41,7 +41,7 @@ class CategoryList extends Component {
             }
           </div>
         </div>
-      </styles.CategoryListStyle>
+      </CategoryListStyle>
     )
   }
 }
