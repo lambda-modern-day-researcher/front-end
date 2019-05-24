@@ -5,19 +5,16 @@
  */
 
 import React from 'react'
-const react_redux = require('react-redux')
-const react_router_dom = require('react-router-dom')
+import { connect } from 'react-redux'
+import { Link, Redirect } from 'react-router-dom'
 import styles from './styles/index'
-const actions = require('../../store/actions/index')
+import actions from '../../store/actions/index'
 
 /**
  * Constants
  */
 
 const Component = React.Component
-const Link = react_router_dom.Link
-const Redirect = react_router_dom.Redirect
-const connect = react_redux.connect
 const signUp = actions.signUp
 const signIn = actions.signIn
 

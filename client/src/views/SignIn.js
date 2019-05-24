@@ -5,7 +5,7 @@
  */
 
 import React from 'react'
-const components = require('../components/SignInUp/index')
+import components from '../components/SignInUp/index'
 import styles from './styles/index'
 
 /**

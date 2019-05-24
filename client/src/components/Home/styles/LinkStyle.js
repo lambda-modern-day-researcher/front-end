@@ -4,13 +4,7 @@
  * Dependencies
  */
 
-import styled_components from 'styled-components'
-
-/**
- * Constants
- */
-
-
+import styled from 'styled-components'
 
 /**
  * Define style

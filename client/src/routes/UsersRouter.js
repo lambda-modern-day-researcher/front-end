@@ -5,15 +5,8 @@
  */
 
 import React from 'react'
-const react_router_dom = require('react-router-dom')
-const views = require('../views/index')
-
-/**
- * Constants
- */
-
-const Route = react_router_dom.Route
-const Redirect = react_router_dom.Redirect
+import { Route, Redirect } from 'react-router-dom'
+import views from '../views/index'
 
 /**
  * Define router

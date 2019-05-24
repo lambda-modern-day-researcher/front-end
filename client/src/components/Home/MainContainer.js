@@ -6,10 +6,10 @@
 
 import React from 'react'
 import styles from './styles/index'
-const SignOutLink = require('./SignOutLink')
-const LinkForm = require('./LinkForm')
-const PriorityLinkList = require('./PriorityLinkList')
-const MainLinkList = require('./MainLinkList')
+import SignOutLink from './SignOutLink'
+import LinkForm from './LinkForm'
+import PriorityLinkList from './PriorityLinkList'
+import MainLinkList from './MainLinkList'
 
 /**
  * Define component

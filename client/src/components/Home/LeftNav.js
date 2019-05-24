@@ -6,8 +6,8 @@
 
 import React from 'react'
 import styles from './styles/index'
-const CategoryForm = require('./CategoryForm')
-const CategoryList = require('./CategoryList')
+import CategoryForm from './CategoryForm'
+import CategoryList from './CategoryList'
 
 /**
  * Define component

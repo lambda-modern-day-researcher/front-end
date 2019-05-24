@@ -4,7 +4,7 @@
  * Dependencies
  */
 
-import styled_components from 'styled-components'
+import styled from 'styled-components'
 
 /**
  * Constants
@@ -16,7 +16,7 @@ import styled_components from 'styled-components'
  * Define style
  */
 
-let NavbarStyle = styled_components(() => `
+let NavbarStyle = styled(() => `
   .bg-light {
     background-color: #f8f9fa !important;
   }

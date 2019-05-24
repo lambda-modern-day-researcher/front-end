@@ -5,16 +5,16 @@
  */
 
 import React from 'react'
-const react_redux = require('react-redux')
+import { connect } from 'react-redux'
 import styles from './styles/index'
-const actions = require('../../store/actions/index')
+import actions from '../../store/actions/index'
 
 /**
  * Constants
  */
 
 const Component = React.Component
-const connect = react_redux.connect
+
 const getCategories = actions.getCategories
 const createCategory = actions.createCategory
 

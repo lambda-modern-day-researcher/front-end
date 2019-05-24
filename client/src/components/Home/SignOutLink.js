@@ -5,15 +5,8 @@
  */
 
 import React from 'react'
-const react_router_dom = require('react-router-dom')
+import { Link, Router } from 'react-router-dom'
 import styles from './styles/index'
-
-/**
- * Constants
- */
-
-const Link = react_router_dom.Link
-const Router = react_router_dom.Router
 
 /**
  * Define component

@@ -4,13 +4,13 @@
  * Dependencies
  */
 
-import styled_components from 'styled-components'
+import styled from 'styled-components'
 
 /**
  * Define style
  */
 
-let TitleStyle = styled_components(() => `
+let TitleStyle = styled(() => `
 `)
 
 /**

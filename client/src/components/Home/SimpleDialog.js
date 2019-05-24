@@ -5,8 +5,8 @@
  */
 
 import React from 'react'
-const Dialog = require('@material-ui/core/Dialog')
-const DialogTitle = require('@material-ui/core/DialogTitle')
+import Dialog from '@material-ui/core/Dialog'
+import DialogTitle from '@material-ui/core/DialogTitle'
 
 /**
  * Define component

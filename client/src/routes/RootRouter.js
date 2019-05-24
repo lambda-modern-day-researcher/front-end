@@ -5,16 +5,14 @@
  */
 
 import React from 'react'
-const react_router_dom = require('react-router-dom')
-const views = require('../views/index')
-const helpers = require('./helpers/index')
+import { Route, Redirect } from 'react-router-dom'
+import views from '../views/index'
+import helpers from './helpers/index'
 
 /**
  * Constants
  */
 
-const Route = react_router_dom.Route
-const Redirect = react_router_dom.Redirect
 const PrivateRoute = helpers.PrivateRoute
 
 /**

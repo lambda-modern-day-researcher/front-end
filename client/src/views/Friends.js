@@ -5,7 +5,7 @@
  */
 
 import React from 'react'
-const components = require('../components/Friends/index')
+import components from '../components/Friends/index'
 import styles from './styles/index'
 
 /**

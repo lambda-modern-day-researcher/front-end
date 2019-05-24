@@ -4,7 +4,7 @@
  * Dependencies
  */
 
-import styled_components from 'styled-components'
+import styled from 'styled-components'
 
 /**
  * Constants
@@ -16,7 +16,7 @@ import styled_components from 'styled-components'
  * Define style
  */
 
-let MainContainerStyle = styled_components(() => `
+let MainContainerStyle = styled(() => `
   height: 100vh;
   background-color: #FFF;
 `)

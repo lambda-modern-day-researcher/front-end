@@ -5,7 +5,7 @@
  */
 
 import React from 'react'
-const components = require('../components/Home/index')
+import components from '../components/Home/index'
 import styles from './styles/index'
 
 /**

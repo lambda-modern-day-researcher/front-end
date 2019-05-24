@@ -5,18 +5,18 @@
  */
 
 import React from 'react'
-const react_redux = require('react-redux')
+import { connect } from 'react-redux'
 import styles from './styles/index'
-const CategoryIndicator = require('./CategoryIndicator')
-// const SimpleDialog = require('./SimpleDialog')
-const actions = require('../../store/actions/index')
+import CategoryIndicator from './CategoryIndicator'
+// import SimpleDialog from './SimpleDialog'
+import actions from '../../store/actions/index'
 
 /**
  * Constants
  */
 
 const Component = React.Component
-const connect = react_redux.connect
+
 const toggleLinkPriority = actions.toggleLinkPriority
 const completeLink = actions.completeLink
 const getPriorityLinks = actions.getPriorityLinks
