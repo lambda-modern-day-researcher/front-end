@@ -47,6 +47,9 @@ const TOGGLE_LINK_PRIORITY_ERROR = 'TOGGLE_LINK_PRIORITY_ERROR'
 const FILTER_BY_CATEGORY_START = 'FILTER_BY_CATEGORY_START'
 const FILTER_BY_CATEGORY_SUCCESS = 'FILTER_BY_CATEGORY_SUCCESS'
 const FILTER_BY_CATEGORY_ERROR = 'FILTER_BY_CATEGORY_ERROR'
+const FILTER_BY_SEARCH_START = 'FILTER_BY_SEARCH_START'
+const FILTER_BY_SEARCH_SUCCESS = 'FILTER_BY_SEARCH_SUCCESS'
+const FILTER_BY_SEARCH_ERROR = 'FILTER_BY_SEARCH_ERROR'
 const UPDATE_LINK_TITLE_START = 'UPDATE_LINK_TITLE_START'
 const UPDATE_LINK_TITLE_SUCCESS = 'UPDATE_LINK_TITLE_SUCCESS'
 const UPDATE_LINK_TITLE_ERROR = 'UPDATE_LINK_TITLE_ERROR'
@@ -228,6 +231,19 @@ const filterByCategory = (user_id, category_id) => dispatch => {
     })
 }
 
+const filterBySearch = (user_id, query) => dispatch => {
+  dispatch({ type: FILTER_BY_SEARCH_START })
+
+  return axiosWithAuth()
+    .get(`${backend_url}/api/auth/users/${user_id}/links`)
+    .then(res => {
+      dispatch({ type: FILTER_BY_SEARCH_SUCCESS, payload: res.data, query: query })
+    })
+    .catch(err => {
+      dispatch({ type: FILTER_BY_SEARCH_ERROR, payload: err })
+    })
+}
+
 const updateLink = (user_id, id, title) => dispatch => {
   dispatch({ type: UPDATE_LINK_TITLE_START })
 
@@ -338,6 +354,9 @@ export default {
   FILTER_BY_CATEGORY_SUCCESS,
   FILTER_BY_CATEGORY_ERROR,
   filterByCategory,
+  FILTER_BY_SEARCH_START,
+  FILTER_BY_SEARCH_SUCCESS,
+  filterBySearch,
   UPDATE_LINK_TITLE_START,
   UPDATE_LINK_TITLE_SUCCESS,
   UPDATE_LINK_TITLE_ERROR,

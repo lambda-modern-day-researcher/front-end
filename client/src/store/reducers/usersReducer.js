@@ -22,6 +22,7 @@ const initialState = {
   isCreatingCategory: false,
   isCompletingLink: false,
   isDeletingLink: false,
+  isFilteringBySearch: false,
   isSettingLinkPriority: false,
   isFilteringByCategory: false,
   isUpdatingLinkTitle: false,
@@ -322,6 +323,50 @@ function usersReducer(state = initialState, action) {
     case actions.FILTER_BY_CATEGORY_ERROR:
       return Object.assign({}, state, {
         isFilteringByCategory: false,
+        error: action.payload
+      })
+    case actions.FILTER_BY_SEARCH_START:
+      return Object.assign({}, state, {
+        isFilteringBySearch: true,
+        error: ''
+      })
+    case actions.FILTER_BY_SEARCH_SUCCESS:
+      let search_filtered = {}
+
+      action.payload.forEach(link => {
+        search_filtered[link.link_id] = (search_filtered[link.link_id] || {})
+        search_filtered[link.link_id].categories = (search_filtered[link.link_id].categories || [])
+
+        search_filtered[link.link_id] = {
+          link_id: link.link_id,
+          is_pinned: link.is_pinned,
+          read: link.read,
+          shared_by: link.shared_by,
+          shared_with: link.shared_with,
+          title: link.title,
+          url: link.url,
+          categories: search_filtered[link.link_id].categories.concat({
+            category_color: link.category_color,
+            category_title: link.category_title,
+            category_id: link.category_id,
+          })
+        }
+      })
+
+      let new_search_filtered = Object.keys(search_filtered).map(key => {
+        return search_filtered[key]
+      })
+
+      let query_search_filtered = new_search_filtered.filter(link => link.title.includes(action.query))
+
+      return Object.assign({}, state, {
+        isFilteringBySearch: false,
+        main_links: query_search_filtered,
+        error: ''
+      })
+    case actions.FILTER_BY_SEARCH_ERROR:
+      return Object.assign({}, state, {
+        isFilteringBySearch: false,
         error: action.payload
       })
     case actions.UPDATE_LINK_TITLE_START:
