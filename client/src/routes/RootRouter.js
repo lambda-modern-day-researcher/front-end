@@ -14,13 +14,11 @@ import { PrivateRoute } from './helpers/index'
  */
 
 function RootRouter() {
-  // <PrivateRoute path="/home" component={Home} />
-  // <PrivateRoute path="/friends" component={Friends} />
   return (
     <>
       <Route exact path="/" render={() => <Redirect to="/home" />} />
-      <Route path="/home" component={Home} />
-      <Route path="/friends" component={Friends} />
+      <PrivateRoute path="/home" component={Home} />
+      <PrivateRoute path="/friends" component={Friends} />
       <Route path="/login" render={() => <Redirect to="/users/signin" />} />
       <Route path="/signin" render={() => <Redirect to="/users/signin" />} />
       <Route path="/signup" render={() => <Redirect to="/users/signup" />} />

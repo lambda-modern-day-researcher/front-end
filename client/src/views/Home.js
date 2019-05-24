@@ -12,8 +12,6 @@ import { HomeStyle } from './styles/index'
  * Define component
  */
 
-console.log("HomeStyle", HomeStyle)
-
 function Home() {
   return (
     <HomeStyle>

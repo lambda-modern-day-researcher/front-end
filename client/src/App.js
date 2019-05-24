@@ -25,6 +25,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <RootRouter mount="/" />
+        <UsersRouter mount="/users" />
       </BrowserRouter>
     </Provider>
   )
