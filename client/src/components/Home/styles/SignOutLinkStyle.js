@@ -10,7 +10,7 @@ import styled from 'styled-components'
  * Define style
  */
 
-let SignOutLinkStyle = styled(() => `
+const SignOutLinkStyle = styled.div(() => `
   text-align: right;
   padding-bottom: 15px;
 

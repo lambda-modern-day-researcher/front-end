@@ -10,7 +10,7 @@ import styled from 'styled-components'
  * Define style
  */
 
-let NavbarStyle = styled(() => `
+const NavbarStyle = styled.div(() => `
   .bg-light {
     background-color: #f8f9fa !important;
   }

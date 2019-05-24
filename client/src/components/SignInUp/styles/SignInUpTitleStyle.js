@@ -7,16 +7,10 @@
 import styled from 'styled-components'
 
 /**
- * Constants
- */
-
-
-
-/**
  * Define style
  */
 
-let SignInUpTitleStyle = styled(() => `
+const SignInUpTitleStyle = styled.div(() => `
   .text-center {
     text-align: center !important;
   }

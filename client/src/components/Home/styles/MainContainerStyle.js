@@ -10,7 +10,7 @@ import styled from 'styled-components'
  * Define style
  */
 
-let MainContainerStyle = styled(() => `
+const MainContainerStyle = styled.div(() => `
   height: 100vh;
   background-color: #FFF;
 `)

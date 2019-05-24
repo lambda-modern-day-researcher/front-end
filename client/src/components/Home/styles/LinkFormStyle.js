@@ -10,7 +10,7 @@ import styled from 'styled-components'
  * Define style
  */
 
-let LinkFormStyle = styled(() => `
+const LinkFormStyle = styled.div(() => `
   padding-top: 5px;
 
   .form-group {

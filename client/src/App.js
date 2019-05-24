@@ -7,7 +7,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
-import { RootRouter } from './routes/index'
+import { RootRouter, UsersRouter } from './routes/index'
 import store from './store/index'
 
 /**
@@ -21,7 +21,6 @@ import './App.scss'
  */
 
 function App() {
-  // <routes.UsersRouter mount="/users" />
   return (
     <Provider store={store}>
       <BrowserRouter>

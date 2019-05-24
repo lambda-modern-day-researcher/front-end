@@ -7,16 +7,10 @@
 import styled from 'styled-components'
 
 /**
- * Constants
- */
-
-
-
-/**
  * Define style
  */
 
-let SignInUpFormStyle = styled(() => `
+const SignInUpFormStyle = styled.div(() => `
   margin-bottom: 5rem !important;
 
   button {

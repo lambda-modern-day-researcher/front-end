@@ -12,7 +12,7 @@ import Navbar from './Navbar'
  * Export components
  */
 
-export default {
+export {
   LeftNav,
   MainContainer,
   Navbar,

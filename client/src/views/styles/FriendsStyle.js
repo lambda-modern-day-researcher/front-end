@@ -10,7 +10,7 @@ import styled from 'styled-components'
  * Define style
  */
 
-let FriendsStyle = styled(() => `
+const FriendsStyle = styled.div(() => `
 `)
 
 /**

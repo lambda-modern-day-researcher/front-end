@@ -10,7 +10,7 @@ import styled from 'styled-components'
  * Define style
  */
 
-let SignInUpStyle = styled(() => `
+const SignInUpStyle = styled.div(() => `
   height: 100vh;
   background-color: #F8F9FC !important;
 `)

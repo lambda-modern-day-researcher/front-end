@@ -10,7 +10,7 @@ import styled from 'styled-components'
  * Define style
  */
 
-let MainLinkListStyle = styled(() => `
+const MainLinkListStyle = styled.div(() => `
   margin-top: 15px;
 `)
 

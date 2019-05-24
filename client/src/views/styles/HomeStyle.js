@@ -6,11 +6,13 @@
 
 import styled from 'styled-components'
 
+console.log("styled", styled)
+
 /**
  * Define style
  */
 
-let HomeStyle = styled(() => `
+const HomeStyle = styled.div(() => `
   height: 100vh;
 
   .mx-auto {

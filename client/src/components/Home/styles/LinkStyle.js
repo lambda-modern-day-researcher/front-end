@@ -10,7 +10,7 @@ import styled from 'styled-components'
  * Define style
  */
 
-let LinkStyle = styled.li(() => `
+const LinkStyle = styled.li(() => `
   margin-bottom: 10px;
 
   .text__title {

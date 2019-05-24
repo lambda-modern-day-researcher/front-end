@@ -10,7 +10,7 @@ import styled from 'styled-components'
  * Define style
  */
 
-let CategoryStyle = styled.li(() => `
+const CategoryStyle = styled.li(() => `
   .glyph__circle {
     height: 15px;
     width: 15px;

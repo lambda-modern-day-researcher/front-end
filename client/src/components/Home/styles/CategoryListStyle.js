@@ -10,7 +10,7 @@ import styled from 'styled-components'
  * Define style
  */
 
-let CategoryListStyle = styled(() => `
+const CategoryListStyle = styled.div(() => `
   margin-top: 15px;
 `)
 

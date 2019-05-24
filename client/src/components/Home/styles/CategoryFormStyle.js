@@ -10,7 +10,7 @@ import styled from 'styled-components'
  * Define style
  */
 
-let CategoryFormStyle = styled(() => `
+const CategoryFormStyle = styled.div(() => `
   padding-top: 5px;
 
   .form-inline {

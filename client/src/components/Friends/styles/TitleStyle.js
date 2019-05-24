@@ -10,7 +10,7 @@ import styled from 'styled-components'
  * Define style
  */
 
-let TitleStyle = styled(() => `
+const TitleStyle = styled.div(() => `
 `)
 
 /**

@@ -5,24 +5,26 @@
  */
 
 import React from 'react'
-import components from '../components/Home/index'
+import { Navbar, LeftNav, MainContainer } from '../components/Home/index'
 import { HomeStyle } from './styles/index'
 
 /**
  * Define component
  */
 
+console.log("HomeStyle", HomeStyle)
+
 function Home() {
   return (
     <HomeStyle>
-      <components.Navbar />
+      <Navbar />
 
       <div className="row mx-auto">
         <div className="col-4 col-lg-3 col-xl-2 border-right">
-          <components.LeftNav />
+          <LeftNav />
         </div>
         <div className="col-8 col-lg-9 col-xl-10">
-          <components.MainContainer />
+          <MainContainer />
         </div>
       </div>
     </HomeStyle>
