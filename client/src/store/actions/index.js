@@ -18,6 +18,8 @@ const SIGNUP_ERROR = 'SIGNUP_ERROR'
 const SIGNIN_START = 'SIGNIN_START'
 const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS'
 const SIGNIN_ERROR = 'SIGNIN_ERROR'
+const SIGNOUT_START = 'SIGNOUT_START'
+const SIGNOUT_SUCCESS = 'SIGNOUT_SUCCESS'
 const FETCH_PRIORITY_LINKS_START = 'FETCH_PRIORITY_LINKS_START'
 const FETCH_PRIORITY_LINKS_SUCCESS = 'FETCH_PRIORITY_LINKS_SUCCESS'
 const FETCH_PRIORITY_LINKS_ERROR = 'FETCH_PRIORITY_LINKS_ERROR'
@@ -91,6 +93,11 @@ const signIn = creds => dispatch => {
 
       dispatch({ type: SIGNIN_ERROR, payload: err_msg })
     })
+}
+
+const signOut = () => dispatch => {
+  dispatch({ type: SIGNOUT_START })
+  dispatch({ type: SIGNOUT_SUCCESS })
 }
 
 const getPriorityLinks = (user_id) => dispatch => {
@@ -264,6 +271,9 @@ export default {
   SIGNIN_SUCCESS,
   SIGNIN_ERROR,
   signIn,
+  SIGNOUT_START,
+  SIGNOUT_SUCCESS,
+  signOut,
   FETCH_PRIORITY_LINKS_START,
   FETCH_PRIORITY_LINKS_SUCCESS,
   FETCH_PRIORITY_LINKS_ERROR,

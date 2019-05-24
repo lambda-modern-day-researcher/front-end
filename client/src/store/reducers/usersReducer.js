@@ -13,6 +13,7 @@ import actions from '../actions/index'
 const initialState = {
   isSigningIn: false,
   isSigningUp: false,
+  isSigningOut: false,
   isFetchingPriorityLinks: false,
   isFetchingMainLinks: false,
   isFetchingCategories: false,
@@ -93,6 +94,17 @@ function usersReducer(state = initialState, action) {
     case actions.SIGNIN_ERROR:
       return Object.assign({}, state, {
         isSigningIn: false,
+        error: action.payload
+      })
+    case actions.SIGNOUT_START:
+      localStorage.clear()
+      return Object.assign({}, state, {
+        isSigningOut: true,
+        error: action.payload
+      })
+    case actions.SIGNOUT_SUCCESS:
+      return Object.assign({}, state, {
+        isSigningOut: false,
         error: action.payload
       })
     case actions.FETCH_PRIORITY_LINKS_START:

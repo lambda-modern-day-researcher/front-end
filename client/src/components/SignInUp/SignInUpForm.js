@@ -37,18 +37,24 @@ class SignInUpForm extends Component {
 
     if (this.props.in_or_up === 'up') {
       this.props.signUp({ email: this.state.email, username: this.state.username, password: this.state.password })
-        .then((res) => {
+        .then(res => {
           if (this.props.usersReducer.error) {
             this.setState({ email: '', username: '', password: '' })
             document.activeElement.blur()
+          } else {
+            window.location = '/home'
+            this.props.history.push('/home')
           }
         })
     } else {
       this.props.signIn({ username: this.state.username, password: this.state.password })
-        .then((res) => {
+        .then(res => {
           if (this.props.error) {
             this.setState({ email: '', username: '', password: '' })
             document.activeElement.blur()
+          } else {
+            window.location = '/home'
+            this.props.history.push('/home')
           }
         })
     }
@@ -61,7 +67,7 @@ class SignInUpForm extends Component {
   render() {
     return (
       <SignInUpFormStyle>
-        {(this.props.usersReducer.current_user_token) ?
+        {((this.props.usersReducer.isSigningIn || this.props.usersReducer.isSigningUp || this.props.usersReducer.current_user_token && !this.props.usersReducer.isSigningOut)) ?
           <div>
             <hr/>
             <h2>Success!</h2>
